@@ -1,0 +1,182 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+
+        <div class="container pt-2">
+            <div class="update-form">
+
+        <h1>Create a New Commercial Listing</h1>
+    {% if messages %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data" class="pt-5">
+    {% csrf_token %}
+
+    <div class="container">
+        <!-- Caption -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="Caption">Caption:</label>
+                <input type="text" name="Caption" required class="form-control" >
+            </div>
+       
+            <div class="col-md-6">
+                <label for="category">Category:</label>
+                <select name="category" id="category" required class="form-control">
+                    <option value="">Select Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">
+                            {{ category.catgory|default:"No name available" }}
+                        </option>
+                    {% empty %}
+                        <option value="" disabled>No categories available</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Total Land and House Area in one row -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="total_land">Total Land:</label>
+                <input type="text" name="total_land" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="price">Price:</label>
+                <input type="text" name="price" required class="form-control">
+            </div>
+            
+        </div>
+
+        <!-- Price and Address in one row -->
+        <div class="row mb-3">
+            
+            <div class="col-md-6">
+                <label for="location">Location:</label>
+                <input type="text" name="location" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="land_mark">Land Mark:</label>
+                <input type="text" name="land_mark" class="form-control">
+            </div>
+            
+        </div>
+
+        <!-- Description -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="description">Description:</label>
+                <textarea name="description" required class="form-control"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label for="address">Address:</label>
+                <textarea name="address" required class="form-control"></textarea>
+            </div>
+        </div>
+
+        <!-- Furnished -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="amenities">Amenities:</label>
+                <textarea name="amenities" required class="form-control"></textarea><br>
+            </div>
+        </div>
+
+
+        <!-- Bathroom and Kitchen in one row -->
+        <div class="row mb-3">
+            
+            <div class="col-md-6">
+                <label for="Time_perioud">Time Period:</label>
+                <input type="text" name="Time_perioud" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="sequrity_deposit">Security Deposit:</label>
+                <input type="text" name="sequrity_deposit" class="form-control">
+            </div>
+            
+        </div>
+
+      
+        <!-- Location and Agent Name in one row -->
+        <div class="row mb-3">
+            
+            <div class="col-md-6">
+                <label for="agent_name">Agent Name:</label>
+                <input type="text" name="agent_name" required value="{{ username }}" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="number">Phone Number:</label>
+                <input type="text" name="number" value="{{ number }}" class="form-control">
+            </div>
+        </div>
+
+        <!-- Phone Number and Status in one row -->
+        <div class="row mb-3">
+            
+            
+            <div class="col-md-6">
+
+                <label for="status">Status:</label>
+                <select name="status" class="form-control">
+                    <option value="Available">Available</option>
+                    <option value="Sold">Sold</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="disabled">Is Disabled?</label>
+                <input type="checkbox" name="disabled">
+            </div>
+        </div>
+
+       
+        <!-- Image Upload -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="images">Upload 4 Images</label>
+                <input type="file" id="images" name="images" multiple accept="image/*" required class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

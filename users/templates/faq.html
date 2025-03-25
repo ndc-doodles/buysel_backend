@@ -1,0 +1,341 @@
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buysel.in - Commission-free property and scrap transactions. Buy, sell, rent, or lease properties with transparency and ease. Dispose of scrap and e-waste responsibly. Join the revolution in property and scrap dealing today!">
+    <meta name="keywords" content="commission-free property transactions, property buying and selling, rent and lease properties, scrap disposal, e-waste transactions, scrap and property platform, middleman-free property deals, transparent property deals, responsible scrap disposal, direct property connections, efficient property transactions, eco-friendly scrap management, property solutions India">
+    <meta name="author" content="buysel.in">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8bc83f">
+    <title>Buysel.in - Commission-Free Property and Scrap Transactions</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %} " />
+    <script src="{% static 'js/faq.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <style>
+        .logo{
+          margin-left: 3.938rem;
+        }
+        html{
+          overflow-x:hidden;
+        }
+        .active {
+   
+        color: #8bc83f !important;
+        }
+
+      </style>
+
+</head>
+<body>
+
+
+    <div class="sub-navbar h-[1.6rem]">
+        <div class="welcometxt">Welcome to Buysel</div>
+        <ul class="sub-nav-options">
+          <a
+            href="https://www.facebook.com/profile.php?id=61568003210483"
+            target="_blank"
+          >
+            <img
+              src="{% static 'img/facebook 2.png'%}"
+              alt="Facebook"
+              class="social-icon-nav"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz"
+            target="_blank"
+          >
+            <img
+              src="{% static 'img/instagram2.png'%}"
+              alt="Instagram"
+              class="social-icon-nav"
+            />
+          </a>
+          <a href="https://wa.me/9061827363" target="_blank">
+            <img
+              src="{% static 'img/whatsapp2.png'%}"
+              alt="WhatsApp"
+              class="social-icon-nav"
+            />
+          </a>
+        </ul>
+      </div>
+      
+  
+  <nav class="navbar">
+      <a href="{% url 'index' %}" class="logo-link">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo" />
+      </a>
+       <!-- Hamburger icon for mobile -->
+<!-- <button class="hand-burger" id="navbar-toggle">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button> -->
+  <div class="hand-burgger" onclick="handleToggle()" id="navbar-toggle">
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+
+  </div>
+
+
+      <ul class="nav-options">
+        <li><a href="{% url 'index' %}#about">About Us</a></li>
+        <li><a href="{% url 'index' %}#service">Services</a></li>
+        <li><a href="{% url 'agents' %}">Agents</a></li>
+        <li><a href="{% url 'index' %}#properties">Properties</a></li>
+        <li><a href="{% url 'index' %}#features">Features</a></li>
+        <li><a href="{% url 'blog' %}">Our blogs</a></li>
+        <li><a href="{% url 'faq' %}">FAQ</a></li>
+        <li><a href="{% url 'login' %}"><i class="ph ph-user"></i>Login   </a></li>
+      </ul>
+      <button class="contact-btn">
+        <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
+      </button>
+
+      <div id="mobile-navbar" class="mobile-navbar display-hidden">
+
+        <div class="nav-tabs">
+          <ul class="">
+            <li><a href="{% url 'index' %}#about">About Us</a></li>
+            <li><a href="{% url 'index' %}#service">Services</a></li>
+            <li><a href="{% url 'agents' %}">Agents</a></li>
+            <li><a href="{% url 'index' %}#properties">Properties</a></li>
+            <li><a href="{% url 'index' %}#features">Features</a></li>
+            <li><a href="{% url 'blog' %}">Our blogs</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'login' %}"><i class="ph ph-user"></i>Login   </a></li>
+          </ul>
+          <button class="contact-btn">
+            <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
+          </button>
+        </div>
+        
+  
+      </div>
+
+    </nav>
+
+
+  
+ <div class="w-full h-auto text-center flex items-center justify-center mt-44">
+
+    <p class="text-5xl font-extrabold text-gray-800 mb-4">
+        FAQ
+    </p>
+</div>
+
+
+<div class="w-full text-center flex items-center justify-center">
+  
+    <p class="text-lg text-gray-600 max-w-3xl mx-auto max-md:px-10">
+        Clarifying Your Doubts and Providing Solutions
+    </p>
+</div>
+
+
+
+
+
+
+<div class="w-full h-96 mt-20 flex flex-col lg:flex-row justify-between gap-10 max-md:gap-0">
+
+    <div class="w-full lg:w-3/5 mx-auto lg:flex-col lg:items-center lg:hidden max-md:mt-0">
+        <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 px-10">
+            <!-- First Button -->
+            <div class="w-full flex justify-center items-center cursor-pointer word-item" data-faq="faq-1">
+                <button id="generalButton" class="faq-button bg-[#8bc83f] text-white border-2 border-[#8bc83f] rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                    <h1 id="general">General questions</h1>
+                </button>
+            </div>
+            
+            <!-- Second and Third Buttons -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="w-full flex justify-center items-center cursor-pointer word-item" data-faq="faq-2">
+                    <button id="buyersButton" class="faq-button border-2 border-[#8bc83f] rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                        <h1 id="buyers">For Buyers</h1>
+                    </button>
+                </div>
+                <div class="w-full flex justify-center items-center cursor-pointer word-item" data-faq="faq-3">
+                    <button id="sellersButton" class="faq-button border-2 border-[#8bc83f] rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                        <h1 id="sellers">For Sellers</h1>
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Fourth Button -->
+            <div class="w-full flex justify-center items-center cursor-pointer word-item" data-faq="faq-4">
+                <button id="securityButton" class="faq-button border-2 border-[#8bc83f] rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                    <h1 id="security">Security & verification</h1>
+                </button>
+            </div>
+    
+            <!-- Fifth and Sixth Buttons -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="w-full flex justify-center items-center cursor-pointer word-item" data-faq="faq-5">
+                    <button id="benefitButton" class="faq-button border-2 border-[#8bc83f] rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                        <h1 id="benefit">Benefit</h1>
+                    </button>
+                </div>
+                <div class="w-full flex justify-center items-center word-item" data-faq="faq-6">
+                    <button id="supportButton" class="faq-button  rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                        <h1 id="support">Customer support</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+      
+      
+    <div class="w-full lg:w-3/5 h-96 mx-auto flex flex-col justify-around items-center place-self-center max-md:hidden lg:border-r-2 lg:border-solid lg:border-[#8bc83f]">
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-1">
+          <h1 class="font-bold text-xl" id="general">General questions</h1>
+      </div>
+  
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-2">
+          <h1 class="font-bold text-xl" id="buyers">For Buyers</h1>
+      </div>
+  
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-3">
+          <h1 class="font-bold text-xl" id="sellers">For Sellers</h1>
+      </div>
+  
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-4">
+          <h1 class="font-bold text-xl" id="security">Security & verification</h1>
+      </div>
+  
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-5">
+          <h1 class="font-bold text-xl" id="benefit">Benefit</h1>
+      </div>
+  
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-6">
+          <h1 class="font-bold text-xl" id="support">Customer support</h1>
+      </div>
+  </div>
+  
+  
+    <div class=" w-full h-full flex items-center  lg:pb-0 ">
+      
+        <div class="faq-outer  w-full h-full">
+          <div class="faq-questions" id="faq-content">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Can I sell both residential and commercial properties on Buysel.in?</span>
+                <img src="{% static 'img/Vector.svg'%}" alt="Expand" class="toggle-icon" />
+              </div>
+              <div class="faq-answer-content" style="display: none">
+                <p>Yes, you can list both residential and commercial properties for sale, rent, or lease.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+</div>
+
+
+
+  
+  
+
+
+ 
+
+  
+
+
+
+<footer style="background-color: white; padding: 30px 0;height: 42rem;" class="mt-28 max-md:mt-[20rem]">
+    <div class="footer-content">
+      
+      <div class="contact-details"> 
+        <img src="{% static 'img/logo.png'%}" alt="Buysel Logo" class="footer-logo max-md:justify-self-center">
+        <h3>Contact Information</h3>
+        <p>Email:buyselinfo@gmail.com</p>
+        <p>Phone:9061827363</p>
+        <p>Address: Kochi,
+            Kerala,India</p>
+  
+        <!-- Follow Us Section -->
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61568003210483" target="_blank">
+                <img src="{% static 'img/facebook.svg'%}" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz" target="_blank">
+                <img src="{% static 'img/insta.svg'%}" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://wa.me/9061827363" target="_blank">
+                <img src="{% static 'img/whatsapp.svg'%}" alt="WhatsApp" class="social-icon">
+            </a>
+            <!-- <a href="https://www.twitter.com" target="_blank">
+                <img src="asset/img/twitter.svg" alt="Twitter" class="social-icon">
+            </a> -->
+        </div>
+        
+      </div>
+  
+      <!-- Right Side: Footer Links -->
+      <div class="footer-links">
+        <!-- <h4>wwwwwww</h4> -->
+        <div class="link-row1">
+          <a href="#" class="home">Home</a>
+          <a href="index.html#service" class="services">Services</a>
+          <a href="index.html#benefits" class="benefits">Benefits</a>
+          <a href="faq.html" class="faq">FAQ</a>
+        </div>
+        <div class="link-row2">
+          <a href="index.html#about" class="about-us">About Us</a>
+          <a href="index.html#features" class="features">Features</a>
+          <a href="index.html#how-it-works" class="how-it-works">How it works</a>
+          <a href="index.html#contact" class="contact-us">Contact Us</a>
+        </div>
+      </div>
+      
+      
+      </div>
+    </div>
+  
+    <!-- Bottom: Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 Buysel.in. All Rights Reserved</p>
+    </div>
+</footer>
+
+
+<script>
+    
+  window.addEventListener('DOMContentLoaded',()=>{
+   
+
+    const path = window.location.pathname
+    path
+
+
+  })
+
+
+
+  
+</script>
+<script>
+  
+</script>
+
+
+<script src="./asset/js/faq.js"></script>
+</body>
+</html>

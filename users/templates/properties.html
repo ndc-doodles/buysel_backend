@@ -1,0 +1,673 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+  .card{
+    width: 22rem !important;
+    height: 33rem !important;
+    background-color: white;
+  }
+  .add-property-icon {
+    width: 20px;
+  }
+
+  .add-property-btn {
+    justify-content: center;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .add-property-btn {
+    padding-inline: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: medium;
+    border: 2px #a8bfa0 solid;
+    background-color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.849);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* margin-inline: auto; */
+    /*margin-left: 3rem;*/
+    box-shadow: 4px 6px 12px #0000002e;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "geist", sans-serif;
+  }
+
+  .pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .add-property-btn-link {
+    text-decoration: none;
+  }
+
+  .add-property-btn:hover {
+    background: rgb(245, 253, 245);
+    border: none;
+  }
+
+  .faq-outer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 100px;
+  }
+
+  .call-btn{
+    color: #ffffff; 
+    background-color: #8bc83f;  
+    border: none; 
+    border-radius: 64%;
+   
+    height: 1.7rem;
+    width: 2rem;
+    text-align: center;
+    align-content: center;
+    margin-top: 0.7rem;
+  
+  }
+  .msg-btn{
+    color: #8bc83f; 
+    background-color: none;  
+    font-size: 30px;
+    border-radius: 5px; 
+   
+   
+    align-content: center;
+   
+    text-align: center;
+
+  }
+
+  
+  .connect-act{
+    display: flex;
+    gap: 0.5rem;
+  }
+  @media (max-width: 1076px) {
+    .faq-outer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .faq-heading {
+      text-align: center;
+      margin-top: 100px;
+    }
+  }
+</style>
+
+    
+     
+  
+<section>
+
+  <div class="properties pt-5 " id="properties">
+    <h1 class="property-name pt-5 ">PROPERTIES</h1>
+    <div class="property-filters flex flex-wrap justify-center gap-y-4 mb-4">
+      <button class="filter-btn active w-full sm:w-auto px-4 py-2" data-category="all"
+        onclick="filterProperties('all')">All</button>
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Sale"
+        onclick="filterProperties('Sale')">Sale</button>
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Rent"
+        onclick="filterProperties('Rent')">Rent</button>
+
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Lease"
+        onclick="filterProperties('Lease')">Lease</button>
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
+        onclick="filterProperties('Resell')">Resell</button>
+
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".filter-btn");
+
+        buttons.forEach(button => {
+          button.addEventListener("click", function () {
+            // Remove 'clicked' class from all buttons
+            buttons.forEach(btn => btn.classList.remove("clicked"));
+
+            // Add 'clicked' class to the clicked button
+            this.classList.add("clicked");
+          });
+        });
+      });
+    </script>
+
+
+    <div class="row-properties">
+
+      {% for i in model5_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id "
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id "
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id "><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div> <hr>
+              <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                <h5>View More</h5>
+              </a>  
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% for i in model6_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id "
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id "
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id "><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
+              <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
+                <h5>View More</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model7_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id "
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id "
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id "><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
+              <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
+
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model8_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id "
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id"
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id "><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
+              <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+      {% for i in model2_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id"
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id"
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+              </p> <hr>
+              <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view"><h5>View Details</h5> </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+
+      {% for i in model1_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id"
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id"
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div> <hr>
+              
+              <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" class="view"><h5>View Details</h5> </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model3_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id"
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id"
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div> <hr>
+              <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      {% for i in model4_objects %}
+
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='model1' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button class="share-btn" data-id="model_name='model1' object_id=i.id "
+                  data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='model1' object_id=i.id "
+                  data-url="https://buysel.in/#model_name='model1' object_id=i.id "><i class="fa-solid fa-share-nodes"></i>
+                  
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+              </p> 
+              </div><hr>
+              <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                <p style="font-size: 14px; font-weight: bold; ">Price: <span style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')" class="msg-btn" >
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>  Call Now 
+                  </a>
+                    
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
+
+
+    <script src="./asset/js/main.js"></script>
+{% endblock%}

@@ -1,0 +1,34 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="profile-box">
+        {% if user_profile %}
+        <div class="profile-img">
+            {% if user_profile.profile_image %}
+            <img src="{{ user_profile.profile_image.url }}" alt="Profile Image">
+            {% endif %}
+
+        </div>
+        <div class="profile-content">
+            <h3>Hi {{ user_profile.login.username }} </h3>
+            <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+            <p><strong>Address:</strong> {{ user_profile.address }}</p><br>
+            <p><strong>Email Id:</strong> {{ user_profile.email }}</p>
+            <p><strong>Postal Code:</strong> {{ user_profile.pin_code }}</p>
+
+            <a href="{% url 'update_profile' %}"><button class="profile-btn">Update Profile</button> </a>
+        </div>
+        
+        {% endif %}
+        
+    </div>
+   
+
+
+</div>
+{% endblock%}
+
+
+

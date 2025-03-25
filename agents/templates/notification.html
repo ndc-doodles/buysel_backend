@@ -1,0 +1,94 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+    .delete-btn{
+        background: transparent;
+        border: none;
+        color: red;
+    }
+</style>
+        <div class="container">
+            <div class="content">
+                <h1>Messages For You</h1>
+                <table
+                    style="justify-self: center; margin-top: 3rem;width: 80%;background-color: #18283b;color: rgba(255, 255, 255, 0.945);">
+                    <thead>
+                        <tr style="border: solid rgba(255, 255, 255, 0.534) 2px;">
+                            <th>Sender</th>
+                            <th style=" width: 33rem !important;">Message</th>
+                            <th>Contact</th>
+                            <th>Pin Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% if matching_messages %}
+                        {% for message in matching_messages %}
+                        <tr>
+                            <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.name }}</td>
+                            <!-- Sender field -->
+                            <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.messages_text }}</td>
+                            <!-- Message content field -->
+                            <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.contact }}</td>
+                            <!-- Contact field -->
+                            <td style="border: solid rgba(255, 255, 255, 0.534) 2px;"> {{ message.pin_code }}</td>
+                            <!-- Pin Code field -->
+                            
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+
+                    </tbody>
+                </table><br><br>
+                <h1>Messages For You Not Matching On Your PIN Code</h1>
+                <table
+                    style="justify-self: center; margin-top: 3rem;width: 80%;background-color: #18283b;color: rgba(255, 255, 255, 0.945);">
+                    <thead>
+                        <tr style="border: solid rgba(255, 255, 255, 0.534) 2px;">
+                            <th>Sender</th>
+                            <th style=" width: 33rem !important;">Message</th>
+                            <th>Contact</th>
+                            <th>Pin Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% if non_matching_messages %}
+                        {% for message in non_matching_messages %}
+                            <div class="message-box">
+                                <tr id="message-{{ message.id }}">
+                                    <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.name }}</td>
+                                    <!-- Sender field -->
+                                    <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.messages_text }}</td>
+                                    <!-- Message content field -->
+                                    <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.contact }}</td>
+                                    <!-- Contact field -->
+                                    <td style="border: solid rgba(255, 255, 255, 0.534) 2px;">{{ message.pin_code }}</td>
+                                    <!-- Pin Code field -->
+                                    <td>
+                                        <!-- Form for deleting message -->
+                                        <form action="{% url 'delete_message' message.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="delete-btn"><i class="fa-solid fa-xmark"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    </tbody>
+                </table>
+
+                <!-- Back to dashboard link -->
+                {% comment %} <a href="{% url 'dashboard' %}">Back to Dashboard</a> {% endcomment %}
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}

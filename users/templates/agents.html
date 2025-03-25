@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<style>
+  .add-property-icon {
+    width: 20px;
+  }
+
+  .add-property-btn {
+    justify-content: center;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .add-property-btn {
+    padding-inline: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: medium;
+    border: 2px #a8bfa0 solid;
+    background-color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.849);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    /* margin-inline: auto; */
+    /*margin-left: 3rem;*/
+    box-shadow: 4px 6px 12px #0000002e;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "geist", sans-serif;
+  }
+
+  .pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .add-property-btn-link {
+    text-decoration: none;
+  }
+
+  .add-property-btn:hover {
+    background: rgb(245, 253, 245);
+    border: none;
+  }
+
+  .faq-outer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 1076px) {
+    .faq-outer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .faq-heading {
+      text-align: center;
+      margin-top: 100px;
+    }
+  }
+  .agent-register-section {
+    margin-top: 1rem !important;
+    margin-bottom: 5rem !important;
+}
+@media(max-width: 600px){
+  .image-container{
+    margin-top: 8rem;
+  }
+  .image-container .image-2 {
+    max-width: 53%;
+    
+}
+  .image-container .image-1 {
+      max-width: 53%;
+      margin-left: -9rem;
+    }
+    }
+    @media(max-width: 400px){
+  .image-container{
+    margin-top: 8rem;
+  }
+  .image-container .image-2 {
+    max-width: 53%;
+    
+}
+  .image-container .image-1 {
+      max-width: 53%;
+      margin-left: 2rem;
+    }
+    }
+  @media(max-width:900px){
+   
+  .image-container{
+    margin-top: 8rem;
+  }
+  }
+</style>
+
+
+
+
+<section>
+  <div class="landing-agents">
+    <div class="agent-text-section">
+      <div class="agent-land-text">
+        <h1>Explore <br>Our Agents</h1>
+      <p>Browse our list of agents to find the right professional for your real estate needs. Filter by experience, specialization, or location to make an informed choice. Whether buying, 
+        selling, or investing, our agents are here to provide expert guidance for a successful journey</p>
+      </div>
+      
+    </div>
+    <div class="agent-image-section">
+     <img src=" {% static 'img/330.jpg' %}" alt="" style="width:100%;border-bottom-right-radius: 4rem;">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="agents_page">
+  <h1 class="agents-heading">Our Top Agents</h1>
+    <div class=" agents">
+      
+    <div class="row2">
+      {% if profiles %}
+      {% for agent in profiles %}
+  <a href="{% url 'agents_view'  agent.id %}" class="view-agent-btn"> 
+      <div class="card">
+        <div class="agents-card-body">
+          <div class="agents-card-img">
+            {% if agent.image_url %}
+                    <img src="{{ agent.image_url }}" alt="Agent Profile">
+                  {% else %}
+                    <p>No image available</p>
+                  {% endif %}
+          </div>
+          <div class="card-text">
+            <h5  style="color:#8bc83f;">{{ agent.login.username }}</h5>
+            <h6>{{agent.address}}</h6>
+            <!-- <p>view propertice</p> -->
+          </div>
+        </div>
+      </div>
+  </a> 
+      {% endfor %} 
+      {% else %}
+      <p>No agents found.</p>
+    {% endif %}
+
+ 
+
+
+
+
+
+
+
+    </div>
+
+
+       <!-- Pagination Links -->
+<div class="pagination">
+  <span class="step-links">
+      {% if profile.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ profile.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ profile.number }} of {{ profile.paginator.num_pages }}.
+      </span>
+
+      {% if profile.has_next %}
+          <a href="?page={{ profile.next_page_number }}">next</a>
+          <a href="?page={{ profile.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+
+    <div class=" container  agent-register-section" id="agents">
+      <div class="text-section2">
+        <h1>BECOME AN AGENT: <br /><span>JOIN OUR PLATFORM</span></h1>
+        <p>
+          Sign up today to start listing properties and connecting with potential buyers and renters. Grow your business
+          with us!
+        </p>
+    
+        <a class="add-property-btn-link" href="{% url 'agent_form' %}" target="_blank">
+          <div class="add-property-btn pulse">
+            <span>Register as an Agent</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#8bc83f"
+              class="add-property-icon">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+            </svg>
+          </div>
+        </a>
+      </div>
+      <div class="image-container">
+        <img src="{% static 'img/agents2.jpg' %}" alt="A beautiful house at sunset" class="image-1" />
+        <img src="{% static 'img/agents.jpg' %}" alt="A key in a door lock" class="image-2" />
+      </div>
+    
+    </div>
+     
+    </div>
+   
+    
+
+</div>
+
+
+</div>
+
+<section>
+  <div class="why-choose">
+   <h3>WHY CHOOSE OUR AGENTS</h3>
+   <p>Expertise, Innovation, and Personalized Service to Guide Your Real Estate Journey</p>
+   <div class="box-sect">
+      <div class="agent-boxs" id="agent-box1">
+        <div class="hovering-bg"></div>
+        <div id="hovering1"></div>
+        <div class="why-icons">
+          <i class="ph ph-briefcase"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Diverse Experience & Expertise</h5>
+        <p>From industry veterans to fresh talent, our agents offer a range of experience and up-to-date market knowledge.</p>
+        </div>
+      </div>
+
+      <div class="agent-boxs" id="agent-box2">
+        <div class="hovering-bg"></div>
+        <div id="hovering2"></div>
+        <div class="why-icons">
+          <i class="ph ph-headset"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Personalized Service</h5>
+        <p>Our agents take the time to understand your unique needs, offering tailored advice and transparent guidance.</p>
+        </div>
+        
+      </div>
+
+      <div class="agent-boxs" id="agent-box3">
+        <div class="hovering-bg"></div>
+        <div id="hovering3"></div>
+        <div class="why-icons">
+          <i class="ph ph-rocket"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Fresh Perspectives & Innovation</h5>
+        <p>New agents bring fresh energy, while seasoned professionals provide deep experience—both offer cutting-edge solutions.</p>
+        </div>
+        
+      </div>
+
+      <div class="agent-boxs" id="agent-box4">
+        <div class="hovering-bg"></div>
+        <div id="hovering4"></div>
+        <div class="why-icons">
+          <i class="ph ph-globe-hemisphere-east"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Local Market Knowledge</h5>
+        <p>Expert agents who understand local neighborhoods, property values, and market trends.</p>
+        </div>
+        
+      </div>
+
+      <div class="agent-boxs" id="agent-box5">
+        <div class="hovering-bg"></div>
+        <div id="hovering5"></div>
+        <div class="why-icons">
+          <i class="ph ph-handshake"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Commitment to Professionalism</h5>
+        <p>Reliable, transparent, and ethical service throughout the entire process.</p>
+        </div>
+        
+      </div>
+
+      <div class="agent-boxs" id="agent-box6">
+        <div class="hovering-bg"></div>
+        <div id="hovering6"></div>
+        <div class="why-icons">
+          <i class="ph ph-repeat"></i>
+        </div>
+        <div class="agent-box-text">
+          <h5>Ongoing Support & Resources</h5>
+        <p>Continuous training and access to resources ensure you always get the best support.</p>
+        </div>
+        
+      </div>
+
+
+   </div>
+  </div>
+</section>
+{% endblock %}
+
+
+
+
+
+
+<!-- <div class="row1 agent-card ">
+      
+      {% comment %} <a href="{% url 'agent_view' i.id %}">
+
+      <div class="card" style="width: 18rem;">
+        <img src="{{i.profile_image.url}}" alt="profile one">
+        <div class="agent-card-body">
+          <h5 class="card-title" style="color:#8bc83f;">{{ i.login.username }}</h5>
+          <p class="card-text">{{i.address}}</p>
+          
+        </div>
+      </div>
+      </a> {% endcomment %}
+     
+    
+      
+    {% for i in profile %}
+    <a href="{% url 'agent_view' i.id %}">
+    <article>
+     
+      <figure>
+        {% if i.profile_image %}
+        <img src="{{ i.profile_image.url }}" alt="profile one">
+   
+    {% endif %}
+      </figure>
+  
+      <div>
+        <h2>
+          {{ i.login.username }}
+      </h2>
+          <p>
+            {{i.address}}
+          </p>
+          
+      </div>
+      
+  </article>
+</a>
+  {% endfor %} -->
+  
+
+
+
+
+
+
+

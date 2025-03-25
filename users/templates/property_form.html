@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="form-box">
+<h1>Register Your Property</h1>
+    
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p class="alert {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      
+        <input type="text" id="property_name" name="property_name" class="form-control" required placeholder="Property Name"><br><br>
+
+      
+        <input type="text" id="locations" name="locations" class="form-control" required placeholder="Locations"><br><br>
+
+      
+        <input type="text" id="price" name="price" class="form-control" required placeholder="Price"><br><br>
+
+      
+        <textarea id="about_the_property" name="about_the_property" class="form-control" required placeholder="About the Property" style="height: 10rem;"></textarea><br><br>
+
+        <label for="image">Property Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br><br>
+
+        <button type="submit" class="btn-submit form-control">Register Your Property</button>
+    </form>
+</div>
+    {% endblock %}

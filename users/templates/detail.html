@@ -1,0 +1,474 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    @media(max-width:400px) {
+        .image-container {
+            margin-top: 3rem !important;
+        }
+    }
+
+    @media(max-width:600px) {
+        .image-container {
+            margin-top: 3rem !important;
+        }
+
+        .image-container .image-2,
+        .image-container .image-1 {
+            max-width: 53%;
+        }
+    }
+
+    @media(max-width:900px) {
+        .image-container {
+            margin-top: 3rem !important;
+        }
+
+        .image-container .image-2,
+        .image-container .image-1 {
+            max-width: 35%;
+        }
+
+        .image-container {}
+    }
+</style>
+<!-- House Details -->
+<div class="break">
+    {% comment %} <div class="detail_view">
+        <div class="sale-banner"
+            style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+            <h4>{{ house.category }}</h4>
+        </div>
+        <div class="details-img">
+            <div class="main-image-container">
+                {% if house.images.all %}
+
+                <img src="{{ house.images.all.0.image.url }}" alt="land Image" class="img-fluid">
+
+                {% endif %}
+
+            </div>
+            <div class="other-img">
+                {% if house.images.all|length > 1 %}
+
+                <img id="second-img" src="{{ house.images.all.1.image.url }}" onclick="changeImage('second-img')">
+
+                {% endif %}
+
+
+                {% if house.images.all|length > 2 %}
+
+                <img id="third-img" src="{{ house.images.all.2.image.url }}" onclick="changeImage('third-img')">
+
+                {% endif %}
+                {% if house.images.all|length > 3 %}
+
+                <img id="fourth-img" src="{{ house.images.all.3.image.url }}" onclick="changeImage('fourth-img')">
+
+                {% endif %}
+
+
+
+            </div>
+        </div>
+
+
+
+        <div class="details-list">
+            <button class="wtsp-btn share-btn1" data-id="1"
+                data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                data-url="https://buysel.in/#card-1"
+                style="border: none; background: none; color: #25d366; font-size: 33px;">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <h2>{{ house.Caption }}</h2>
+            <div class="detail-sec pt-5">
+                <div class="detail_list">
+                    <h6>Total Land:</h6>
+                    <h6>{{ house.total_land }},</h6>
+
+
+
+                </div>
+                <div class="detail_list">
+                    <span>
+                        <h6>Address:</h6>
+                    </span>
+                    <h6>{{ house.address }},</h6>
+                </div>
+                <div class="detail_list">
+                    <span>
+                        <h6>Bedroom:</h6>
+                    </span>
+                    <h6>{{ house.Bedroom }},</h6>
+                    <span>
+                        <h6>Bathroom:</h6>
+                    </span>
+                    <h6>{{ house.Bathroom }},</h6>
+
+
+
+                </div>
+                <div class="detail_list">
+                    <h6>House Area:</h6>
+                    <h6>{{ house.house_area }},</h6>
+
+
+
+
+
+                </div>
+                <div class="detail_list">
+                    <span>
+                        <h6>Kitchen:</h6>
+                    </span>
+                    <h6>{{ house.kitchen }},</h6>
+                    <h6>Furnished:</h6>
+                    <h6>{{ house.furnished }},</h6>
+
+                </div>
+                <div class="detail_list">
+
+                    <span>
+                        <h6>About Property:</h6>
+                    </span>
+                    <h6>{{ house.description }},</h6>
+
+                </div>
+                <div class="detail_list">
+                    <span>
+                        <h6>Land Mark:</h6>
+                    </span>
+                    <h6>{{ house.land_mark }},</h6>
+
+
+
+
+
+                </div>
+
+                <div class="detail_list">
+                    <span>
+                        <h6>Allowed Persons:</h6>
+                    </span>
+                    <h6>{{ house.allowed_persons }},</h6>
+                    <span>
+                        <h6>Gender:</h6>
+                    </span>
+                    <h6>{{ house.gender }},</h6>
+                </div>
+                <div class="detail_list">
+                    <span>
+                        <h6>Price:</h6>
+                    </span>
+                    <h6 style=" color: #1c9147;">{{ house.price }}</h6>
+
+
+                </div>
+
+
+                <!-- Disable the entire contact section if sold or disabled -->
+                {% if house.status == 'Sold' or house.disabled %}
+                <div class="contact-row" style="pointer-events: none; opacity: 0.5;">
+                    <div onclick="sendMessageToWhatsApp('{{ house.Caption }}', '{{ house.location }}', '{{ house.contact }}')"
+                        style="background: none; border: none; color: #25d366; font-size: 3.5rem;">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ house.contact }}"
+                        style="color: #8bc83f; font-size: 20px; background-color: #ccc; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: not-allowed;"
+                        disabled>
+                        Call Now <i class="fas fa-phone call"></i>
+                    </a>
+                </div>
+                {% else %}
+                <div class="contact-row">
+                    <div onclick="sendMessageToWhatsApp('{{ house.Caption }}', '{{ house.location }}', '{{ house.contact }}')"
+                        style="background: none; border: none; color: #25d366; font-size: 3.5rem;">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ house.contact }}"
+                        style="color: #8bc83f; font-size: 20px; background-color: #25d366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer;">
+                        Call Now <i class="fas fa-phone call"></i>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+
+
+
+
+    <section class="detail-sec-agent">
+        <div class="landing-detail">
+
+            <div class="agent-plot-image">
+                <!-- <div class="img1">
+                <img src="{{ object.image1.url }}" alt="land Image" class="img-fluid img-det">
+                <img id="second-img" src="{{ object.image2.url }}" class="img-det">
+            </div>
+            <div class="img2">
+                <img id="third-img" src="{{ object.image3.url }}" class="img-det">
+                <img id="fourth-img" src="{{ object.image4.url }}" class="img-det">
+            </div>
+            <div id="myModal" class="modal">
+                <span class="close" id="closeBtn">&times;</span>
+                <img class="modal-contents" id="img01">
+            </div> -->
+                <div class="image-div">
+
+                    <div class="scroll-img">
+                        {% if images and images.0 %}
+                        <img src="{{ images.0.image.url }}" alt="{% if images.0.house %}{{ images.0.house.Caption }}{% else %}Image{% endif %}" id="main-img">
+                    {% endif %}
+                    </div>
+                    <div id="scrolling-img" class="det-img">
+                        <div  class="scroll-img2">
+                            
+                                {% if images %}
+
+                                {% for image in images %}
+                                <img onclick="handleImageSelector('{{ image.image.url }}')" id="{{ image.image.url }}" src="{{ image.image.url }}" alt="{{ image.house.Caption }}">
+                                {% endfor %}
+
+                                {% endif %}
+                       
+
+                        </div>
+
+                    </div>
+                    <div class="btn-det">
+                        <button onclick="handlePrev()" ><i class="fa-solid fa-arrow-left"></i></button>
+                        <button onclick="handleNext()"><i class="fa-solid fa-arrow-right"></i></button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="description">
+                <h2 style="text-align: center; font-size: 2rem;">{{object.Caption}}</h2><br>
+            <h2>About Property</h2>
+            <p>{{ object.description}}</p>
+            <!-- <h2>Location : {{object.location}}</h2> -->
+            <h2>Address : </h2><p>{{ object.address }}</p>
+
+            <h2>Landmark : </h2> <p>{{object.land_mark}}</p>
+            
+            <h2>Price : <span style="color: #8bc83f; font-size: 2rem;">{{ object.price }}</span></h2>
+            </div>
+
+        </div>
+
+        <div class="contact-btn-det">
+            {% if object.status == 'Sold' or object.disabled %}
+            <div class="contact-row1" style="pointer-events: none; opacity: 0.5;">
+                <div onclick="sendMessageToWhatsApp('{{ object.Caption }}', '{{ object.location }}', '{{ object.contact }}')"
+                    style="background: none; border: none; color: #25d366 !important; font-size: 3.5rem;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <a href="tel:+91 {{ object.contact }}" disabled><button style="border: none;
+            font-size: 1.5rem;
+            text-align: center;
+            height: 2.9rem;
+            place-content: center;
+            border-radius: 50%;
+            background-color: #8bc83f;
+            width: 3.2rem;
+            color: white;"><i class="fas fa-phone call"></i></button>
+
+                </a>
+            </div>
+            {% else %}
+            <div class="contact-row1">
+                <div onclick="sendMessageToWhatsApp('{{ object.Caption }}', '{{ object.location }}', '{{ object.contact }}')"
+                    style="background: none; border: none; color: #25d366 !important; font-size: 3.5rem;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <a href="tel:+91 {{ object.contact }}"><button style="border: none;
+                font-size: 1.5rem;
+                text-align: center;
+                height: 2.9rem;
+                place-content: center;
+                border-radius: 50%;
+                background-color: #8bc83f;
+                width: 3.2rem;
+                color: white;"><i class="fas fa-phone call"></i></button>
+
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="key-head">
+            <h2>Key Feature</h2>
+            <div class="key-feature">
+
+                <div class="key1">
+                    <h5>Total Land</h5>
+                    <div class="key-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <h1>{{ object.total_land }}</h1>
+                </div>
+                <div class="key2">
+                    <h5>House Area</h5>
+                    <div class="key-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <h1>{{ object.house_area }}</h1>
+                </div>
+                <div class="key3">
+                    <h5>Security Deposit</h5>
+                    <div class="key-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <h1>{{ object.sequrity_deposit }}</h1>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="common-para">
+            <div class="common-text">
+                <h2>Explore a Diverse Range of Properties for Every Need</h2>
+                <p>Our property listings cater to a variety of preferences and requirements. Whether you're looking for
+                    a
+                    charming family home, a lucrative commercial space, a prime piece of land to build your dream
+                    property, or an
+                    off-plan opportunity, we have something for everyone. Browse through our selection of well-priced
+                    properties in
+                    sought-after locations and find the perfect match for your lifestyle or investment goals.</p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'img/agents2.jpg' %}" alt="A beautiful house at sunset" class="image-1" />
+                <img src="{% static 'img/agents.jpg' %}" alt="A key in a door lock" class="image-2" />
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <script>
+        
+        function handleImageSelector(id){
+            console.log(id);
+            
+            const mainImg = document.getElementById('main-img')
+
+            const selectedImg = document.getElementById(`${id}`)
+
+            let temp;
+
+            temp = mainImg.src
+             mainImg.src = selectedImg.src
+             selectedImg.src = temp
+
+        }
+
+
+        function handleNext(){
+            console.log('haaaaa haah ahh');
+
+            const container = document.getElementById('scrolling-img')
+
+            console.log(container,'athira');
+            
+            
+            container.scrollBy({ left: 300, behavior: "smooth" });
+
+        }
+
+        function handlePrev(){
+            console.log('haaaaa haah ahh');
+
+            const container = document.getElementById('scrolling-img')
+
+            console.log(container,'athira');
+            
+            
+            container.scrollBy({ left: -300, behavior: "smooth" });
+
+        }
+
+
+    </script>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the modal image and close button
+        var modalImg = document.getElementById("img01");
+        var closeBtn = document.getElementById("closeBtn");
+
+        // Get all images with the class 'image'
+        var images = document.querySelectorAll(".img-det");
+
+        // Loop through all the images and add an event listener
+        images.forEach(function (img) {
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        // When the user clicks on the close button, close the modal
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of the image
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script>
+    function changeImage(currentImage) {
+
+
+
+        const selectedImage = document.getElementById(`${currentImage}`)
+        const mainImage = document.getElementById('mainImage');
+
+
+
+
+        const tempSrc = mainImage.src
+        mainImage.src = selectedImage.src
+        selectedImage.src = tempSrc
+
+
+
+
+    }
+</script>
+
+
+
+
+
+{% endblock %}

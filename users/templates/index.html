@@ -1,0 +1,1417 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="main">
+  <div class="text-section">
+    <h1>
+      Start Your<br />
+      Commission-<span class="highlight-free">Free</span><br />Journey
+      Today!
+    </h1>
+    <p>
+      Whether it's a property or scrap,
+      <span class="highlight">Buysel.in</span> connects<br />you directly
+      with the right people.
+    </p>
+
+    <a href="#properties" class="explore-btn">Explore</a>
+  </div>
+
+  <div class="image-section" onclick="sendMessageToWhatsApp('property', 'place')">
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box" id="box1" src="{% static 'img/9p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box" id="box2" src="{% static 'img/10p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box" id="box3" src="{% static 'img/11p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box" id="box4" src="{% static 'img/9p.jpg' %}" alt="" />
+    </a>
+  </div>
+</div>
+
+<div class="image-section-mobile-outer">
+  <div class="image-section-mobile" onclick="sendMessageToWhatsApp('property', 'place')">
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box-mobile" id="box-mobile1" src="{% static 'img/10p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box-mobile" id="box-mobile2" src="{% static 'img/10p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box-mobile" id="box-mobile3" src="{% static 'img/11p.jpg' %}" alt="" />
+    </a>
+    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+      <img class="image-box-mobile" id="box-mobile4" src="{% static 'img/9p.jpg' %}" alt="" />
+    </a>
+  </div>
+</div>
+
+<!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggler = document.createElement("button");
+        toggler.classList.add("toggler");
+        toggler.innerHTML = "&#9776;"; // Hamburger icon
+        document.querySelector(".navbar").appendChild(toggler);
+
+        const navOptions = document.querySelector(".nav-options");
+
+        // Toggle the navbar when the hamburger icon is clicked
+        toggler.addEventListener("click", function (e) {
+          navOptions.classList.toggle("active");
+          e.stopPropagation(); // Prevents the click event from propagating to the document
+        });
+
+        // Close navbar when an option is clicked
+        navOptions.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", function () {
+            navOptions.classList.remove("active"); // Close navbar when an option is clicked
+          });
+        });
+
+        // Close navbar when clicking anywhere on the screen outside the navbar and toggler
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest(".navbar")) {
+            // Check if the click was outside the navbar
+            navOptions.classList.remove("active");
+          }
+        });
+
+        // Prevent closing when clicking inside the navbar or toggler
+        navOptions.addEventListener("click", function (e) {
+          e.stopPropagation(); // Prevent click event from bubbling up to document
+        });
+      });
+    </script> -->
+
+
+
+<div class="alert-box-fixed">
+
+  <div onclick="handleStopPropagation()" class="message-box" id="message-box-id">
+
+    <div id="popup-form" class="form-container">
+
+      <form class="popup-form" method="POST" action="">
+        {% csrf_token %}
+        <input type="text" placeholder="Whats My Name?" id="name" name="name" required><br><br>
+        <input type="text" placeholder="How Can  I contact you?" id="contact" name="contact" required><br><br>
+        <input type="text" placeholder="Whats My PIN Code?" id="pin_code" name="pin_code" required><br><br>
+        <textarea oninput="handleTextAreaMessage()" placeholder="Whats My Need?" id="textarea-message" name="messages"
+          required></textarea><br><br>
+        <!-- <div contenteditable="true" id="editable" placeholder="What do you need?" name="messages" oninput="handleTextAreaMessage()"></div> -->
+        <div id="suggestions"></div>
+        <button onclick="handleExpand('messages','popup-form')" type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="hidden-content" id="messages">
+      {% for i in msgs|slice:"-15:" %}
+      <div class="message-box-content">
+        {{ i.messages_text }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <div class="notify_box">
+      <i onclick="handleExpand('popup-form','messages')" class="fa-solid fa-plus" id="expand-icon"></i>
+      <h5>What's on your mind?</h5>
+      <i onclick="handleExpand('messages','popup-form')" class="fa-solid fa-bell">
+        <span class="dot"></span>
+      </i>
+    </div>
+
+
+  </div>
+</div>
+
+<script>
+  function handleExpand(id, hidingId) {
+
+
+    event.stopPropagation();
+
+
+    const expandSection = document.getElementById(id)
+    const hiddingSection = document.getElementById(hidingId)
+    const allSection = document.getElementById('message-box-id')
+
+    allSection.style.transform = 'scaleY(1)';
+    expandSection.style.transform = 'scaleY(1)';
+    hiddingSection.style.transform = 'scaleY(0)';
+
+  }
+
+
+  function handleClose() {
+
+    const hiddingSection = document.getElementById('message-box-id')
+
+    hiddingSection.style.transform = 'scaleY(0)';
+
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    handleClose()
+  })
+
+
+  document.addEventListener('click', () => {
+    handleClose()
+  })
+
+
+</script>
+
+<script>
+
+  function handleTextAreaMessage() {
+
+    event.stopPropagation();
+
+
+    const suggestedArray = ['I am looking for land',
+      'I am looking for land to buy',
+      'I am looking for land near the beach',
+      'I am looking for land with a house',
+      'I am looking for land in the countryside']
+
+    const textArea = document.getElementById('textarea-message')
+    let suggestions;
+
+    console.log(textArea.value);
+
+    for (let i = 0; i < suggestedArray.length; i++) {
+
+      if (suggestedArray[i].trim().includes(textArea.value.trim())) {
+        suggestions = suggestedArray[i]
+      } else {
+        // suggestions = ''
+      }
+
+
+    }
+
+    console.log(suggestions);
+
+    textArea.innerHTML = suggestions
+
+
+
+  }
+
+
+  function handleStopPropagation() {
+    event.stopPropagation();
+
+  }
+
+
+</script>
+
+
+<div class="container mt-26 pt-5" style="margin-top:10rem;">
+  <div class="text-section2">
+    <h1 class="noticed">
+      LIST NOW & GET <br />
+      <span>NOTICED!</span>
+    </h1>
+    <p>
+      Share your property details with us and get listed on BuySel to reach
+      active buyers and sellers faster!
+    </p>
+
+
+    <style>
+      .card {
+        width: 22rem !important;
+        height: 33rem !important;
+        background-color: white;
+      }
+
+      .add-property-icon {
+        width: 20px;
+      }
+
+      .add-property-btn {
+        justify-content: center;
+        width: fit-content;
+        margin-inline: auto;
+      }
+
+      .add-property-btn {
+        padding-inline: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: medium;
+        border: 2px #a8bfa0 solid;
+        background-color: white;
+        border-radius: 20px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.849);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        /* margin-inline: auto; */
+        /*margin-left: 3rem;*/
+        box-shadow: 4px 6px 12px #0000002e;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: "geist", sans-serif;
+      }
+
+      .pulse {
+        animation: pulse 1s infinite ease-in-out alternate;
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(0.9);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .add-property-btn-link {
+        text-decoration: none;
+      }
+
+      .add-property-btn:hover {
+        background: rgb(245, 253, 245);
+        border: none;
+      }
+
+      .faq-outer {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 100px;
+      }
+
+      .call-btn {
+        color: #ffffff;
+        background-color: #8bc83f;
+        border: none;
+        border-radius: 64%;
+        height: 1.7rem;
+        width: 2rem;
+        text-align: center;
+        align-content: center;
+        margin-top: 0.7rem;
+      }
+
+      .msg-btn {
+        color: #8bc83f;
+        background-color: none;
+        font-size: 30px;
+        border-radius: 5px;
+
+
+        align-content: center;
+
+        text-align: center;
+
+      }
+
+
+      .connect-act {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      @media (max-width: 1076px) {
+        .faq-outer {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .faq-heading {
+          text-align: center;
+          margin-top: 100px;
+        }
+      }
+    </style>
+
+    <a class="add-property-btn-link" href="property">
+      <div class="add-property-btn pulse">
+        <span>Add your property</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#8bc83f"
+          class="add-property-icon">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div class="image-container">
+    <img src="https://storage.googleapis.com/a1aa/image/ZleGScqhQ7yKeEMNfTUDy3XQmOkgSUQVzZkIFVZfkcVzUGEQB.jpg"
+      alt="A beautiful house at sunset" class="image-1" />
+    <img src="https://storage.googleapis.com/a1aa/image/fFr3NpP8fZqEAUuvcHsjaowep8eei8G9PHOwKZIkeko0SZQAF.jpg"
+      alt="A key in a door lock" class="image-2" />
+  </div>
+</div>
+
+
+
+<section>
+
+  <div class="properties pt-5 " id="properties">
+    <h1 class="property-name pt-5 ">PROPERTIES</h1>
+    <div class="property-filters flex flex-wrap justify-center gap-y-4 mb-4">
+      <button class="filter-btn active w-full sm:w-auto px-4 py-2" data-category="all"
+        onclick="filterProperties('all')">All</button>
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Sale"
+        onclick="filterProperties('Sale')">Sale</button>
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Rent"
+        onclick="filterProperties('Rent')">Rent</button>
+
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Lease"
+        onclick="filterProperties('Lease')">Lease</button>
+      {% comment %} <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
+        onclick="filterProperties('Resell')" style="opacity: 0.6;cursor: not-allowed;">Resell</button> {% endcomment %}
+
+      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
+        style="opacity: 0.6;cursor: not-allowed;">Resell</button>
+
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".filter-btn");
+
+        buttons.forEach(button => {
+          button.addEventListener("click", function () {
+            // Remove 'clicked' class from all buttons
+            buttons.forEach(btn => btn.classList.remove("clicked"));
+
+            // Add 'clicked' class to the clicked button
+            this.classList.add("clicked");
+          });
+        });
+      });
+    </script>
+
+
+    <div class="row-properties">
+
+      {% for i in model5_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="{{i.uuid}}"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %}
+            </div>
+
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+              </p>
+            </div>
+            <hr>
+
+            <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+              <h5>View More</h5>
+            </a>
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address| slice:":50"}}</span>
+            </div>
+
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model6_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="{{i.uuid}}"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+              {% for img in i.images.all %}
+
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% empty %}
+
+              {% endfor %}
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+            <a href="{% url 'detail_view' model_name='agentland' object_id=i.id %}" class="view">
+              <h5>View Details</h5>
+            </a>
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address}}</span>
+            </div>
+
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model7_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+            <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')">
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+              <button class="share-btn" data-id="{{i.uuid}}"
+                data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+
+              </button>
+              <div class="property-card-img">
+                {% if i.images.first %}
+                <img src="{{ i.images.first.image.url }}" alt="House Image">
+                {% endif %}
+              </div>
+              <h2>{{i.Caption}}</h2>
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+              <hr>
+              <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
+
+                <div class="cr-loc">
+                  <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                  <span>{{i.address}}</span>
+                </div>
+            </div>
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model8_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="{{i.uuid}}"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+
+              <img src="{{i.image1.url}}" alt="">
+
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+
+            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+
+
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+          </div>
+          <div class="card-body">
+
+            <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+              <div class="price-box">
+                <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                    style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+              </div>
+              <div class="connect-act">
+                <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                  class="msg-btn">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+      {% for i in model2_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='land' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="model_name='land' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='land' object_id=i.id"
+              data-url="https://buysel.in/#model_name='land' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+              <img src="{{i.image1.url}}" alt="">
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
+              <h5>View Details</h5>
+
+            </a>
+
+
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address}}</span>
+            </div>
+            <!-- </div> -->
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '+91{{ i.location }}', '{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor %}
+
+
+      {% for i in model1_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="model_name='house' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='house' object_id=i.id"
+              data-url="https://buysel.in/#model_name='house' object_id=i.id">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <div class="property-card-img">
+              <img src="{{i.image.url}}" alt="">
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+            <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" class="view">
+              <h5>View Details</h5>
+
+            </a>
+
+
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address}}</span>
+            </div>
+            <!-- </div> -->
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% for i in model3_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='commercial' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="model_name='commercial' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='commercial' object_id=i.id"
+              data-url="https://buysel.in/#model_name='commercial' object_id=i.id"><i
+                class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+              <img src="{{i.image1.url}}" alt="">
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
+              <h5>View Details</h5>
+            </a>
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address}}</span>
+            </div>
+            <!-- </div> -->
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      {% for i in model4_objects %}
+
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='offplan' object_id=i.id" class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              {{i.category}}</div>
+            <button class="share-btn" data-id="model_name='offplan' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='offplan' object_id=i.id"
+              data-url="https://buysel.in/#model_name='offplan' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+
+            </button>
+            <div class="property-card-img">
+              {% if i.images.first %}
+              <img src="{{ i.images.first.image.url }}" alt="House Image">
+              {% endif %}
+            </div>
+            <h2>{{i.Caption}}</h2>
+            <div class="paragraph">
+              <p>
+                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
+              </p>
+            </div>
+            <hr>
+            <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
+              <h5>View Details</h5>
+            </a>
+            <div class="cr-loc">
+              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+              <span>{{i.address}}</span>
+
+            </div>
+            <!-- </div> -->
+            <div class="card-body">
+
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91{{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+  <div class="property-actions">
+    <a href="properties" class="more-property">More Properties</a>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+<div class=" container  agent-register-section" id="agents">
+  <div class="text-section2">
+    <h1>BECOME AN AGENT: <br /><span>JOIN OUR PLATFORM</span></h1>
+    <p>
+      Sign up today to start listing properties and connecting with potential buyers and renters. Grow your business
+      with us!
+    </p>
+
+    <a class="add-property-btn-link" href="agentform" target="_blank">
+      <div class="add-property-btn pulse">
+        <span>Register as an Agent</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#8bc83f"
+          class="add-property-icon">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div class="image-container">
+    <img src="{% static 'img/agents2.jpg' %}" alt="A beautiful house at sunset" class="image-1" />
+    <img src="{% static 'img/agents.jpg' %}" alt="A key in a door lock" class="image-2" />
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="about" id="about">
+  <div class="about-img">
+    <img src="{% static 'img/13.jpg' %}" alt="Image with Gradient" />
+  </div>
+  <div class="about-text" id="about-text">
+    <h2>ABOUT <span class="highlight">BUYSEL.IN</span></h2>
+    <p id="paragraph-text" style="text-align: justify">
+      Buysel.in is your one-stop solution for commission-free property and
+      scrap transactions. Our mission is to empower users by eliminating
+      middlemen and creating a transparent, efficient platform for buying,
+      selling, renting, and leasing.
+    </p>
+
+    <div class="additional-content" id="additional-content">
+      <p style="text-align: justify">
+        Buysel.in offers an innovative approach to property transactions,
+        ensuring a seamless experience for both buyers and sellers. Our
+        platform also offers a dedicated section for scrap and e-waste
+        transactions, making it easy for individuals and businesses to
+        dispose of their unwanted items responsibly. We focus on
+        transparency, efficiency, and building a community where individuals
+        can connect directly for their needs. Join Buysel.in today and
+        experience the future of property and scrap transactions.
+      </p>
+    </div>
+    <a href="javascript:void(0)" id="learn-toggle" class="learn-more" onclick="toggleContent()">Learn More</a>
+  </div>
+</div>
+
+<!-- 
+<div class="about" id="about">
+    <div class="about-img">
+        <img src="asset/img/13.jpg" alt="Image with Gradient">
+    </div>
+    <div class="about-text" id="about-text">
+        <h2> About <span class="highlight">Buysel.in</span></h2>
+        <p id="paragraph-text">Buysel.in is your one-stop solution for commission-free property and scrap transactions. Our mission is to empower users by eliminating middlemen and creating a transparent, efficient platform for buying, selling, renting, and leasing.</p>
+        <div class="additional-content" id="additional-content">
+            <p>Buysel.in offers an innovative approach to property transactions, ensuring a seamless experience for both buyers and sellers. Our platform also offers a dedicated section for scrap and e-waste transactions, making it easy for individuals and businesses to dispose of their unwanted items responsibly.
+            We focus on transparency, efficiency, and building a community where individuals can connect directly for their needs. Join Buysel.in today and experience the future of property and scrap transactions.</p>
+        </div>
+        <a href="javascript:void(0)" id="learn-toggle" class="learn-more" onclick="toggleContent()">Learn More</a> 
+    </div>
+</div> -->
+
+<script>
+  function toggleContent() {
+    const content = document.getElementById("additional-content");
+    const aboutText = document.querySelector(".about-text");
+    const learnToggle = document.getElementById("learn-toggle");
+
+    // Toggle the visibility of additional content
+    if (content.classList.contains("show")) {
+      content.classList.remove("show");
+      // Change "Learn Less" back to "Learn More"
+      learnToggle.innerHTML = "Learn More";
+
+      // Reset the position of the heading and paragraph
+    } else {
+      content.classList.add("show");
+      // Change "Learn More" to "Learn Less"
+      learnToggle.innerHTML = "Learn Less";
+
+      // Adjust the position of the heading and paragraph upwards
+    }
+  }
+</script>
+
+<div class="service" id="service">
+  <h2 id="service-heading">OUR SERVICES</h2>
+
+  <div class="service-boxes">
+    <div class="service-box">
+      <img class="service-icon" src="{% static 'img/apartment 1.svg' %}" alt="Home Icon" />
+      <!-- Local image -->
+      <h3 class="box-heading">Property Transactions</h3>
+      <p class="box-content">
+        Buy, sell, rent, or lease<br />
+        residential and commercial<br />
+        properties without<br />
+        intermediaries.
+      </p>
+    </div>
+    <div class="service-box">
+      <img class="service-icon" src="{% static 'img/web 1.svg' %}" alt="Building Icon" />
+      <!-- Local image -->
+      <h3 class="box-heading">Scrap Material Trading</h3>
+      <p class="box-content">
+        Easily sell or purchase bulk<br />and small quantities of scrap
+        <br />materials, plus E-waste.
+      </p>
+    </div>
+    <div class="service-box">
+      <img class="service-icon" src="{% static 'img/shield-trust 1.svg' %}" alt="Warehouse Icon" />
+      <!-- Local image -->
+      <h3 class="box-heading">Verified Listings</h3>
+      <p class="box-content">
+        Access trusted listings and <br />connect directly with verified
+        <br />buyers or sellers.
+      </p>
+    </div>
+    <div class="service-box">
+      <img class="service-icon" src=".{% static 'img/heart-partner-handshake 1.svg' %} " alt="Handshake Icon" />
+      <!-- Local image -->
+      <h3 class="box-heading">Comprehensive Support</h3>
+      <p class="box-content">
+        Our platform ensures a smooth <br />experience with easy
+        <br />navigation and dedicated <br />customer service.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<section class="why-choose-section" id="features">
+  <h2 class="why-choose-heading">
+    WHY CHOOSE <span class="highlight-green"><br />BUYSEL.IN</span>
+  </h2>
+  <div class="features-container">
+    <!-- Feature Box 1 -->
+    <div class="feature-box">
+      <div class="feature-number">01</div>
+      <h3 class="feature-title feature-title-1">No Commission Fees</h3>
+      <p class="feature-description feature-description-1">
+        Skip the brokers and keep your<br />hard-earned money. Buysel.in
+        <br />connects you directly with<br />property owners.
+      </p>
+    </div>
+    <!-- Feature Box 2 -->
+    <div class="feature-box">
+      <div class="feature-number">02</div>
+      <h3 class="feature-title feature-title-2">
+        Easy Property Management
+      </h3>
+      <p class="feature-description feature-description-2">
+        Buy, sell, rent, or lease houses <br />and plots with just a few<br />clicks.
+      </p>
+    </div>
+    <!-- Feature Box 3 -->
+    <div class="feature-box">
+      <div class="feature-number">03</div>
+      <h3 class="feature-title feature-title-3">
+        Scrap Selling Made Simple
+      </h3>
+      <p class="feature-description feature-description-3">
+        Dispose of bulk or small amounts<br />of scrap, including
+        E-waste,<br />
+        effortlessly. Perfect for companies<br />and individuals.
+      </p>
+    </div>
+    <!-- Feature Box 4 -->
+    <div class="feature-box">
+      <div class="feature-number">04</div>
+      <h3 class="feature-title feature-title-4">Verified Listings</h3>
+      <p class="feature-description feature-description-4">
+        Browse trusted and verified<br />property and scrap listings for
+        a<br />secure experience.
+      </p>
+    </div>
+    <!-- Feature Box 5 -->
+    <!-- Feature Box 5 -->
+    <div class="feature-box">
+      <div class="feature-number">05</div>
+      <h3 class="feature-title feature-title-5">User-Friendly Platform</h3>
+      <p class="feature-description feature-description-5">
+        Designed for seamless<br />navigation and quick<br />transactions.
+      </p>
+    </div>
+
+    <div class="feature-box show-more-col">
+      <!-- Show More Button -->
+      <a href="more" class="show-more-link">
+        Show<br />
+        more <br /><span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="faq-outer">
+  <div class="faq-heading">
+    <h2>FREQUENTLY ASKED<br />QUESTIONS</h2>
+  </div>
+  <div class="faq-questions">
+    <div class="faq-item">
+      <div class="faq-question">
+        <span> What is Buysel.in?
+        </span>
+        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+      </div>
+      <div class="faq-answer-content" style="display: none">
+        <p>
+          Buysel.in connects buyers and sellers directly for property and scrap deals, ensuring a zero-commission,
+          hassle-free experience.
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How does Buysel.in work?
+        </span>
+        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+      </div>
+      <div class="faq-answer-content" style="display: none">
+        <p>
+          Buysel.in enables users to list properties or scrap, connect with verified buyers or sellers, and enjoy a
+          transparent, cost-effective experience.
+
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What services does Buysel.in offer?</span>
+        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+      </div>
+      <div class="faq-answer-content" style="display: none">
+        <p>
+          Buysel.in connects buyers and sellers directly on a commission-free platform, ensuring secure, verified
+          listings. It offers a transparent and hassle-free experience across real estate and e-waste transactions.
+
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is Buysel.in free to use?
+        </span>
+        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+      </div>
+      <div class="faq-answer-content" style="display: none">
+        <p>
+          Users can explore listings for free, while a small fee applies for posting properties or scrap materials for
+          sale, rent or lease, ensuring a high-quality, reliable marketplace for all.
+
+        </p>
+      </div>
+    </div>
+    <hr />
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer-content");
+      const icon = question.querySelector(".toggle-icon");
+
+      // Toggle visibility of answer
+      question.addEventListener("click", () => {
+        const isExpanded = answer.style.display === "block";
+
+        // Close all other answers
+        document.querySelectorAll(".faq-answer-content").forEach((ans) => {
+          ans.style.display = "none";
+        });
+
+        // Reset all icons to down arrow
+        document.querySelectorAll(".toggle-icon").forEach((ic) => {
+          ic.src = "/static/img/Vector.svg"; // Down arrow
+        });
+
+        // Toggle current answer visibility and icon
+        if (!isExpanded) {
+          answer.style.display = "block";
+          icon.src = "static/img/angle-circle-up.svg"; // Up arrow
+        }
+      });
+
+      // Optional: Close the answer when clicking on the answer itself
+      answer.addEventListener("click", () => {
+        answer.style.display = "none";
+        icon.src = "/static/img/Vector.svg"; // Down arrow
+      });
+    });
+  });
+</script>
+
+<div class="main-sec">
+  <div class="col-1">
+    <img alt="Aerial view of a suburban neighborhood with houses and streets"
+      src="https://storage.googleapis.com/a1aa/image/2EVTCfU0RKRnPqifr2sL3VUGN7rnT9PBtInihzeaqG01duCoA.jpg" />
+  </div>
+  <div class="col-2">
+    <img alt="A house with a well-maintained lawn and a tree in front"
+      src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+    <div class="inner-sec">
+      <div class="inner-1">
+        <img alt="A modern house by the lake with a beautiful sunset view"
+          src="https://storage.googleapis.com/a1aa/image/PdEoo2DyJLKBA9sqFUXfoB7tnwLalKi5CvVTSBpEPQbcnrAKA.jpg" />
+      </div>
+      <div class="inner-1">
+        <img alt="A contemporary house with unique architecture and lighting"
+          src="https://storage.googleapis.com/a1aa/image/HhQ1CsX7DFYlLVK32Ue4UAJ4RlOx69Wj0eNGbOOX5Ks8OXBUA.jpg" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="contact-section" id="contact">
+  <div class="contact-info">
+    <h2>GET IN TOUCH WITH US</h2>
+    <p>Have questions or need assistance? We're here to help!</p>
+    <div class="info-item">
+      <img src="{% static 'img/phone-call 1.svg' %}" alt="Phone Icon" class="icon" />
+
+      <span>+91 9061827363</span>
+    </div>
+    <div class="info-item">
+      <img src="{% static 'img/mail.svg' %}" alt="Phone Icon" class="icon" />
+      <span>buyselinfo@gmail.com</span>
+    </div>
+    <div class="info-item">
+      <img src="{% static 'img/location.svg' %}" alt="Phone Icon" class="icon" />
+      <span>Kochi, Kerala,India</span>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <!-- The form action should be to the Web3Forms submission endpoint -->
+    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+      <!-- Replace with your Access Key -->
+      <input type="hidden" name="access_key" value="e2767bdc-ca36-46ef-a3a6-3d8a81d4f13a" />
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Ensure form submission goes through Web3Forms
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+          method: this.method,
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("Form submitted successfully!");
+              this.reset(); // Reset form after successful submission
+            } else {
+              alert(
+                "There was an issue with your submission. Please try again."
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          });
+      });
+  </script>
+
+  <script>
+    // Reset form on page load
+    window.onload = function () {
+      document.querySelector("form").reset(); // Reset the form when the page loads
+    };
+
+    // Reset the form after submission
+    function resetForm() {
+      setTimeout(function () {
+        document.querySelector("form").reset(); // Reset the form
+      }, 500); // Add a short delay to allow the submission to be processed
+    }
+  </script>
+
+  {% comment %}
+
+
+
+  <script>
+    const suggestionsList = [
+      "How can I help you today?",
+      "What is your query?",
+      "Please provide more details.",
+      "Are you facing any issues?",
+      "Can I assist you with something else?"
+    ];
+
+    const textarea = document.getElementById("message");
+    const suggestionsDiv = document.getElementById("suggestions");
+
+    textarea.addEventListener('input', function () {
+      const typedText = textarea.value.toLowerCase();
+      const filteredSuggestions = suggestionsList.filter(suggestion => suggestion.toLowerCase().includes(typedText));
+
+      if (filteredSuggestions.length > 0 && typedText.length > 0) {
+        suggestionsDiv.innerHTML = filteredSuggestions.map(suggestion => `<div>${suggestion}</div>`).join('');
+        suggestionsDiv.style.display = 'block';
+      } else {
+        suggestionsDiv.style.display = 'none';
+      }
+    });
+
+    suggestionsDiv.addEventListener('click', function (event) {
+      if (event.target.tagName === 'DIV') {
+        textarea.value = event.target.textContent;
+        suggestionsDiv.style.display = 'none';
+      }
+    });
+  </script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+{% endblock %}

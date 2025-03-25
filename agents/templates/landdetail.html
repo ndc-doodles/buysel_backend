@@ -1,0 +1,58 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="content">
+  <h1>{{ land.Caption }}</h1>
+  <div class="row pt-5">
+    <div class="col-lg-6 col-md-12">
+      
+      <p><strong>Price:</strong> {{ land.price }}</p>
+      <p><strong>Total Land:</strong> {{ land.total_land }}</p>
+      <p><strong>Area:</strong> {{ land.land_area }}</p>
+      <p><strong>Address:</strong> {{ land.address }}</p>
+      <p><strong>Description:</strong> {{ land.description }}</p>
+  </div>
+  
+  <!-- Right Column for land Details -->
+  <div class="col-lg-6 col-md-12">
+      <p><strong>Land Mark:</strong> {{ land.land_mark }}</p>
+      
+      <p><strong>Security Deposit:</strong> {{ land.sequirity_deposit }}</p>
+      <p><strong>Time Period:</strong> {{ land.Time_perioud }}</p>
+    
+      <p><strong>Location:</strong> {{ land.location }}</p>
+  </div>
+  </div>
+  <div class="detail-img">
+    <div class="row pt-5">
+      {% for image in land.images.all %}
+      <div class="col-lg-3">
+        <img src="{{ image.image.url }}" alt="land Image">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+            <!-- land Images -->
+           
+                
+            
+
+            <!-- Action Links -->
+            <div class="pt-5 mb-5">
+              <a href="{% url 'land-list' %}" class="btn-back"><button class="back-btn">Back to land List</button> </a>
+
+                <a href="{% url 'land-update' pk=land.pk %}" > <button class="update-btn">Update land</button> </a>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+

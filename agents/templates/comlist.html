@@ -1,0 +1,314 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}   
+<style>
+        /* Basic styling for the com list */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff !important;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .com-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .com-item h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .com-item p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        .pagination a:hover {
+            text-decoration: underline;
+        }
+
+        .pagination .current {
+            font-weight: bold;
+        }
+
+        .pagination .step-links {
+            display: inline-block;
+        }
+
+        .pagination .step-links a {
+            padding: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #fafafa;
+            border-radius: 4px;
+        }
+
+        .pagination .step-links a:hover {
+            background-color: #ffffff;
+        }
+    </style>
+
+<div class="containers">
+    <div class="container pt-5">
+        
+            <div class="house-head">
+                <h2>Commercial by You</h2>
+                <div class="create">
+                    <a href="{% url 'com-create' %}"><button>Create New com Listing</button> </a>
+                </div>
+                
+            </div>
+       
+        
+                
+                    <div class="row">
+                        {% if comlist %}
+                                {% for com in comlist %}
+                            <div class="col-lg-3 pt-5">
+                            
+                                <div class="house-list-box">
+                                    <div class="house-item">
+                                      
+                                        {% if com.first_image %}
+                                            <img src="{{ com.first_image.image.url }}" alt="{{ com.Caption }}" class="house-image">
+                                        {% endif %}
+                                        <div class="house-content">
+                                            <h3>{{ com.Caption }}</h3>
+                                        
+                                        <p><strong>Price:</strong> {{ com.price }}</p>
+                                        <p><strong>Location:</strong> {{ com.address }}</p>
+                                        <p><strong>Bedroom:</strong> {{ com.Bedroom }}</p>
+                                        <p><strong>Agent:</strong> {{ com.agent_name }}</p>
+                                        <p><strong>Area:</strong> {{ com.com_area }} sq. ft.</p>
+                                        <div class="edit-view-button pt-4">
+                                            <a href="{% url 'com-update' pk=com.pk %}"><button class="">Update Commercial</button> </a>
+                                            <a href="{% url 'com-detail' com.id %}">View Details</a>
+                                        
+                                        </div>
+                                        
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                                {% endfor %}
+                            {% else %}
+                                <p>No commercial found. Please add a Commercial to your listing.</p>
+                            {% endif %}
+                        
+                    </div>
+                <!-- Pagination Controls -->
+                <div class="pagination pt-5">
+                    <span class="step-links">
+                        {% if comlist.has_previous %}
+                            <a href="?page=1">&laquo; First</a>
+                            <a href="?page={{ comlist.previous_page_number }}">Previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ comlist.number }} of {{ comlist.paginator.num_pages }}.
+                        </span>
+
+                        {% if comlist.has_next %}
+                            <a href="?page={{ comlist.next_page_number }}">Next</a>
+                            <a href="?page={{ comlist.paginator.num_pages }}">Last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>  
+        </div>    
+        </div>
+    </div>
+    </div>
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Property Listings</title>
+    <style>
+        /* Basic styling for the commercial property list */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .com-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .com-item h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .com-item p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        .pagination a:hover {
+            text-decoration: underline;
+        }
+
+        .pagination .current {
+            font-weight: bold;
+        }
+
+        .pagination .step-links {
+            display: inline-block;
+        }
+
+        .pagination .step-links a {
+            padding: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .pagination .step-links a:hover {
+            background-color: #e2e6ea;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Commercial Property Listings by You</h2>
+        {% if comlist %}
+            {% for com in comlist %}
+                <div class="com-item">
+                    <h3>{{ com.Caption }}</h3>
+                    <p><strong>Price:</strong> {{ com.price }}</p>
+                    <p><strong>Location:</strong> {{ com.address }}</p>
+                    <p><strong>Agent:</strong> {{ com.agent_name }}</p>
+                    <p><strong>Area:</strong> {{ com.com_area }} sq. ft.</p>
+                    <a href="{% url 'com-detail' com.id %}">View Details</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No commercial properties found. Please add some commercial properties to your listings.</p>
+        {% endif %}
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if comlist.has_previous %}
+                    <a href="?page=1">&laquo; First</a>
+                    <a href="?page={{ comlist.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ comlist.number }} of {{ comlist.paginator.num_pages }}.
+                </span>
+
+                {% if comlist.has_next %}
+                    <a href="?page={{ comlist.next_page_number }}">Next</a>
+                    <a href="?page={{ comlist.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+    <a href="{% url 'com-create' %}">Create New com Listing</a>
+</body>
+</html> {% endcomment %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Benefit Section -->
+<section class="Benefit-section" id="benefits">
+    <h2 class="Benefit-heading">
+        WHO CAN<br>BENEFIT FROM<span class="highlight-green"><br>BUYSEL.IN</span>
+    </h2>
+    <div class="Benefit-container">
+        <div class="Benefit-box">
+            <div class="Benefit-row">
+                <div class="Benefit-number">01</div>
+                <h3 class="Benefit-title">Home Buyers and Sellers</h3>
+            </div>
+            <p class="Benefit-description">
+                Find or list homes and plots<br>without brokers.
+            </p>
+        </div>
+        <div class="Benefit-box">
+            <div class="Benefit-row">
+                <div class="Benefit-number">02</div>
+                <h3 class="Benefit-title">Renters and Landlords</h3>
+            </div>
+            <p class="Benefit-description">
+                Rent or lease properties<br>quickly and directly.
+            </p>
+        </div>
+        <div class="Benefit-box">
+            <div class="Benefit-row">
+                <div class="Benefit-number">03</div>
+                <h3 class="Benefit-title">Scrap Dealers and Companies</h3>
+            </div>
+            <p class="Benefit-description">
+                Sell bulk or small scrap<br>items, including E-waste,<br>with ease.
+            </p>
+        </div>
+        <div class="Benefit-box">
+            <div class="Benefit-row">
+                <div class="Benefit-number">04</div>
+                <h3 class="Benefit-title">Individuals and Businesses</h3>
+            </div>
+            <p class="Benefit-description">
+                Simplify your property and<br>scrap dealings with our<br>commission-free platform.
+            </p>
+        </div>
+        <div class="feature-box show-more-col">
+            <!-- Show More Button -->
+            <a href="{% url 'index' %}" class="show-more-link">
+                Back to<br> home <br><span class="arrow">←</span>
+            </a>
+        </div>
+        
+
+    </div>
+</section>
+
+<!-- Number Chain Section -->
+<section class="number-chain-section" id="how-it-works">
+    <div class="image-side">
+        <img class="section-image" src="{% static 'img/7.jpg'%}" alt="Image Description">
+    </div>
+    <div class="text-side">
+        <h2 class="section-heading">How <span class="highlight-green">Buysel.in</span> Works?</h2>
+
+        <div class="number-chain">
+            <div class="number-circle">
+                <img src="{% static 'img/1.svg'%}" alt="Icon" />
+            </div>
+            
+            <div id="step1">Sign up for free and create your <br>account.</div>
+            <div class="number-circle">
+                <img src="{% static 'img/2.svg'%}" alt="Icon" />
+            </div>
+            
+            <div id="step2">Post your property or scrap listing with all<br>the details.</div>
+            <div class="number-circle">
+                <img src="{% static 'img/3.svg'%}" alt="Icon" />
+            </div>
+            <div id="step3">Connect with verified buyers or sellers<br>directly.</div>
+            <div class="number-circle">
+                <img src="{% static 'img/4.svg'%}" alt="Icon" />
+            </div>
+            <div id="step4">Negotiate and finalize deals without<br>paying any commissions.</div>
+        </div>    
+    </div>
+</section>
+
+{% endblock %}

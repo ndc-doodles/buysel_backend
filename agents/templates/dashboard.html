@@ -1,0 +1,54 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+    <div class="content">
+      <div class="head">
+        <h1>Hi {{username}}</h1>
+      </div>
+      <div class="count-sec">
+        <div class="row">
+            <div class="col-lg-3">
+              <a href="house-list"> 
+                <div class="property-box">
+                  <img src="{% static 'img/home-01.png' %}" alt="">
+                  <p>HOUSE</p>
+                </div>
+              </a>
+          
+            </div>
+            <div class="col-lg-3">
+              <a href="land-list"> 
+                <div class="property-box">
+                  <img src="{% static 'img/land5.jpg' %}" alt="">
+                  <p>LAND</p>
+                </div>
+              </a>
+          
+            </div>
+            <div class="col-lg-3">
+              <a href="com-list"> 
+                <div class="property-box">
+                  <img src="{% static 'img/com.jpg' %}" alt="">
+                  <p>COMMERCIAL</p>
+                </div>
+              </a>
+          
+            </div>
+            <div class="col-lg-3">
+              <a href="off-list"> 
+                <div class="property-box">
+                  <img src="{% static 'img/off.jpg' %}" alt="">
+                  <p>OFFPLAN</p>
+                </div>
+              </a>
+          
+            </div>
+        </div>
+      </div>
+    </div>  
+    </div>
+   
+{%endblock%}

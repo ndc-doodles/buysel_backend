@@ -1,0 +1,61 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="content">
+  <h1>{{ com.Caption }}</h1>
+  <div class="row pt-5">
+    <div class="col-lg-6 col-md-12">
+      
+      <p><strong>Price:</strong> {{ com.price }}</p>
+      <p><strong>Total Land:</strong> {{ com.total_land }}</p>
+   
+      <p><strong>Address:</strong> {{ com.address }}</p>
+      <p><strong>Description:</strong> {{ com.description }}</p>
+  </div>
+  
+  <!-- Right Column for com Details -->
+  <div class="col-lg-6 col-md-12">
+      <p><strong>Land Mark:</strong> {{ com.land_mark }}</p>
+
+ 
+      <p><strong>Security Deposit:</strong> {{ com.sequirity_deposit }}</p>
+      <p><strong>Time Period:</strong> {{ com.Time_perioud }}</p>
+      
+      <p><strong>Location:</strong> {{ com.location }}</p>
+      <p><strong>Amenities:</strong> {{ com.amenities }}</p>
+
+  </div>
+  </div>
+  <div class="detail-img">
+    <div class="row pt-5">
+      {% for image in com.images.all %}
+      <div class="col-lg-3">
+        <img src="{{ image.image.url }}" alt="com Image">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+            <!-- com Images -->
+           
+                
+            
+
+            <!-- Action Links -->
+            <div class="pt-5 mb-5">
+              <a href="{% url 'com-list' %}" class="btn-back"><button class="back-btn">Back to com List</button> </a>
+
+                <a href="{% url 'com-update' pk=com.pk %}" > <button class="update-btn">Update com</button> </a>
+            </div>
+        </div>
+
+{%endblock%}
+
+
+
+
+
+
+

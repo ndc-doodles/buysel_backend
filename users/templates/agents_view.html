@@ -1,0 +1,450 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card {
+        width: 22rem !important;
+        height: 33rem !important;
+        background-color: white;
+    }
+
+    .add-property-icon {
+        width: 20px;
+    }
+
+    .add-property-btn {
+        justify-content: center;
+        width: fit-content;
+        margin-inline: auto;
+    }
+
+    .add-property-btn {
+        padding-inline: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: medium;
+        border: 2px #a8bfa0 solid;
+        background-color: white;
+        border-radius: 20px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.849);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        /* margin-inline: auto; */
+        /*margin-left: 3rem;*/
+        box-shadow: 4px 6px 12px #0000002e;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: "geist", sans-serif;
+    }
+
+    .pulse {
+        animation: pulse 1s infinite ease-in-out alternate;
+    }
+
+    @keyframes pulse {
+        from {
+            transform: scale(0.9);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .add-property-btn-link {
+        text-decoration: none;
+    }
+
+    .add-property-btn:hover {
+        background: rgb(245, 253, 245);
+        border: none;
+    }
+
+    .faq-outer {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 100px;
+    }
+
+    .call-btn {
+        color: #ffffff;
+        background-color: #8bc83f;
+        border: none;
+        border-radius: 64%;
+        height: 1.7rem;
+        width: 2rem;
+        text-align: center;
+        align-content: center;
+        margin-top: 0.7rem;
+    }
+
+    .msg-btn {
+        color: #8bc83f;
+        background-color: none;
+        font-size: 30px;
+        border-radius: 5px;
+
+
+        align-content: center;
+
+        text-align: center;
+
+    }
+
+
+    .connect-act {
+        display: flex;
+        gap: 0.3rem;
+    }
+    .paragraph {
+    height: 3rem;
+    margin-top: -0.5rem;
+    font-family: 'geist', sans-serif;
+}
+.paragraph p{
+    
+    font-family: 'geist', sans-serif;
+}
+
+    @media (max-width: 1076px) {
+        .faq-outer {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .faq-heading {
+            text-align: center;
+            margin-top: 100px;
+        }
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+        <div class="agent_view">
+            <h1 style="text-align: center; font-size:2rem;">{{ ilogin.username }}</h1>
+
+
+            <div class="agent-filter" style="display: flex; justify-content: center; gap: 10px;">
+                <a href="?filter=all" class="{% if filter_type == 'all' %}active{% endif %}"
+                    style="text-decoration: none;">
+                    <button>All</button>
+                </a>
+                <a href="?filter=house" class="{% if filter_type == 'house' %}active{% endif %}"
+                    style="text-decoration: none;">
+                    <button>Houses</button>
+                </a>
+                <a href="?filter=land" class="{% if filter_type == 'land' %}active{% endif %}"
+                    style="text-decoration: none;">
+                    <button>Land</button>
+                </a>
+                <a href="?filter=com" class="{% if filter_type == 'com' %}active{% endif %}"
+                    style="text-decoration: none;">
+                    <button>Commercial</button>
+                </a>
+                <a href="?filter=offplan" class="{% if filter_type == 'offplan' %}active{% endif %}"
+                    style="text-decoration: none;">
+                    <button>Offplan</button>
+                </a>
+            </div>
+
+
+
+            <div class="propertice pt-5">
+                <div class="row-properties">
+
+                    <!-- Display House Cards -->
+                    {% for i in agent_houses %}
+                    <div class="card mb-4">
+                        <div class="sale-banner"
+                            style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                            {{i.category}}</div>
+                        <button class="wtsp-btn share-btn" data-id="1"
+                            data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                            data-url="https://buysel.in/#card-1">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                        <div class="property-card-img">
+                            {% with i.images.first as img %}
+                            {% if img %}
+                            <img src="{{ img.image.url }}" alt="House Image" width="200">
+                            {% else %}
+                            <p>No images available</p>
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                        <h2 class="card-Caption">{{ i.Caption }}</h2>
+                        <div class="paragraph">
+                        <p>
+                            <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                            <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span> 
+                            
+                        </p>
+                    </div>
+                        <hr>
+
+                        <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                            <h5>View Details</h5>
+                        </a>
+                        <div class="cr-loc">
+                            <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                            <span>{{i.address}}</span>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="action"
+                                style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                                <div class="price-box">
+                                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                                            style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                                </div>
+                                <div class="connect-act">
+                                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                                        class="msg-btn">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    <!-- Display Land Cards -->
+                    <!-- Display House Cards -->
+                    {% for i in agent_lands %}
+                    <div class="card mb-4">
+                        <div class="sale-banner"
+                            style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                            {{i.category}}</div>
+                        <button class="wtsp-btn share-btn" data-id="1"
+                            data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                            data-url="https://buysel.in/#card-1">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                        <div class="property-card-img">
+                            {% with i.images.first as img %}
+                            {% if img %}
+                            <img src="{{ img.image.url }}" alt="House Image" width="200">
+                            {% else %}
+                            <p>No images available</p>
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                        <h2 class="card-Caption">{{ i.Caption }}</h2>
+                        <div class="paragraph">
+                        <p>
+                            <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                            <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span> 
+                            
+                        </p>
+                    </div>
+                        <hr>
+
+                        <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                            <h5>View Details</h5>
+                        </a>
+                        <div class="cr-loc">
+                            <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                            <span>{{i.address}}</span>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="action"
+                                style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                                <div class="price-box">
+                                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                                            style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                                </div>
+                                <div class="connect-act">
+                                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                                        class="msg-btn">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                    <!-- Display Commercial Cards -->
+                   <!-- Display House Cards -->
+                   {% for i in agent_commercials %}
+                   <div class="card mb-4">
+                       <div class="sale-banner"
+                           style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                           {{i.category}}</div>
+                       <button class="wtsp-btn share-btn" data-id="1"
+                           data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                           data-url="https://buysel.in/#card-1">
+                           <i class="fa-solid fa-share-nodes"></i>
+                       </button>
+                       <div class="property-card-img">
+                           {% with i.images.first as img %}
+                           {% if img %}
+                           <img src="{{ img.image.url }}" alt="House Image" width="200">
+                           {% else %}
+                           <p>No images available</p>
+                           {% endif %}
+                           {% endwith %}
+                       </div>
+                       <h2 class="card-Caption">{{ i.Caption }}</h2>
+                       <div class="paragraph">
+                       <p>
+                           <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                           <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span> 
+                           
+                       </p>
+                        </div>
+                       <hr>
+
+                       <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                           <h5>View Details</h5>
+                       </a>
+                       <div class="cr-loc">
+                           <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                           <span>{{i.address}}</span>
+                       </div>
+                       <div class="card-body">
+
+                           <div class="action"
+                               style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                               <div class="price-box">
+                                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                                           style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                               </div>
+                               <div class="connect-act">
+                                   <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                                       class="msg-btn">
+                                       <i class="fa-brands fa-whatsapp"></i>
+                                   </div>
+                                   <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                                       <i class="fa-solid fa-phone"></i>
+                                   </a>
+
+                               </div>
+
+                           </div>
+                       </div>
+                   </div>
+
+                   {% endfor %}
+
+                    <!-- Display Offplan Cards -->
+ 
+                   {% for i in agent_offplans %}
+                   <div class="card mb-4">
+                       <div class="sale-banner"
+                           style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                           {{i.category}}</div>
+                       <button class="wtsp-btn share-btn" data-id="1"
+                           data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
+                           data-url="https://buysel.in/#card-1">
+                           <i class="fa-solid fa-share-nodes"></i>
+                       </button>
+                       <div class="property-card-img">
+                           {% with i.images.first as img %}
+                           {% if img %}
+                           <img src="{{ img.image.url }}" alt="House Image" width="200">
+                           {% else %}
+                           <p>No images available</p>
+                           {% endif %}
+                           {% endwith %}
+                       </div>
+                       <h2 class="card-Caption">{{ i.Caption }}</h2>
+                       <div class="paragraph">
+                       <p>
+                           <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                           <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span> 
+                           
+                       </p>
+                   </div>
+                       <hr>
+
+                       <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                           <h5>View Details</h5>
+                       </a>
+                       <div class="cr-loc">
+                           <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                           <span>{{i.address}}</span>
+                       </div>
+                       <div class="card-body">
+
+                           <div class="action"
+                               style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                               <div class="price-box">
+                                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                                           style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                               </div>
+                               <div class="connect-act">
+                                   <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                                       class="msg-btn">
+                                       <i class="fa-brands fa-whatsapp"></i>
+                                   </div>
+                                   <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                                       <i class="fa-solid fa-phone"></i>
+                                   </a>
+
+                               </div>
+
+                           </div>
+                       </div>
+                   </div>
+
+                   {% endfor %}
+
+                </div>
+
+                <!-- Pagination Links -->
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if house.has_previous %}
+                        <a href="?page=1&filter={{ filter_type }}">« first</a>
+                        <a href="?page={{ house.previous_page_number }}&filter={{ filter_type }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ house.number }} of {{ house.paginator.num_pages }}.
+                        </span>
+
+                        {% if house.has_next %}
+                        <a href="?page={{ house.next_page_number }}&filter={{ filter_type }}">next</a>
+                        <a href="?page={{ house.paginator.num_pages }}&filter={{ filter_type }}">last »</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+        {% endblock %}

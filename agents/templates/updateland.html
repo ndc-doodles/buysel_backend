@@ -1,0 +1,149 @@
+{% extends "base1.html" %}
+{% load static %}
+
+
+{% block content %}
+        <div class="container pt-2">
+            <div class="update-form">
+                <h1>Update Land: {{ land.Caption }}</h1><br>
+        
+                {% if messages %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+        
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+        
+                    <!-- land Details Section -->
+                    <div class="form-section">
+                        <h3>Land Details</h3>
+                        <div class="row form-group pt-3">
+                            <div class="col-md-6">
+                                <div class="">
+                                    <label for="Caption">Land Caption:</label>
+                                    <input type="text" id="Caption" name="Caption" value="{{ land.Caption }}" class="form-control" required>
+                                </div>
+                               
+                            </div>
+                            <div class="col-md-6">
+                                <div class="">
+                                    <label for="category">Category:</label>
+                                    <select id="category" name="category" required class="form-control">
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}" {% if category.id == land.category.id %}selected{% endif %}>
+                                                {{ category.catgory }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                
+                            </div>
+                        </div><br>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <div class="">
+                                    <label for="total_land">Total Land:</label>
+                                    <input type="text" id="total_land" name="total_land" value="{{ land.total_land }}" class="form-control">
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+        
+                    <!-- Price & Address Section -->
+                    <div class="form-section pt-4">
+                        <h3>Price & Address</h3>
+                        <div class="row form-group pt-4">
+                            <div class="col-md-6">
+                                <label for="price">Price:</label>
+                                <input type="text" id="price" name="price" value="{{ land.price }}" required class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="land_mark">Landmark:</label>
+                                <input type="text" id="land_mark" name="land_mark" value="{{ land.land_mark }}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group pt-3">
+                            <div class="col-md-6">
+                                <label for="address">Address:</label>
+                                <textarea id="address" name="address" class="form-control" rows="4" required>{{ land.address }}</textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description" rows="4" class="form-control">{{ land.description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                    <!-- Additional Features Section -->
+                    <div class="form-section pt-4">
+                      
+                        
+                        <div class="row form-group pt-3">
+                            <div class="col-md-6">
+                                <label for="Time_perioud">Time Period:</label>
+                                <input type="text" id="Time_perioud" name="Time_perioud" value="{{ land.Time_perioud }}" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="sequrity_deposit">Security Deposit:</label>
+                                <input type="text" id="sequrity_deposit" name="sequrity_deposit" value="{{ land.sequrity_deposit }}" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row form-group pt-3">
+                            <div class="col-md-6">
+                                <label for="location">Location:</label>
+                                <textarea id="location" name="location" rows="3" class="form-control">{{ land.location }}</textarea>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="status">Status:</label>
+            <select id="status" name="status" required class="form-control">
+                <option value="Available" {% if land.status == 'Available' %}selected{% endif %}>Available</option>
+                <option value="Sold" {% if land.status == 'Sold' %}selected{% endif %}>Sold</option>
+            </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row form-group pt-3">
+                            <div class="col-md-6">
+                                <label for="agent_name">Agent Name:</label>
+                                <input type="text" id="agent_name" name="agent_name" value="{{ land.agent_name }}" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="number">Agent Contact Number:</label>
+            <input type="text" id="number" name="number" value="{{ land.number }}" class="form-control">
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="row form-group pt-3">
+                            
+                        <div class="col-md-6">
+                            <label for="disabled">Is Disabled:</label>
+                            <input type="checkbox" id="disabled" name="disabled" {% if land.disabled %}checked{% endif %}>
+                        </div>
+                    </div>
+        
+                    <!-- Image Upload Section -->
+                    <div class="form-section pt-4">
+                        <h3>Images</h3>
+                        <label for="images ">Upload New Images (4 images required):</label>
+                        <input type="file" id="images" name="images" accept="image/*" multiple class="form-control">
+                    </div>
+        
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary mt-4">Update Land</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
