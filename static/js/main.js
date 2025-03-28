@@ -221,10 +221,15 @@ function handleToggle() {
 }
 
 
+function handleImage(url){
 
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('GOPI VANAM')
-})
+    console.log(url,'urlll');
+    
+    
+    const shareUrl = `https://buysel.in/detailhouse/${url}`;
+    const message = "Keep in touch for your needs!";
+        
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message + " " + shareUrl)}`;
+        window.open(whatsappUrl, "_blank");
+    
+    }

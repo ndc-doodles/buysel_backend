@@ -16,7 +16,7 @@ import uuid
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Prefetch
 
 
 
@@ -53,7 +53,7 @@ def properties(request):
 
 def index(request):
     try:
-        model1_objects = list(House.objects.all()[:2])
+        model1_objects = House.objects.prefetch_related(Prefetch('images', queryset=HouseImage.objects.all()))[:2]
         model2_objects = list(Land.objects.filter(id__isnull=False)[:2])
         model3_objects = list(Commercial.objects.all()[:2])
         model4_objects = list(OffPlan.objects.all()[:2])
@@ -215,7 +215,7 @@ def detail_view(request, model_name, object_id):
     # Fetch related images
     images = obj.images.all() if hasattr(obj, 'images') else []
 
-    return render(request, 'detail.html', {'object': obj, 'images': images})
+    return render(request, 'detail.html', {'object': obj, 'images': images, 'object_id':object_id})
 
 
 
@@ -427,3 +427,52 @@ def propertice(request):
                 'model8_objects': model8_objects,
                 }
                 )
+
+
+# import requests
+# import os
+# from django.http import JsonResponse
+# from django.conf import settings
+
+# IMGUR_CLIENT_ID = "1ca46e37be674f5"
+
+# def upload_to_imgur(image_path):
+#     headers = {"Authorization": f"Client-ID {IMGUR_CLIENT_ID}"}
+#     with open(image_path, "rb") as f:
+#         response = requests.post("https://api.imgur.com/3/image", headers=headers, files={"image": f})
+#     return response.json().get("data", {}).get("link")
+
+# def share_property(request):
+#     if request.method == "POST" and request.FILES.get("image"):
+#         image = request.FILES["image"]
+
+#         filename = f"property.png"
+#         save_path = os.path.join(settings.MEDIA_ROOT, "shared_properties", filename)
+
+#         # Save the image locally
+#         with open(save_path, "wb") as f:
+#             for chunk in image.chunks():
+#                 f.write(chunk)
+
+#         # Upload to Imgur
+#         imgur_url = upload_to_imgur(save_path)
+
+#         return JsonResponse({"success": True, "image_url": imgur_url})
+
+#     return JsonResponse({"success": False, "error": "Invalid request"})
+
+
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def save_screenshot(request):
+    if request.method == "POST" and request.FILES.get("screenshot"):
+        return JsonResponse({"status": "success", "message": "Screenshot received!"})
+
+    return JsonResponse({"status": "error", "message": "Invalid request"})
+
+def shareimg(request):
+    return render(request, 'imageshare.html')

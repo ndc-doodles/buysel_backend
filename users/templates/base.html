@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %} " />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+     
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <script src="{% static 'js/main.js' %}"></script>
        <link rel="stylesheet" href=" https://phosphoricons.com?q=%22bag%22&weight=%22regular%22">
@@ -101,7 +102,7 @@
 
       <ul class="nav-options">
         <li><a href="{% url 'index' %}#about">About Us</a></li>
-        <li><a href="#service">Services</a></li>
+        <li><a href="{% url 'index' %}#service">Services</a></li>
         <li><a href="{% url 'agents' %}">Agents</a></li>
         <li><a href="{% url 'index' %}#properties">Properties</a></li>
         <li><a href="{% url 'index' %}#features">Features</a></li>
@@ -222,61 +223,282 @@
   
   
       <script>
-      document.querySelectorAll(".share-btn").forEach(button => {
-  button.addEventListener("click", async (e) => {
-    const button = e.currentTarget; // Ensure correct button selection
-    const message = button.getAttribute("data-message");
-    const url = button.getAttribute("data-url");
+//       document.querySelectorAll(".share-btn").forEach(button => {
+//   button.addEventListener("click", async (e) => {
+//     const button = e.currentTarget; // Ensure correct button selection
+//     const message = button.getAttribute("data-message");
+//     const url = button.getAttribute("data-url");
 
-    // 🔍 Ensure message and URL exist
-    if (!message || !url) {
-      console.error("Error: Message or URL is missing!", message, url);
-      alert("Sharing failed: Missing property details.");
-      return;
-    }
+//     // 🔍 Ensure message and URL exist
+//     if (!message || !url) {
+//       console.error("Error: Message or URL is missing!", message, url);
+//       alert("Sharing failed: Missing property details.");
+//       return;
+//     }
 
-    // Find the closest property card
-    const card = button.closest(".card");
-    if (!card) {
-      console.error("Error: Property card not found!");
-      return;
-    }
+//     // Find the closest property card
+//     const card = button.closest(".card");
+//     if (!card) {
+//       console.error("Error: Property card not found!");
+//       return;
+//     }
 
-    try {
-      // 📸 Capture the property card as an image
-      const canvas = await html2canvas(card);
-      const dataUrl = canvas.toDataURL("image/png");
+//     try {
+//       // 📸 Capture the property card as an image
+//       const canvas = await html2canvas(card);
+//       const dataUrl = canvas.toDataURL("image/png");
 
-      // Convert base64 to Blob
-      const response = await fetch(dataUrl);
-      const blob = await response.blob();
+//       // Convert base64 to Blob
+//       const response = await fetch(dataUrl);
+//       const blob = await response.blob();
 
-      // 🖇️ Try copying the image to clipboard
-      if (navigator.clipboard && navigator.clipboard.write) {
-        try {
-          await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-          alert("📸 Screenshot copied! Open WhatsApp Web and press Ctrl + V to paste.");
-        } catch (err) {
-          console.error("❌ Clipboard copy failed: ", err);
-        }
-      }
+//       // 🖇️ Try copying the image to clipboard
+//       if (navigator.clipboard && navigator.clipboard.write) {
+//         try {
+//           await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+//           alert("📸 Screenshot copied! Open WhatsApp Web and press Ctrl + V to paste.");
+//         } catch (err) {
+//           console.error("❌ Clipboard copy failed: ", err);
+//         }
+//       }
 
-      // 📲 Open WhatsApp Web for link sharing
-      const shareUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`${message} ${url}`)}`;
-      window.open(shareUrl, "_blank");
+//       // 📲 Open WhatsApp Web for link sharing
+//       const shareUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`${message} ${url}`)}`;
+//       window.open(shareUrl, "_blank");
 
-    } catch (error) {
-      console.error("❌ Error capturing or sharing:", error);
-    }
-  });
-});
-
-          </script>
+//     } catch (error) {
+//       console.error("❌ Error capturing or sharing:", error);
+//     }
+//   });
+// });
 
 
 
+// document.querySelectorAll(".share-btn").forEach(button => {
+//   button.addEventListener("click", async (e) => {
+//     const button = e.target;
+//     const cardId = button.getAttribute("data-id");
+//     const message = button.getAttribute("data-message");
+//     const url = button.getAttribute("data-url");
+//     const card = document.getElementById(`${cardId}`);
+//     console.log(cardId,'cardd idd');
+    
+
+//     console.log();
+//     // Generate an image of the card
+//     const canvas = await html2canvas(card);
+//     const dataUrl = canvas.toDataURL("image/png");
+
+//     // Convert base64 image to a Blob
+//     const byteString = atob(dataUrl.split(",")[1]);
+//     const mimeString = dataUrl.split(",")[0].split(":")[1].split(";")[0];
+//     const buffer = new Uint8Array(byteString.length);
+//     for (let i = 0; i < byteString.length; i++) {
+//       buffer[i] = byteString.charCodeAt(i);
+//     }
+//     const blob = new Blob([buffer], { type: mimeString });
+//     const file = new File([blob], "payment-details.png", { type: "image/png" });
+
+//     const shareData = {
+//       title: "Payment Details",
+//       text: message,
+//       files: [file] // Include the image file
+//     };
+
+//     // Check for Web Share API support
+//     if (navigator.share) {
+//       try {
+//         // Share with image and message
+//         await navigator.share(shareData);
+//         console.log("Shared successfully!");
+//       } catch (error) {
+//         console.error("Error sharing with file:", error);
+//         // Fallback for unsupported devices or errors
+//         fallbackShare(message, url);
+//       }
+//     } else {
+//       fallbackShare(message, url); // Use fallback on unsupported devices
+//     }
+//   });
+// });
+
+// // Fallback method for unsupported browsers or when sharing fails
+// function fallbackShare(message, url) {
+//   const shareUrl = `whatsapp://send?text=${encodeURIComponent(`${message} ${url}`)}`;
+//   window.open(shareUrl, "_blank");
+// }
 
 
+
+
+
+
+// hjkgfjkhgf
+
+
+
+
+// document.querySelectorAll(".share-btn").forEach(button => {
+//   button.addEventListener("click", async (e) => {
+//     const button = e.currentTarget; // Ensure correct button selection
+//     const message = button.getAttribute("data-message");
+//     const url = button.getAttribute("data-url");
+
+//     // 🔍 Ensure message and URL exist
+//     if (!message || !url) {
+//       console.error("Error: Message or URL is missing!", message, url);
+//       alert("Sharing failed: Missing property details.");
+//       return;
+//     }
+
+//     // Find the closest property card
+//     const card = button.closest(".card");
+//     if (!card) {
+//       console.error("Error: Property card not found!");
+//       return;
+//     }
+
+//     try {
+//       // 📸 Capture the property card as an image
+//       const canvas = await html2canvas(card);
+//       const dataUrl = canvas.toDataURL("image/png");
+
+//       // Convert base64 to Blob
+//       const response = await fetch(dataUrl);
+//       const blob = await response.blob();
+
+//       // Create a File object from the Blob
+//       const file = new File([blob], "property-image.png", { type: "image/png" });
+
+//       // Create a sharing object
+//       const shareData = {
+//         title: "Property Details",
+//         text: message,
+//         files: [file], // Include the image file for platforms that support it (such as WhatsApp)
+//       };
+
+//       // Check if Web Share API is supported
+//       if (navigator.share) {
+//         try {
+//           // Share with image and message
+//           await navigator.share(shareData);
+//           console.log("Shared successfully!");
+//         } catch (error) {
+//           console.error("Error sharing with image:", error);
+//           fallbackShare(message, url); // Fallback to the URL sharing if image sharing fails
+//         }
+//       } else {
+//         fallbackShare(message, url); // Fallback if Web Share API is not supported
+//       }
+
+//     } catch (error) {
+//       console.error("❌ Error capturing or sharing:", error);
+//       fallbackShare(message, url); // Fallback in case of error
+//     }
+//   });
+// });
+
+// // Fallback method for unsupported browsers or when sharing fails
+// function fallbackShare(message, url) {
+//   // WhatsApp sharing fallback (share only URL and message)
+//   const whatsappUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(`${message} ${url}`)}`;
+//   window.open(whatsappUrl, "_blank");
+
+//   // Twitter sharing fallback (images can't be shared directly, so just share the URL and message)
+//   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${url}`)}`;
+//   window.open(twitterUrl, "_blank");
+
+//   // Facebook sharing fallback (images can't be directly shared either, just share the URL and message)
+//   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+//   window.open(facebookUrl, "_blank");
+
+//   // LinkedIn sharing fallback (images can't be shared directly, just share the URL)
+//   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+//   window.open(linkedinUrl, "_blank");
+// }
+
+// end
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   document.querySelectorAll(".share-btn").forEach(button => {
+//     button.addEventListener("click", function () {
+//       const dataId = this.getAttribute("data-id");
+//       const message = this.getAttribute("data-message");
+//       const shareUrl = this.getAttribute("data-url");
+
+//       if (!dataId || !message || !shareUrl) {
+//         console.error("One or more data attributes are missing.");
+//         alert("Error: Property details are incomplete.");
+//         return;
+//       }
+
+//       console.log(`ID: ${dataId}\nMessage: ${message}\nURL: ${shareUrl}`);
+
+//       // Copying property details to clipboard
+//       const textToCopy = `Check this property: \n\nMessage: ${message}\nURL: ${shareUrl}`;
+//       navigator.clipboard.writeText(textToCopy).then(() => {
+//         alert("Property details copied to clipboard.");
+//       }).catch(err => {
+//         console.error("Failed to copy property details: ", err);
+//         alert("Failed to copy property details.");
+//       });
+
+//       // Capture and share the screenshot
+//       const propertyCard = this.closest(".card");
+//       html2canvas(propertyCard, { useCORS: true }).then(canvas => {
+//         canvas.toBlob(blob => {
+//           if (!blob) {
+//             console.error("Error generating screenshot blob.");
+//             alert("Failed to generate screenshot.");
+//             return;
+//           }
+
+//           const file = new File([blob], "property_screenshot.png", { type: "image/png" });
+
+//           if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+//             navigator.share({
+//               title: "Check out this property!",
+//               text: `${message} ${shareUrl}`,
+//               files: [file]
+//             }).catch(err => {
+//               console.error("Error sharing:", err);
+//               alert("Failed to share property screenshot.");
+//             });
+//           } else {
+//             // Fallback: Download the screenshot
+//             const downloadLink = document.createElement("a");
+//             downloadLink.href = URL.createObjectURL(blob);
+//             downloadLink.download = "property_screenshot.png";
+//             document.body.appendChild(downloadLink);
+//             downloadLink.click();
+//             document.body.removeChild(downloadLink);
+//             alert("Sharing is not supported on this browser. Screenshot downloaded.");
+//           }
+//         }, "image/png");
+//       }).catch(err => {
+//         console.error("Error capturing screenshot:", err);
+//         alert("Failed to capture screenshot.");
+//       });
+//     });
+//   });
+// });
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 
 
@@ -752,14 +974,8 @@
   
   </script>
 
-  <script>
-    
-    
-    window.addEventListener('DOMContentLoaded',()=>{
-    })
-  </script>
 
 
-    <script src="./asset/js/main.js"></script>
+    
   </html>
   

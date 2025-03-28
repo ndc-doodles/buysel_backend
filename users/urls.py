@@ -20,8 +20,10 @@ urlpatterns = [
     path('faq', views.faq, name='faq'),
     path('more', views.more, name='more'),
     path('properties', views.properties, name='properties'),
-  
-
+    # path("share_property/", views.share_property, name="share_property"),
+    path("save-screenshot/", views.save_screenshot, name="save_screenshot"),
+    path("share-img/", views.shareimg, name="shareimg"),
+    
 
 
     # path('message/', views.message_view, name='message_view'),

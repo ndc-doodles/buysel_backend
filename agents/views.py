@@ -90,41 +90,6 @@ def category_list(request):
     return render(request, 'category_list.html', {'categories': categories})
 
 
-# House CRUD Views
-
-# List all houses
-# def houses(request):
-#     houses = AgentHouse.objects.all()
-#     return render(request, 'house_list.html', {'houses': houses})
-
-# Create a new house
-# def house_create(request):
-#     if request.method == 'POST':
-#         form = HouseForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('house_list')
-#     else:
-#         form = HouseForm()
-#     return render(request, 'house_form.html', {'form': form})
-
-# # Update a house
-# def house_update(request, pk):
-#     house = get_object_or_404(House, pk=pk)
-#     if request.method == 'POST':
-#         form = HouseForm(request.POST, request.FILES, instance=house)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('house_list')
-#     else:
-#         form = HouseForm(instance=house)
-#     return render(request, 'house_form.html', {'form': form})
-
-# # Delete a house
-# def house_delete(request, pk):
-#     house = get_object_or_404(AgentHouse, pk=pk)
-#     house.delete()
-#     return redirect('house_list')
 
 def profile(request):
     if "name" not in request.session:
@@ -172,9 +137,9 @@ def agent_house_create(request):
     if not username:
         return redirect('login')  # Redirect to login if user is not logged in
     
-    # Fetch user profile to get phone number (assuming login is linked to user profile)
+    # Fetch user profile to get phone contact (assuming login is linked to user profile)
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    number = user_profile.phone_number if user_profile else None
+    contact = user_profile.phone_number if user_profile else None
     if request.method == 'POST':
         # Create a new AgentHouse object and populate fields from the POST data
         house = AgentHouse(
@@ -196,26 +161,26 @@ def agent_house_create(request):
             gender=request.POST['gender'],
             location=request.POST['location'],
             agent_name=request.POST['agent_name'],
-            number=request.POST['number'],
+            contact=request.POST['contact'],
             status=request.POST['status'],
             disabled='disabled' in request.POST,
         )
         house.save()  
         uploaded_images = request.FILES.getlist('images')
         
-        # Check if the number of images is not 4
+        # Check if the contact of images is not 4
         if len(uploaded_images) != 4:
             # Use messages.error to show the validation error message
             messages.error(request, "Exactly 4 images must be uploaded.")
-            return render(request, 'createhouse.html', {'categories': categories, 'username': username, 'number': number})  # Re-render the form
+            return render(request, 'createhouse.html', {'categories': categories, 'username': username, 'contact': contact})  # Re-render the form
 
         # Save images
         for image in uploaded_images:
-            AgentHouseImage.objects.create(agenthouse=house, image=image)
+            AgentHouseImage.objects.create(house=house, image=image)
         
         return redirect('house-list')  # Redirect after successful creation
 
-    return render(request, 'createhouse.html', {'categories': categories, 'username': username,'number':number})  # Pass categories to the template  # Pass categories to the template
+    return render(request, 'createhouse.html', {'categories': categories, 'username': username,'contact':contact})  # Pass categories to the template  # Pass categories to the template
 
 
 
@@ -234,8 +199,8 @@ def house_list(request):
 
     # If you want to paginate the results
     paginator = Paginator(house, 10)  # Show 10 houses per page
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_contact = request.GET.get('page')
+    page_obj = paginator.get_page(page_contact)
 
     # Get the first image for each house (assuming each house has at least one image)
     for house in page_obj:
@@ -280,7 +245,7 @@ def agent_house_update(request, pk):
         house.gender = request.POST['gender']
         house.location = request.POST['location']
         house.agent_name = request.POST['agent_name'] # Now use the value from POST data
-        house.number = request.POST.get('number', '')  # D
+        house.contact = request.POST.get('contact', '')  # D
         house.status = request.POST.get('status', '')  
         house.disabled = 'disabled' in request.POST
 
@@ -308,7 +273,7 @@ def agent_land_create(request):
     categories = MainCategory.objects.all()
     username = request.session.get("name")  
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    number = user_profile.phone_number if user_profile else None  
+    contact = user_profile.phone_contact if user_profile else None  
 
     if request.method == 'POST':
         land = AgentLand(
@@ -324,7 +289,7 @@ def agent_land_create(request):
             Time_perioud=request.POST['Time_perioud'],
             location=request.POST['location'],
             agent_name=request.POST['agent_name'],
-            number=request.POST['number'],
+            contact=request.POST['contact'],
             status=request.POST['status'],
             disabled='disabled' in request.POST,
         )
@@ -334,14 +299,14 @@ def agent_land_create(request):
         
         if not (4 <= len(uploaded_images) <= 20):
             messages.error(request, "You must upload at least 4 images and at most 20 images.")
-            return render(request, 'createland.html', {'categories': categories, 'username': username, 'number': number})
+            return render(request, 'createland.html', {'categories': categories, 'username': username, 'contact': contact})
 
         for image in uploaded_images:
             AgentLandImage.objects.create(land=land, image=image)
 
         return redirect('land-list')
 
-    return render(request, 'createland.html', {'categories': categories, 'username': username, 'number': number})
+    return render(request, 'createland.html', {'categories': categories, 'username': username, 'contact': contact})
 
 def land_list(request):
     username = request.session.get("name")
@@ -355,8 +320,8 @@ def land_list(request):
     land_qs = AgentLand.objects.filter(agent_name=username)
     
     paginator = Paginator(land_qs, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_contact = request.GET.get('page')
+    page_obj = paginator.get_page(page_contact)
 
     for land in page_obj.object_list:
         land.first_image = AgentLandImage.objects.filter(land=land).first()
@@ -387,7 +352,7 @@ def agent_land_update(request, pk):
         land.Time_perioud = request.POST['Time_perioud']
         land.location = request.POST['location']
         land.agent_name = request.POST['agent_name']
-        land.number = request.POST['number']
+        land.contact = request.POST['contact']
         land.status = request.POST['status']
         land.disabled = 'disabled' in request.POST
 
@@ -420,9 +385,9 @@ def agent_offplan_create(request):
     if not username:
         return redirect('login')  # Redirect to login if user is not logged in
     
-    # Fetch user profile to get phone number (assuming login is linked to user profile)
+    # Fetch user profile to get phone contact (assuming login is linked to user profile)
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    number = user_profile.phone_number if user_profile else None
+    contact = user_profile.phone_contact if user_profile else None
 
     if request.method == 'POST':
         # Safely retrieve fields with .get() to avoid MultiValueDictKeyError
@@ -443,7 +408,7 @@ def agent_offplan_create(request):
         gender = request.POST.get('gender', None)
         location = request.POST.get('location', None)
         agent_name = request.POST.get('agent_name', None)
-        number = request.POST.get('number', None)
+        contact = request.POST.get('contact', None)
         status = request.POST.get('status', None)
         furnished = 'furnished' in request.POST
         kitchen = 'Kitchen' in request.POST
@@ -455,7 +420,7 @@ def agent_offplan_create(request):
             return render(request, 'createoff.html', {
                 'categories': categories,
                 'username': username,
-                'number': number
+                'contact': contact
             })
 
         # Create the new OffPlanHouse object
@@ -478,7 +443,7 @@ def agent_offplan_create(request):
             gender=gender,
             location=location,
             agent_name=agent_name,
-            number=number,
+            contact=contact,
             status=status,
             disabled=disabled,
             rooms=rooms  # Add rooms to the OffPlanHouse
@@ -492,7 +457,7 @@ def agent_offplan_create(request):
             return render(request, 'createoff.html', {
                 'categories': categories,
                 'username': username,
-                'number': number
+                'contact': contact
             })
 
         # Save the images to the database
@@ -506,7 +471,7 @@ def agent_offplan_create(request):
     return render(request, 'createoff.html', {
         'categories': categories,
         'username': username,
-        'number': number
+        'contact': contact
     })
 
 
@@ -526,8 +491,8 @@ def off_list(request):
 
     # If you want to paginate the results
     paginator = Paginator(offs, 10)  # Show 10 lands per page
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_contact = request.GET.get('page')
+    page_obj = paginator.get_page(page_contact)
 
     # Get the first image for each land (assuming each land has at least one image)
     for offplan in page_obj:
@@ -560,7 +525,7 @@ def agent_off_update(request, pk):
         offplan.description = request.POST['description']
         offplan.location = request.POST['location']
         offplan.agent_name = request.POST['agent_name']
-        offplan.number = request.POST['number']
+        offplan.contact = request.POST['contact']
         offplan.status = request.POST['status']
         offplan.disabled = 'disabled' in request.POST
 
@@ -592,7 +557,7 @@ def agent_com_create(request):
     categories = MainCategory.objects.all()  # Fetch all categories from the MainCategory model
     username = request.session["name"] 
     user_profile = UserProfile.objects.filter(login__username=username).first()  # Assuming login is linked to user profile
-    number = user_profile.phone_number if user_profile else None 
+    contact = user_profile.phone_contact if user_profile else None 
     if request.method == 'POST':
         # Create a new Agentcom object and populate fields from the POST data
         com = AgentCommercial(
@@ -613,7 +578,7 @@ def agent_com_create(request):
             
             location=request.POST['location'],
             agent_name=request.POST['agent_name'],
-            number=request.POST['number'],
+            contact=request.POST['contact'],
             status=request.POST['status'],
             disabled='disabled' in request.POST,
         )
@@ -629,7 +594,7 @@ def agent_com_create(request):
         
         return redirect('com-list') 
 
-    return render(request, 'createcom.html', {'categories': categories, 'username': username,'number':number})  # Pass categories to the template
+    return render(request, 'createcom.html', {'categories': categories, 'username': username,'contact':contact})  # Pass categories to the template
 
 
 
@@ -651,8 +616,8 @@ def com_list(request):
 
     # If you want to paginate the results
     paginator = Paginator(comms, 10)  # Show 10 lands per page
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_contact = request.GET.get('page')
+    page_obj = paginator.get_page(page_contact)
 
     # Get the first image for each land (assuming each land has at least one image)
     for com in page_obj:
@@ -683,7 +648,7 @@ def agent_com_update(request, pk):
         com.Time_perioud = request.POST['Time_perioud']  
         com.location = request.POST['location']
         com.agent_name = request.POST['agent_name']
-        com.number = request.POST['number']
+        com.contact = request.POST['contact']
         com.status = request.POST['status']
         com.disabled = 'disabled' in request.POST
 
@@ -730,7 +695,7 @@ def agent_com_update(request, pk):
 
 
 # def inbox_view(request, agent_id):
-#     # Count the number of messages for the specific agent
+#     # Count the contact of messages for the specific agent
 #     total_messages = Inbox.objects.filter(agent_id=agent_id).count()
     
 #     # Retrieve the messages for that specific agent
@@ -834,7 +799,7 @@ def category_count(request):
     
     # Get the user's profile or related data
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    number = user_profile.phone_number if user_profile else None
+    contact = user_profile.phone_contact if user_profile else None
 
     # Fetch categories and count listings for each category type (Sale, Rent, Lease, Resell)
     categories = MainCategory.objects.all()
@@ -874,7 +839,7 @@ def category_count(request):
     # Pass these counts to the template
     return render(request, 'dashboard.html', {
         'username': username,
-        'number': number,
+        'contact': contact,
         'sale_count': sale_count,
         'rent_count': rent_count,
         'lease_count': lease_count,

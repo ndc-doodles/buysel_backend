@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load cloudinary %} 
 {% load static %}
 
 
@@ -408,14 +409,14 @@
       {% for i in model5_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+          <div id="model_name='agenthouse' object_id=i.id" class="card" data-category="{{ i.category }}">
 
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
-            <button class="share-btn" data-id="{{i.uuid}}"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
-              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+            <button class="share-btn" data-id="model_name='agenthouse' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=agenthouse&object_id={{ i.id }}"
+              data-url="https://buysel.in/?model_name=agenthouse={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
@@ -427,7 +428,7 @@
               {% endif %}
               {% endwith %}
             </div>
-
+           
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">
               <p>
@@ -448,6 +449,7 @@
             <div class="card-body">
 
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
                       style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
@@ -471,17 +473,19 @@
 
       {% endfor %}
 
+
+
       {% for i in model6_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+          <div id="model_name='agentland' object_id=i.id" class="card" data-category="{{ i.category }}">
 
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
-            <button class="share-btn" data-id="{{i.uuid}}"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
-              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+            <button class="share-btn" data-id="model_name='agentland' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=agentland={{ i.id }}"
+              data-url="https://buysel.in/?model_name=agentland={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
@@ -537,14 +541,14 @@
       {% for i in model7_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+          <div id="model_name='agentcommercial' object_id=i.id" class="card" data-category="{{ i.category }}">
             <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')">
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
                 {{i.category}}</div>
-              <button class="share-btn" data-id="{{i.uuid}}"
-                data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
-                data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+              <button class="share-btn" data-id="model_name='agentcommercial' object_id=i.id"
+                data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='agentcommercial' object_id=i.id"
+                data-url="https://buysel.in/?model_name=agentcommercial={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
               </button>
               <div class="property-card-img">
@@ -594,14 +598,14 @@
       {% for i in model8_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
+          <div id="model_name='agentoffplan' object_id=i.id" class="card" data-category="{{ i.category }}">
 
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
-            <button class="share-btn" data-id="{{i.uuid}}"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#card-1"
-              data-url="https://buysel.in/#{{i.uuid}}"><i class="fa-solid fa-share-nodes"></i>
+            <button class="share-btn" data-id="model_name='agentoffplan' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=offplan={{ i.id }}"
+              data-url="https://buysel.in/?model_name=agentoffplan={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
@@ -670,13 +674,19 @@
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='land' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='land' object_id=i.id"
-              data-url="https://buysel.in/#model_name='land' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+            <button class="share-btn"  data-id="model_name='land' object_id=i.id"
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=land&object_id={{ i.id }}"
+              data-url="https://buysel.in/?model_name=land&object_id={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
-              <img src="{{i.image1.url}}" alt="">
+              {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %}
             </div>
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">
@@ -721,7 +731,6 @@
         </div>
       </div>
 
-
       {% endfor %}
 
 
@@ -733,13 +742,43 @@
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='house' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='house' object_id=i.id"
-              data-url="https://buysel.in/#model_name='house' object_id=i.id">
+            <!-- <button
+            data-id="model_name='house' object_id=i.id"
+             class="share-btn" 
+             
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=house&object_id={{ i.id }}"
+              data-url="https://buysel.in/?model_name=house&object_id={{ i.id }}">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button> -->
+            <button class="share-btn" onclick="handleImage('https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
               <i class="fa-solid fa-share-nodes"></i>
             </button>
+            
             <div class="property-card-img">
-              <img src="{{i.image.url}}" alt="">
+              {% with i.images.first as img %}
+              {% if img %}
+                
+                  <img src="{{ img.image.url }}" alt="House Image">
+              {% else %}
+                  <p>No image found</p>
+              {% endif %}
+          {% endwith %}
+              <!-- {% with i.images.first as img %}
+            {% if img %}
+              <img onclick="handleImage('{{ img.image.url }}')" 
+                src="{{ img.image.url }}" 
+                alt="House Image">
+           
+            {% endif %}
+          {% endwith %} -->
+              <!-- {% with i.images.first as img %}
+              {% if img %}
+              <img onclick="handleImage('{{ img.image.url }}')" src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %} -->
+
             </div>
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">
@@ -795,13 +834,19 @@
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
             <button class="share-btn" data-id="model_name='commercial' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='commercial' object_id=i.id"
-              data-url="https://buysel.in/#model_name='commercial' object_id=i.id"><i
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=commercial={{ i.id }}"
+              data-url="https://buysel.in/?model_name=commercial={{ i.id }}"><i
                 class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
-              <img src="{{i.image1.url}}" alt="">
+              {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %}
             </div>
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">
@@ -856,14 +901,18 @@
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
               {{i.category}}</div>
             <button class="share-btn" data-id="model_name='offplan' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='offplan' object_id=i.id"
-              data-url="https://buysel.in/#model_name='offplan' object_id=i.id"><i class="fa-solid fa-share-nodes"></i>
+              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices.https://buysel.in/?model_name=offplan={{ i.id }}"
+              data-url="https://buysel.in/?model_name=offplan={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
 
             </button>
             <div class="property-card-img">
-              {% if i.images.first %}
-              <img src="{{ i.images.first.image.url }}" alt="House Image">
+              {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
               {% endif %}
+              {% endwith %}
             </div>
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">

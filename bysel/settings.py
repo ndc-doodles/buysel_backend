@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'users',
     'developer',
     'agents',
+    "cloudinary",
+    "cloudinary_storage",  
+
     
 ]
 
@@ -146,7 +149,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-MEDIA_URL = "/media/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 LOGIN_URL = '/login/'  
@@ -162,3 +165,29 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Make sure this is set 
 SESSION_COOKIE_NAME = 'sessionid'  # The cookie name for sessions
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Optional: Automatically clear session when the browser is closed
 SESSION_COOKIE_AGE = 60 * 30  # 30 minutes session timeout (in seconds)
+
+
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+# Cloudinary Configuration
+cloudinary.config( 
+  cloud_name = "dnklcdsjq", 
+  api_key = "619665329545319", 
+  api_secret = "MKWJwARG2buK0YwGjAsYbi4SCkQ", 
+)

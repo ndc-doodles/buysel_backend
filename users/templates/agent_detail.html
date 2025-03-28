@@ -141,16 +141,16 @@
                         <div onclick="sendMessageToWhatsApp('{{ house.Caption }}', '{{ house.location }}', '{{ house.contact }}')" style="background: none; border: none; color: #25d366; font-size: 3.5rem;">
                             <i class="fa-brands fa-whatsapp"></i>
                         </div>
-                        <a href="tel:+91 {{ house.contact }}" style="color: #8bc83f; font-size: 20px; background-color: #ccc; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: not-allowed;" disabled>
+                        <a href="tel:+91 {{ object.contact }}" style="color: #8bc83f; font-size: 20px; background-color: #ccc; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: not-allowed;" disabled>
                             Call Now <i class="fas fa-phone call"></i>
                         </a>
                     </div>
                 {% else %}
                 <div class="contact-row">
-                    <div onclick="sendMessageToWhatsApp('{{ house.Caption }}', '{{ house.location }}', '{{ house.contact }}')" style="background: none; border: none; color: #25d366; font-size: 3.5rem;">
+                    <div onclick="sendMessageToWhatsApp('{{ object.Caption }}', '{{ house.location }}', '{{ house.contact }}')" style="background: none; border: none; color: #25d366; font-size: 3.5rem;">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
-                    <a href="tel:+91 {{ house.contact }}" style="color: #8bc83f; font-size: 20px; background-color: #25d366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer;">
+                    <a href="tel:+91 {{ object.contact }}" style="color: #8bc83f; font-size: 20px; background-color: #25d366; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer;">
                         Call Now <i class="fas fa-phone call"></i>
                     </a>
                 </div>
