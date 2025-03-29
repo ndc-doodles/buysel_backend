@@ -344,6 +344,7 @@
       overflow: auto; /* Enable scroll if needed */
       background-color: rgb(0,0,0); /* Fallback color */
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      z-index: 10;
     }
 
     .modal-content {
@@ -742,7 +743,8 @@
 
         </div>
       </div>
-
+     
+      
 
       {% endfor %}
 
@@ -761,12 +763,11 @@
           <div id="model_name='land' object_id=i.id" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
             <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 1;">
               {{i.category}}</div>
-            <button class="share-btn"  data-id="model_name='land' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=land&object_id={{ i.id }}"
-              data-url="https://buysel.in/?model_name=land&object_id={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
+          
+            <button class="share-btn" id="share-btn-modal">
+              <i class="fa-solid fa-share-nodes"></i>
             </button>
             <div class="property-card-img">
               {% with i.images.first as img %}
@@ -820,6 +821,11 @@
         </div>
       </div>
 
+     
+      </div>
+
+
+
       {% endfor %}
 
 
@@ -831,18 +837,8 @@
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 1;">
               {{i.category}}</div>
-            <!-- <button
-            data-id="model_name='house' object_id=i.id"
-             class="share-btn" 
-             
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=house&object_id={{ i.id }}"
-              data-url="https://buysel.in/?model_name=house&object_id={{ i.id }}">
-              <i class="fa-solid fa-share-nodes"></i>
-            </button> -->
-            <!-- <button class="share-btn" onclick="handleImage('https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-              <i class="fa-solid fa-share-nodes"></i>
-            </button> -->
-            <button class="share-btn" id="share-btn">
+           
+            <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
               <i class="fa-solid fa-share-nodes"></i>
             </button>
            
@@ -914,6 +910,35 @@
           </div>
         </div>
       </div>
+
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+           <i class="ph ph-whatsapp-logo "></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+            <i class="ph ph-facebook-logo"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+            <i class="ph ph-x-logo"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+            <i class="ph ph-telegram-logo"></i></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+            <i class="ph ph-linkedin-logo"></i></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
+      
+
 
       {% endfor %}
       
@@ -1060,33 +1085,6 @@
 </section>
 
 
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-     <i class="ph ph-whatsapp-logo "></i><p>Whats App</p>
-    </div>
-    <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-      <i class="ph ph-facebook-logo"></i> <p>Facebook</p>
-    </div>
-    <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-      <i class="ph ph-x-logo"></i><p>Twitter</p>
-    </div>
-    <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-      <i class="ph ph-telegram-logo"></i></i><p>Telegram</p>
-    </div>
-    <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-      <i class="ph ph-linkedin-logo"></i></i><p>Linked in</p>
-    </div>
-    
-   
-  
-    
-  </div>
-
-</div>
 
 
 
@@ -1584,30 +1582,30 @@
 
 <script>
   // Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("share-btn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
+  function controlShareButton(id){
+    console.log(id,'this is id');
+    
+  var modal = document.getElementById(`share-btn-modal-${id}`);
+  
+  const allModal = document.querySelectorAll('.modal')
+  
+  allModal.forEach(element => {
+    console.log(element);
+    
+    element.style.display = 'none'
+  });
+  
   modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
   }
-}
+
+
+  function handleModalClose(id){
+    const closingModal = document.getElementById(`share-btn-modal-${id}`)
+    closingModal.style.display = 'none'
+  }
+
+
 </script>
 
 {% endblock %}
