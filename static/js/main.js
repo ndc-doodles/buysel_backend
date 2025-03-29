@@ -226,7 +226,7 @@ function handleImage(url){
     console.log(url,'urlll');
     
     
-    const shareUrl = `https://buysel.in/detailhouse/${url}`;
+    const shareUrl = url;
     const message = "Keep in touch for your needs!";
         
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message + " " + shareUrl)}`;

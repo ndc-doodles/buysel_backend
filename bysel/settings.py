@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'anjanarealestates.com']
 
 # Application definition
 
@@ -134,18 +135,19 @@ SECRET_KEY = 'django-insecure-^d$ql1#@@d668f3n!j_s7(ikc-qr*$94jk##p#!aphw$d&2tq%
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# import os
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/5.1/howto/static-files/
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+# # Default primary key field type
+
 import os
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
-# Default primary key field type
-
-
+# Base directory
 
 
 
@@ -168,7 +170,6 @@ SESSION_COOKIE_AGE = 60 * 30  # 30 minutes session timeout (in seconds)
 
 
 
-import os
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
@@ -191,3 +192,25 @@ cloudinary.config(
   api_key = "619665329545319", 
   api_secret = "MKWJwARG2buK0YwGjAsYbi4SCkQ", 
 )
+
+
+
+
+
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
+
+# Directory where collectstatic will gather files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Directories where Django will look for additional static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Media files (uploads)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
