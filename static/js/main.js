@@ -221,15 +221,43 @@ function handleToggle() {
 }
 
 
-function handleImage(url){
+function handleImage(media,url){
 
     console.log(url,'urlll');
     
     
     const shareUrl = url;
     const message = "Keep in touch for your needs!";
-        
+
+    if(media=='whatsapp'){
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message + " " + shareUrl)}`;
         window.open(whatsappUrl, "_blank");
-    
+
+    }else if(media == 'fb'){
+
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        window.open(facebookUrl, "_blank");
+
+    }else if(media == 'x'){
+
+        const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(message)}`;
+    window.open(twitterUrl, "_blank");
+
+        
+    }else if(media == 'linkedin'){
+
+        const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(message)}`;
+    window.open(linkedinUrl, "_blank");
+    }else{
+        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(message)}`;
+        window.open(telegramUrl, "_blank");
     }
+        
+        
+    
+       
+    }
+
+
+
+   

@@ -332,7 +332,75 @@
         gap: 0.3rem;
       }
 
-      @media (max-width: 1076px) {
+
+      .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less depending on screen size */
+      max-width: 300px !important;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+
+    .share-opt{
+      display: flex;
+      margin-bottom: 1rem;
+    }
+
+    .share-opt i{
+      font-size: 2.5rem;
+      align-content: center;
+    }
+    
+    .share-opt .ph-whatsapp-logo{
+      color: #075E54;
+    }
+    .share-opt .ph-facebook-logo{
+      color: #4267B2;
+    }
+    .share-opt .ph-x-logo{
+      color:  #657786;
+    }
+    .share-opt .ph-telegram-logo{
+      color:   #0088cc;
+    }
+    
+
+    .share-opt .ph-linkedin-logo{
+      color:    #0077B5;
+    }
+    
+      @media(max-width: 1076px) {
         .faq-outer {
           flex-direction: column;
           align-items: center;
@@ -342,6 +410,27 @@
           text-align: center;
           margin-top: 100px;
         }
+        .modal{
+          align-content: center;
+        }
+      }
+      @media(max-width:400px){
+        .modal{
+          align-content: center;
+        }
+       
+      }
+      @media(max-width:600px){
+        .modal{
+          align-content: center;
+        }
+       
+      }
+      @media(max-width:900px){
+        .modal{
+          align-content: center;
+        }
+       
       }
     </style>
 
@@ -740,7 +829,7 @@
           <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
             <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 1;">
               {{i.category}}</div>
             <!-- <button
             data-id="model_name='house' object_id=i.id"
@@ -750,10 +839,13 @@
               data-url="https://buysel.in/?model_name=house&object_id={{ i.id }}">
               <i class="fa-solid fa-share-nodes"></i>
             </button> -->
-            <button class="share-btn" onclick="handleImage('https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+            <!-- <button class="share-btn" onclick="handleImage('https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button> -->
+            <button class="share-btn" id="share-btn">
               <i class="fa-solid fa-share-nodes"></i>
             </button>
-            
+           
             <div class="property-card-img">
               {% with i.images.first as img %}
               {% if img %}
@@ -762,7 +854,7 @@
               {% else %}
                   <p>No image found</p>
               {% endif %}
-          {% endwith %}
+              {% endwith %}
               <!-- {% with i.images.first as img %}
             {% if img %}
               <img onclick="handleImage('{{ img.image.url }}')" 
@@ -824,7 +916,7 @@
       </div>
 
       {% endfor %}
-
+      
       {% for i in model3_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
@@ -958,14 +1050,43 @@
 
       {% endfor %}
     </div>
+
+    
   </div>
   <div class="property-actions">
     <a href="properties" class="more-property">More Properties</a>
   </div>
+  
 </section>
 
 
+<div id="myModal" class="modal">
 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+     <i class="ph ph-whatsapp-logo "></i><p>Whats App</p>
+    </div>
+    <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+      <i class="ph ph-facebook-logo"></i> <p>Facebook</p>
+    </div>
+    <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+      <i class="ph ph-x-logo"></i><p>Twitter</p>
+    </div>
+    <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+      <i class="ph ph-telegram-logo"></i></i><p>Telegram</p>
+    </div>
+    <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
+      <i class="ph ph-linkedin-logo"></i></i><p>Linked in</p>
+    </div>
+    
+   
+  
+    
+  </div>
+
+</div>
 
 
 
@@ -1461,6 +1582,32 @@
 </section>
 
 
+<script>
+  // Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("share-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 {% endblock %}
