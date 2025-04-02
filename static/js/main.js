@@ -227,7 +227,7 @@ function handleImage(media,url){
     
     
     const shareUrl = url;
-    const message = "Keep in touch for your needs!";
+    const message = "Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices.";
 
     if(media=='whatsapp'){
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message + " " + shareUrl)}`;

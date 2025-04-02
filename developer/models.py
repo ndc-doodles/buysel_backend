@@ -144,7 +144,7 @@ class Land(models.Model):
     contact = models.CharField(max_length=20)
     status = models.CharField(max_length=10, choices=HOUSE_STATUS_CHOICES, default=AVAILABLE)
     disabled = models.BooleanField(default=False)
-    image = CloudinaryField('image', folder="houses") 
+    image = CloudinaryField('image', folder="lands") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
 
     def __str__(self):
