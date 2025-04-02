@@ -1,6 +1,10 @@
 from django.db import models
 from developer.models import MainCategory
 import uuid
+from cloudinary.models import CloudinaryField
+import cloudinary.uploader
+from playwright.sync_api import sync_playwright
+import time
 # Create your models here.
 class Login(models.Model):
     username = models.CharField(max_length=50)
@@ -63,10 +67,57 @@ class AgentHouse(models.Model):
     contact = models.CharField(max_length=15, blank=True, null=True)  # Storing the phone contact as CharField
     status = models.CharField(max_length=10, choices=HOUSE_STATUS_CHOICES, default=AVAILABLE)
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
-    image = models.ImageField(upload_to="")
+    image = CloudinaryField('image', folder="agenthouses") 
+    screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
 
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
+
+    def take_screenshot(self):
+        """Captures a screenshot of the specific property card using Playwright"""
+        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(listing_url, wait_until="load")
+
+            # Give the page some time to fully render
+            time.sleep(2)
+
+            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
+            card_selector = f"div[data-agenthouse-id='{self.id}']"
+
+            # Debugging - Check if the element is found
+            elements = page.locator(card_selector).count()
+            print(f"Found {elements} elements with selector {card_selector}")
+
+            if elements > 0:
+                page.locator(card_selector).screenshot(path=screenshot_path)
+            else:
+                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
+                page.screenshot(path=screenshot_path, full_page=True)
+
+            browser.close()
+
+        return screenshot_path
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Save the House instance first
+
+        try:
+            screenshot_path = self.take_screenshot()
+
+            # Upload screenshot to Cloudinary
+            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
+            self.screenshot = uploaded_image['url']
+
+            super().save(update_fields=['screenshot'])  # Save only the screenshot field
+        except Exception as e:
+            print(f"Error taking screenshot: {e}")
+
+
 
 
 class AgentLand(models.Model):
@@ -94,11 +145,55 @@ class AgentLand(models.Model):
     contact = models.CharField(max_length=100)
     status = models.CharField(max_length=10, choices=HOUSE_STATUS_CHOICES, default=AVAILABLE)
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
-    image = models.ImageField(upload_to="")
+    image = CloudinaryField('image', folder="agentlands") 
+    screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
 
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
+    
+    def take_screenshot(self):
+        """Captures a screenshot of the specific property card using Playwright"""
+        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
 
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(listing_url, wait_until="load")
+
+            # Give the page some time to fully render
+            time.sleep(2)
+
+            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
+            card_selector = f"div[data-agentland-id='{self.id}']"
+
+            # Debugging - Check if the element is found
+            elements = page.locator(card_selector).count()
+            print(f"Found {elements} elements with selector {card_selector}")
+
+            if elements > 0:
+                page.locator(card_selector).screenshot(path=screenshot_path)
+            else:
+                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
+                page.screenshot(path=screenshot_path, full_page=True)
+
+            browser.close()
+
+        return screenshot_path
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Save the House instance first
+
+        try:
+            screenshot_path = self.take_screenshot()
+
+            # Upload screenshot to Cloudinary
+            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
+            self.screenshot = uploaded_image['url']
+
+            super().save(update_fields=['screenshot'])  # Save only the screenshot field
+        except Exception as e:
+            print(f"Error taking screenshot: {e}")
 
 class AgentCommercial(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -125,9 +220,55 @@ class AgentCommercial(models.Model):
     status = models.CharField(max_length=10, choices=HOUSE_STATUS_CHOICES, default=AVAILABLE)
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
     amenities = models.TextField(max_length=500)
-    image = models.ImageField(upload_to="")
+    image = CloudinaryField('image', folder="agentcommercial") 
+    screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
+
+
+    def take_screenshot(self):
+        """Captures a screenshot of the specific property card using Playwright"""
+        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(listing_url, wait_until="load")
+
+            # Give the page some time to fully render
+            time.sleep(2)
+
+            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
+            card_selector = f"div[data-agentcom-id='{self.id}']"
+
+            # Debugging - Check if the element is found
+            elements = page.locator(card_selector).count()
+            print(f"Found {elements} elements with selector {card_selector}")
+
+            if elements > 0:
+                page.locator(card_selector).screenshot(path=screenshot_path)
+            else:
+                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
+                page.screenshot(path=screenshot_path, full_page=True)
+
+            browser.close()
+
+        return screenshot_path
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Save the House instance first
+
+        try:
+            screenshot_path = self.take_screenshot()
+
+            # Upload screenshot to Cloudinary
+            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
+            self.screenshot = uploaded_image['url']
+
+            super().save(update_fields=['screenshot'])  # Save only the screenshot field
+        except Exception as e:
+            print(f"Error taking screenshot: {e}")
 
 
 class AgentOffPlan(models.Model):
@@ -154,35 +295,82 @@ class AgentOffPlan(models.Model):
     contact = models.CharField(max_length=15, blank=True, null=True)
     status = models.CharField(max_length=10, choices=HOUSE_STATUS_CHOICES, default=AVAILABLE)
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
-    image = models.ImageField(upload_to="")
+    image = CloudinaryField('image', folder="agentoffplan") 
+    screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
     
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
 
+
+
+    def take_screenshot(self):
+        """Captures a screenshot of the specific property card using Playwright"""
+        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(listing_url, wait_until="load")
+
+            # Give the page some time to fully render
+            time.sleep(2)
+
+            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
+            card_selector = f"div[data-agentoffplan-id='{self.id}']"
+
+            # Debugging - Check if the element is found
+            elements = page.locator(card_selector).count()
+            print(f"Found {elements} elements with selector {card_selector}")
+
+            if elements > 0:
+                page.locator(card_selector).screenshot(path=screenshot_path)
+            else:
+                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
+                page.screenshot(path=screenshot_path, full_page=True)
+
+            browser.close()
+
+        return screenshot_path
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Save the House instance first
+
+        try:
+            screenshot_path = self.take_screenshot()
+
+            # Upload screenshot to Cloudinary
+            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
+            self.screenshot = uploaded_image['url']
+
+            super().save(update_fields=['screenshot'])  # Save only the screenshot field
+        except Exception as e:
+            print(f"Error taking screenshot: {e}")
+
 class AgentHouseImage(models.Model):
     house = models.ForeignKey(AgentHouse, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="agent_houses/images/")
+    image = CloudinaryField('image', folder="agenthouses") 
 
     def __str__(self):
         return f"Image for {self.house.Caption}"
     
 class AgentLandImage(models.Model):
     land = models.ForeignKey(AgentLand, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="agent_land/images/")
+    image = CloudinaryField('image', folder="agentlands")
 
     def __str__(self):
         return f"Image for {self.land.Caption}"
    
 class AgentCommercialImage(models.Model):
     com = models.ForeignKey(AgentCommercial, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="agent_com/images/")
+    image = CloudinaryField('image', folder="agentcommercial")
 
     def __str__(self):
         return f"Image for {self.com.Caption}"
    
 class AgentOffPlanImage(models.Model):
     offplan = models.ForeignKey(AgentOffPlan, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="agent_off/images/")
+    image = CloudinaryField('image', folder="agentoffplan")
     def __str__(self):
         return f"Image for {self.offplan.Caption}"
 

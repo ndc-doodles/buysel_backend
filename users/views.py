@@ -57,7 +57,7 @@ def index(request):
         model2_objects = list(Land.objects.filter(id__isnull=False)[:2])
         model3_objects = list(Commercial.objects.all()[:2])
         model4_objects = list(OffPlan.objects.all()[:2])
-        model5_objects = list(AgentHouse.objects.all()[:2])
+        model5_objects = AgentHouse.objects.prefetch_related(Prefetch('images', queryset=AgentHouseImage.objects.all()))[:2]
         model6_objects = list(AgentLand.objects.all()[:2])
         model7_objects = list(AgentOffPlan.objects.all()[:2])
         model8_objects = list(AgentCommercial.objects.all()[:2])
@@ -463,16 +463,3 @@ def propertice(request):
 
 
 
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
-def save_screenshot(request):
-    if request.method == "POST" and request.FILES.get("screenshot"):
-        return JsonResponse({"status": "success", "message": "Screenshot received!"})
-
-    return JsonResponse({"status": "error", "message": "Invalid request"})
-
-def shareimg(request):
-    return render(request, 'imageshare.html')

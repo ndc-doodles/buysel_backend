@@ -15,8 +15,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %} " />
-    <script src="{% static 'js/faq.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <!-- <script src="{% static 'js/faq.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script> -->
+    <script src="{% static 'js/faq.js'%}"></script>
     <style>
         .logo{
           margin-left: 3.938rem;
@@ -146,7 +147,7 @@
 
 
 
-<div class="w-full h-96 mt-20 flex flex-col lg:flex-row justify-between gap-10 max-md:gap-0">
+<div class="w-full h-auto mt-20 flex flex-col lg:flex-row justify-between gap-10 max-md:gap-0 ">
 
     <div class="w-full lg:w-3/5 mx-auto lg:flex-col lg:items-center lg:hidden max-md:mt-0">
         <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 px-10">
@@ -208,7 +209,7 @@
           <h1 class="font-bold text-xl" id="buyers">For Buyers</h1>
       </div>
   
-      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer" data-faq="faq-3">
+      <div class="w-1/2 h-full flex items-center justify-center word-item cursor-pointer " data-faq="faq-3">
           <h1 class="font-bold text-xl" id="sellers">For Sellers</h1>
       </div>
   
@@ -228,12 +229,12 @@
   
     <div class=" w-full h-full flex items-center  lg:pb-0 ">
       
-        <div class="faq-outer  w-full h-full">
+        <div class="faq-outer  w-full h-fit">
           <div class="faq-questions" id="faq-content">
             <div class="faq-item">
               <div class="faq-question">
                 <span>Can I sell both residential and commercial properties on Buysel.in?</span>
-                <img src="{% static 'img/Vector.svg'%}" alt="Expand" class="toggle-icon" />
+                <img id="" src="{% static 'img/Vector.svg'%}" alt="Expand" class="toggle-icon" />
               </div>
               <div class="faq-answer-content" style="display: none">
                 <p>Yes, you can list both residential and commercial properties for sale, rent, or lease.</p>
@@ -258,7 +259,7 @@
 
 
 
-<footer style="background-color: white; padding: 30px 0;height: 42rem;" class="mt-28 max-md:mt-[20rem]">
+<footer style="background-color: white; padding: 30px 0;" class="mt-28 max-md:mt-[20rem]">
     <div class="footer-content">
       
       <div class="contact-details"> 
@@ -336,6 +337,6 @@
 </script>
 
 
-<script src="./asset/js/faq.js"></script>
+
 </body>
 </html>

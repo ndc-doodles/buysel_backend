@@ -307,7 +307,7 @@
         border: none;
         border-radius: 64%;
         height: 1.7rem;
-        width: 2rem;
+        width: 1.7rem;
         text-align: center;
         align-content: center;
         margin-top: 0.7rem;
@@ -456,6 +456,7 @@
 
 
 
+ 
 <section>
 
   <div class="properties pt-5 " id="properties">
@@ -470,11 +471,8 @@
 
       <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Lease"
         onclick="filterProperties('Lease')">Lease</button>
-      {% comment %} <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
-        onclick="filterProperties('Resell')" style="opacity: 0.6;cursor: not-allowed;">Resell</button> {% endcomment %}
-
       <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
-        style="opacity: 0.6;cursor: not-allowed;">Resell</button>
+        onclick="filterProperties('Resell')">Resell</button>
 
     </div>
     <script>
@@ -499,47 +497,41 @@
       {% for i in model5_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agenthouse' object_id=i.id" class="card" data-category="{{ i.category }}">
-
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
-              {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='agenthouse' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=agenthouse&object_id={{ i.id }}"
-              data-url="https://buysel.in/?model_name=agenthouse={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
-            </button>
-            <div class="property-card-img">
-              {% with i.images.first as img %}
-              {% if img %}
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
-              {% else %}
-              <p>No images available</p>
-              {% endif %}
-              {% endwith %}
-            </div>
-           
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-              </p>
-            </div>
-            <hr>
-
-            <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
-              <h5>View More</h5>
-            </a>
-            <div class="cr-loc">
-              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address| slice:":50"}}</span>
-            </div>
-
+          <div id="model_name='agenthouse' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div> <hr>
+              <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+                <h5>View More</h5>
+              </a>  
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
             <div class="card-body">
-
+              
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
                       style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
@@ -560,50 +552,71 @@
           </div>
         </div>
       </div>
+      <div id="share-btn-modal-{{i.id}}" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailagenthouse/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailagenthouse/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
       {% endfor %}
-
-
 
       {% for i in model6_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentland' object_id=i.id" class="card" data-category="{{ i.category }}">
-
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
-              {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='agentland' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=agentland={{ i.id }}"
-              data-url="https://buysel.in/?model_name=agentland={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
-            </button>
-            <div class="property-card-img">
-              {% for img in i.images.all %}
-
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
-              {% empty %}
-
-              {% endfor %}
-            </div>
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-            </div>
-            <hr>
-            <a href="{% url 'detail_view' model_name='agentland' object_id=i.id %}" class="view">
-              <h5>View Details</h5>
-            </a>
-            <div class="cr-loc">
-              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address}}</span>
-            </div>
-
+          <div id="model_name='agentland' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
+              <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
+                <h5>View More</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
             <div class="card-body">
-
+              
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
@@ -625,42 +638,155 @@
           </div>
         </div>
       </div>
+      <div id="share-btn-modal-{{i.id}}" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailagentland/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailagentland/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
       {% endfor %}
 
       {% for i in model7_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentcommercial' object_id=i.id" class="card" data-category="{{ i.category }}">
-            <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')">
+          <div id="model_name='agentcommercial' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
                 {{i.category}}</div>
-              <button class="share-btn" data-id="model_name='agentcommercial' object_id=i.id"
-                data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/#model_name='agentcommercial' object_id=i.id"
-                data-url="https://buysel.in/?model_name=agentcommercial={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
-              </button>
-              <div class="property-card-img">
-                {% if i.images.first %}
-                <img src="{{ i.images.first.image.url }}" alt="House Image">
-                {% endif %}
-              </div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
               <h2>{{i.Caption}}</h2>
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-              <hr>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
               <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
 
-                <div class="cr-loc">
-                  <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                  <span>{{i.address}}</span>
-                </div>
-            </div>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
+            <!-- </div> -->
             <div class="card-body">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                <div class="price-box">
+                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                </div>
+                <div class="connect-act">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                    class="msg-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
 
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailagentcommercial/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailagentcommercial/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
+      {% endfor %}
+
+      {% for i in model8_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div id="model_name='agentoffplan' object_id=i.id " class="card" data-category="{{ i.category }}">
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div><hr>
+              <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address|truncatechars:15}}</span>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+              
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
@@ -683,68 +809,32 @@
         </div>
       </div>
 
-      {% endfor %}
+      <div id="share-btn-modal-{{i.id}}" class="modal">
 
-      {% for i in model8_objects %}
-      <div class="property-cards-agent">
-        <div class="card-container">
-          <div id="model_name='agentoffplan' object_id=i.id" class="card" data-category="{{ i.category }}">
-
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
-              {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='agentoffplan' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=offplan={{ i.id }}"
-              data-url="https://buysel.in/?model_name=agentoffplan={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
-            </button>
-            <div class="property-card-img">
-
-              <img src="{{i.image1.url}}" alt="">
-
-            </div>
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-            </div>
-            <hr>
-
-            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
-
-
-              <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                <span>{{i.address}}</span>
-              </div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailagentoffplan/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
           </div>
-          <div class="card-body">
-
-            <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-              <div class="price-box">
-                <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                    style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-              </div>
-              <div class="connect-act">
-                <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                  class="msg-btn">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                  <i class="fa-solid fa-phone"></i>
-                </a>
-
-              </div>
-
-            </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
           </div>
-
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailagentoffplan/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
         </div>
       </div>
-     
-      
 
       {% endfor %}
 
@@ -760,52 +850,43 @@
       {% for i in model2_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='land' object_id=i.id" class="card" data-category="{{ i.category }}">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 1;">
-              {{i.category}}</div>
-          
-            <button class="share-btn" id="share-btn-modal">
-              <i class="fa-solid fa-share-nodes"></i>
-            </button>
-            <div class="property-card-img">
-              {% with i.images.first as img %}
-              {% if img %}
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
-              {% else %}
-              <p>No images available</p>
-              {% endif %}
-              {% endwith %}
-            </div>
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
               <p>
                 <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-            </div>
-            <hr>
-            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
-              <h5>View Details</h5>
-
-            </a>
-
-
-            <div class="cr-loc">
-              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address}}</span>
-            </div>
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+              </p> <hr>
+              <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view"><h5>View Details</h5> </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address | slice:":20"}}</span>
+              </div>
             <!-- </div> -->
             <div class="card-body">
-
+              
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
                       style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                 </div>
                 <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '+91{{ i.location }}', '{{ i.contact }}')"
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
                     class="msg-btn">
                     <i class="fa-brands fa-whatsapp"></i>
                   </div>
@@ -821,10 +902,32 @@
         </div>
       </div>
 
-     
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailland/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailland/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
       </div>
-
-
 
       {% endfor %}
 
@@ -832,14 +935,14 @@
       {% for i in model1_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}">
+          <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}" data-house-id="{{ i.id }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
             <div class="sale-banner"
               style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 1;">
               {{i.category}}</div>
            
             <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-              <i class="fa-solid fa-share-nodes"></i>
+              <i class="ph ph-share-fat"></i>
             </button>
            
             <div class="property-card-img">
@@ -851,22 +954,6 @@
                   <p>No image found</p>
               {% endif %}
               {% endwith %}
-              <!-- {% with i.images.first as img %}
-            {% if img %}
-              <img onclick="handleImage('{{ img.image.url }}')" 
-                src="{{ img.image.url }}" 
-                alt="House Image">
-           
-            {% endif %}
-          {% endwith %} -->
-              <!-- {% with i.images.first as img %}
-              {% if img %}
-              <img onclick="handleImage('{{ img.image.url }}')" src="{{ img.image.url }}" alt="House Image" width="200">
-              {% else %}
-              <p>No images available</p>
-              {% endif %}
-              {% endwith %} -->
-
             </div>
             <h2>{{i.Caption}}</h2>
             <div class="paragraph">
@@ -884,7 +971,7 @@
 
             <div class="cr-loc">
               <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address}}</span>
+              <span>{{i.address|truncatechars:20}}</span>
             </div>
             <!-- </div> -->
             <div class="card-body">
@@ -917,19 +1004,19 @@
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
           <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-           <i class="ph ph-whatsapp-logo "></i><p>Whats App</p>
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-            <i class="ph ph-facebook-logo"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-            <i class="ph ph-x-logo"></i><p>Twitter</p>
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
           </div>
           <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-            <i class="ph ph-telegram-logo"></i></i><p>Telegram</p>
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
           </div>
           <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailhouse/{{ i.id|urlencode }}')">
-            <i class="ph ph-linkedin-logo"></i></i><p>Linked in</p>
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
           </div>
           
          
@@ -941,56 +1028,54 @@
 
 
       {% endfor %}
-      
+
+
+
       {% for i in model3_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='commercial' object_id=i.id" class="card" data-category="{{ i.category }}">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
-              {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='commercial' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices. https://buysel.in/?model_name=commercial={{ i.id }}"
-              data-url="https://buysel.in/?model_name=commercial={{ i.id }}"><i
-                class="fa-solid fa-share-nodes"></i>
-
-            </button>
-            <div class="property-card-img">
-              {% with i.images.first as img %}
-              {% if img %}
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
-              {% else %}
-              <p>No images available</p>
-              {% endif %}
-              {% endwith %}
-            </div>
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-            </div>
-            <hr>
-            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
-              <h5>View Details</h5>
-            </a>
-            <div class="cr-loc">
-              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address}}</span>
-            </div>
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+               
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p> 
+                </div> <hr>
+              <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
             <!-- </div> -->
             <div class="card-body">
-
-              <div class="action" style="display: flex !important; gap: 1rem;font-size: 15px;">
+              
+              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
                 <div class="price-box">
                   <p style="font-size: 14px; font-weight: bold; ">Price: <span
                       style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                 </div>
-
                 <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
                     class="msg-btn">
                     <i class="fa-brands fa-whatsapp"></i>
                   </div>
@@ -1005,6 +1090,35 @@
           </div>
         </div>
       </div>
+
+
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailcommercial/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailcommercial/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
+
       {% endfor %}
 
 
@@ -1012,79 +1126,97 @@
 
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='offplan' object_id=i.id" class="card" data-category="{{ i.category }}">
+          <div id="{{i.uuid}} " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
-              {{i.category}}</div>
-            <button class="share-btn" data-id="model_name='offplan' object_id=i.id"
-              data-message="Looking to buy or sell property? buysel.in offers great deals for buyers and quick listings for sellers. Find homes, apartments, and commercial spaces at the best prices.https://buysel.in/?model_name=offplan={{ i.id }}"
-              data-url="https://buysel.in/?model_name=offplan={{ i.id }}"><i class="fa-solid fa-share-nodes"></i>
-
-            </button>
-            <div class="property-card-img">
-              {% with i.images.first as img %}
-              {% if img %}
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
-              {% else %}
-              <p>No images available</p>
-              {% endif %}
-              {% endwith %}
-            </div>
-            <h2>{{i.Caption}}</h2>
-            <div class="paragraph">
+              <div class="sale-banner"
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                {{i.category}}</div>
+                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                  <i class="ph ph-share-fat"></i>
+                </button>
+               
+                <div class="property-card-img">
+                  {% with i.images.first as img %}
+                  {% if img %}
+                  <img src="{{ img.image.url }}" alt="House Image" width="200">
+                  {% else %}
+                  <p>No images available</p>
+                  {% endif %}
+                  {% endwith %}
+                </div>
+              <h2>{{i.Caption}}</h2>
+              <div class="paragraph">
               <p>
                 <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption}}</span>
-              </p>
-            </div>
-            <hr>
-            <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
-              <h5>View Details</h5>
-            </a>
-            <div class="cr-loc">
-              <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-              <span>{{i.address}}</span>
-
-            </div>
+                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+              </p> 
+              </div><hr>
+              <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+              </a>
+              <div class="cr-loc">
+                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <span>{{i.address}}</span>
+              </div>
             <!-- </div> -->
             <div class="card-body">
-
+              
               <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
                 <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                <p style="font-size: 14px; font-weight: bold; ">Price: <span style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
 
                 </div>
                 <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
-                    class="msg-btn">
+                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')" class="msg-btn" >
                     <i class="fa-brands fa-whatsapp"></i>
                   </div>
-                  <a href="tel:+91{{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>  Call Now 
                   </a>
-
+                    
                 </div>
-
+                
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
+          <div class="share-opt" onclick="handleImage('whatsapp','https://anjanarealestates.com/detailoffplan/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('fb','https://anjanarealestates.com/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('x','https://anjanarealestates.com/detailoffplan/{{ i.id|urlencode }}')">
+           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('telegram','https://anjanarealestates.com/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          </div>
+          <div class="share-opt" onclick="handleImage('linkedin','https://anjanarealestates.com/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          </div>
+          
+         
+        
+          
+        </div>
+      </div>
+
       {% endfor %}
     </div>
-
-    
   </div>
+
   <div class="property-actions">
     <a href="properties" class="more-property">More Properties</a>
   </div>
-  
 </section>
-
-
 
 
 
@@ -1582,28 +1714,6 @@
 
 <script>
   // Get the modal
-
-  function controlShareButton(id){
-    console.log(id,'this is id');
-    
-  var modal = document.getElementById(`share-btn-modal-${id}`);
-  
-  const allModal = document.querySelectorAll('.modal')
-  
-  allModal.forEach(element => {
-    console.log(element);
-    
-    element.style.display = 'none'
-  });
-  
-  modal.style.display = "block";
-  }
-
-
-  function handleModalClose(id){
-    const closingModal = document.getElementById(`share-btn-modal-${id}`)
-    closingModal.style.display = 'none'
-  }
 
 
 </script>

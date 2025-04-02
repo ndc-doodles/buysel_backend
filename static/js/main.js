@@ -261,3 +261,24 @@ function handleImage(media,url){
 
 
    
+  function controlShareButton(id){
+    console.log(id,'this is id');
+    
+  var modal = document.getElementById(`share-btn-modal-${id}`);
+  
+  const allModal = document.querySelectorAll('.modal')
+  
+  allModal.forEach(element => {
+    console.log(element);
+    
+    element.style.display = 'none'
+  });
+  
+  modal.style.display = "block";
+  }
+
+
+  function handleModalClose(id){
+    const closingModal = document.getElementById(`share-btn-modal-${id}`)
+    closingModal.style.display = 'none'
+  }
