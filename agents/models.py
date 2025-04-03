@@ -75,7 +75,7 @@ class AgentHouse(models.Model):
 
     def take_screenshot(self):
         """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        listing_url = "https://buysel.in/properties "  # Your website URL
         screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
 
         with sync_playwright() as p:
@@ -153,7 +153,7 @@ class AgentLand(models.Model):
     
     def take_screenshot(self):
         """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        listing_url = "https://buysel.in/properties "  # Your website URL
         screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
 
         with sync_playwright() as p:
@@ -228,7 +228,7 @@ class AgentCommercial(models.Model):
 
     def take_screenshot(self):
         """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        listing_url = "https://buysel.in/properties "  # Your website URL
         screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
 
         with sync_playwright() as p:
@@ -305,7 +305,7 @@ class AgentOffPlan(models.Model):
 
     def take_screenshot(self):
         """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "http://127.0.0.1:8000/properties "  # Your website URL
+        listing_url = "https://buysel.in/properties "  # Your website URL
         screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
 
         with sync_playwright() as p:
