@@ -1,6 +1,7 @@
 from django.urls import path
 # from . views import *
 from . import views
+# from .views import save_screenshot
 
 urlpatterns = [
     path("",views.index, name="index"),
@@ -23,7 +24,7 @@ urlpatterns = [
     # path("share_property/", views.share_property, name="share_property"),
     # path("save-screenshot/", views.save_screenshot, name="save_screenshot"),
     # path("share-img/", views.shareimg, name="shareimg"),
-    
+    # path("save-screenshot/", save_screenshot, name="save_screenshot"),
 
 
     # path('message/', views.message_view, name='message_view'),

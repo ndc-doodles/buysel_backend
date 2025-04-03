@@ -4,6 +4,13 @@ from cloudinary.models import CloudinaryField
 import cloudinary.uploader
 from playwright.sync_api import sync_playwright
 import time
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+
 # Create your models here.
 class MainCategory(models.Model):
     SALE = 'Sale'
@@ -66,50 +73,6 @@ class House(models.Model):
         return f"{self.Caption} - {self.username}"
     
 
-    def take_screenshot(self):
-        """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "https://buysel.in/properties"  # Your website URL
-        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
-
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(listing_url, wait_until="load")
-
-            # Give the page some time to fully render
-            time.sleep(2)
-
-            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
-            card_selector = f"div[data-house-id='{self.id}']"
-
-            # Debugging - Check if the element is found
-            elements = page.locator(card_selector).count()
-            print(f"Found {elements} elements with selector {card_selector}")
-
-            if elements > 0:
-                page.locator(card_selector).screenshot(path=screenshot_path)
-            else:
-                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
-                page.screenshot(path=screenshot_path, full_page=True)
-
-            browser.close()
-
-        return screenshot_path
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Save the House instance first
-
-        try:
-            screenshot_path = self.take_screenshot()
-
-            # Upload screenshot to Cloudinary
-            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
-            self.screenshot = uploaded_image['url']
-
-            super().save(update_fields=['screenshot'])  # Save only the screenshot field
-        except Exception as e:
-            print(f"Error taking screenshot: {e}")
-
 class HouseImage(models.Model):
     house = models.ForeignKey(House, related_name='images', on_delete=models.CASCADE)
     image = CloudinaryField('image', folder="houses")   # Multiple images for the house
@@ -152,50 +115,7 @@ class Land(models.Model):
     
 
     
-    def take_screenshot(self):
-        """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "https://buysel.in/properties"  # Your website URL
-        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
-
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(listing_url, wait_until="load")
-
-            # Give the page some time to fully render
-            time.sleep(2)
-
-            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
-            card_selector = f"div[data-land-id='{self.id}']"
-
-            # Debugging - Check if the element is found
-            elements = page.locator(card_selector).count()
-            print(f"Found {elements} elements with selector {card_selector}")
-
-            if elements > 0:
-                page.locator(card_selector).screenshot(path=screenshot_path)
-            else:
-                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
-                page.screenshot(path=screenshot_path, full_page=True)
-
-            browser.close()
-
-        return screenshot_path
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Save the House instance first
-
-        try:
-            screenshot_path = self.take_screenshot()
-
-            # Upload screenshot to Cloudinary
-            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
-            self.screenshot = uploaded_image['url']
-
-            super().save(update_fields=['screenshot'])  # Save only the screenshot field
-        except Exception as e:
-            print(f"Error taking screenshot: {e}")
-
+  
 
 class LandImage(models.Model):
     land = models.ForeignKey(Land, related_name='images', on_delete=models.CASCADE)
@@ -235,50 +155,7 @@ class Commercial(models.Model):
         return f"{self.Caption} - {self.username}"
     
     
-    def take_screenshot(self):
-        """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "https://buysel.in/properties"  # Your website URL
-        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
-
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(listing_url, wait_until="load")
-
-            # Give the page some time to fully render
-            time.sleep(2)
-
-            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
-            card_selector = f"div[data-com-id='{self.id}']"
-
-            # Debugging - Check if the element is found
-            elements = page.locator(card_selector).count()
-            print(f"Found {elements} elements with selector {card_selector}")
-
-            if elements > 0:
-                page.locator(card_selector).screenshot(path=screenshot_path)
-            else:
-                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
-                page.screenshot(path=screenshot_path, full_page=True)
-
-            browser.close()
-
-        return screenshot_path
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Save the House instance first
-
-        try:
-            screenshot_path = self.take_screenshot()
-
-            # Upload screenshot to Cloudinary
-            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
-            self.screenshot = uploaded_image['url']
-
-            super().save(update_fields=['screenshot'])  # Save only the screenshot field
-        except Exception as e:
-            print(f"Error taking screenshot: {e}")
-
+  
 
 class CommercialImage(models.Model):
     commercial = models.ForeignKey(Commercial, related_name='images', on_delete=models.CASCADE)
@@ -316,52 +193,7 @@ class OffPlan(models.Model):
     def __str__(self):
         return f"{self.Caption} - {self.username}"
 
-    
-    def take_screenshot(self):
-        """Captures a screenshot of the specific property card using Playwright"""
-        listing_url = "https://buysel.in/properties"  # Your website URL
-        screenshot_path = f"/tmp/{self.id}.png"  # Temporary storage
-
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(listing_url, wait_until="load")
-
-            # Give the page some time to fully render
-            time.sleep(2)
-
-            # Selector for the card (Make sure the template has data-house-id="{{ i.id }}")
-            card_selector = f"div[data-offplan-id='{self.id}']"
-
-            # Debugging - Check if the element is found
-            elements = page.locator(card_selector).count()
-            print(f"Found {elements} elements with selector {card_selector}")
-
-            if elements > 0:
-                page.locator(card_selector).screenshot(path=screenshot_path)
-            else:
-                print(f"Element not found: {card_selector}, taking full page screenshot instead.")
-                page.screenshot(path=screenshot_path, full_page=True)
-
-            browser.close()
-
-        return screenshot_path
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Save the House instance first
-
-        try:
-            screenshot_path = self.take_screenshot()
-
-            # Upload screenshot to Cloudinary
-            uploaded_image = cloudinary.uploader.upload(screenshot_path, folder="screenshots")
-            self.screenshot = uploaded_image['url']
-
-            super().save(update_fields=['screenshot'])  # Save only the screenshot field
-        except Exception as e:
-            print(f"Error taking screenshot: {e}")
-
-
+   
 
 
 class OffplanImage(models.Model):

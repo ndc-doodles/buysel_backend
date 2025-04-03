@@ -1,6 +1,8 @@
 # admin.py
 from django.contrib import admin
 from .models import *
+from django.utils.html import format_html
+
 
 # Define the action
 def disable_selected(modeladmin, request, queryset):
@@ -175,6 +177,24 @@ admin.site.register(Propertylist)
 admin.site.register(Blog)
 admin.site.register(HouseImage)
 
+
+class ScreenshotAdminMixin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        
+        # Add JS trigger to take screenshot
+        js = f"""
+        <script>
+            setTimeout(function() {{
+                captureScreenshotAndUpload('{obj.id}', '{obj.id}', '{obj.__class__.__name__.lower()}');
+            }}, 1000);
+        </script>
+        """
+        self.message_user(request, format_html(js))
+
+
+
 admin.site.site_header = "Buysel"
 admin.site.site_title = "Buysel admin"
 admin.site.index_title = "Welcome to Buysel Administration"
+

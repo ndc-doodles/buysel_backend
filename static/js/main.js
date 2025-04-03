@@ -282,3 +282,55 @@ function handleImage(media,url){
     const closingModal = document.getElementById(`share-btn-modal-${id}`)
     closingModal.style.display = 'none'
   }
+
+
+
+
+  function captureScreenshotAndUpload(elementId, objectId, modelName) {
+    let element = document.getElementById(elementId);
+    
+    if (!element) {
+        console.error("Element not found:", elementId);
+        return;
+    }
+
+    html2canvas(element).then(canvas => {
+        canvas.toBlob(blob => {
+            let formData = new FormData();
+            formData.append("screenshot", blob, "screenshot.png");
+            formData.append("object_id", objectId);
+            formData.append("model_name", modelName);
+
+            fetch("/save-screenshot/", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken")
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log("Screenshot uploaded successfully!");
+                } else {
+                    console.error("Upload failed:", data.error);
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }, "image/png");
+    });
+}
+
+// CSRF token helper function (needed for Django)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        document.cookie.split(';').forEach(cookie => {
+            let trimmedCookie = cookie.trim();
+            if (trimmedCookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(trimmedCookie.substring(name.length + 1));
+            }
+        });
+    }
+    return cookieValue;
+}

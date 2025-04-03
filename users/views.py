@@ -15,9 +15,13 @@ from math import radians, cos, sin, sqrt, atan2
 import uuid
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.db.models import Prefetch
 
+from django.db.models import Prefetch
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.views import View
+from cloudinary.uploader import upload
 
 
 
@@ -461,5 +465,23 @@ def propertice(request):
 
 #     return JsonResponse({"success": False, "error": "Invalid request"})
 
+# @csrf_exempt
+# def save_screenshot(request):
+#     if request.method == "POST":
+#         try:
+#             data = json.loads(request.body)  # Convert JSON request to Python dict
+            
+#             model_name = data.get("model_name")
+#             object_id = data.get("object_id")
 
+#             if not model_name or not object_id:
+#                 return JsonResponse({"error": "Missing model_name or object_id"}, status=400)
 
+#             # Add screenshot saving logic here
+
+#             return JsonResponse({"success": "Screenshot saved successfully!"})
+
+#         except json.JSONDecodeError:
+#             return JsonResponse({"error": "Invalid JSON format"}, status=400)
+
+#     return JsonResponse({"error": "Invalid request"}, status=400)
