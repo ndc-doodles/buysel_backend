@@ -43,9 +43,15 @@ INSTALLED_APPS = [
     'developer',
     'agents',
     "cloudinary",
-    "cloudinary_storage",  
-
+    "cloudinary_storage", 
+    "corsheaders",
     
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://buysel.in",
+    "https://www.buysel.in"
 ]
 
 MIDDLEWARE = [
