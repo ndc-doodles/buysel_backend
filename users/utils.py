@@ -1,4 +1,3 @@
-# users/utils.py
 from playwright.sync_api import sync_playwright
 from cloudinary.uploader import upload
 import tempfile
@@ -8,8 +7,8 @@ def capture_screenshot_and_upload(url: str):
         browser = p.chromium.launch(headless=True)  # Launch browser in headless mode
         page = browser.new_page()  # Create a new page
 
-        # Increase the timeout to 60 seconds (60000 milliseconds)
-        page.goto(url, timeout=60000)  
+        # Navigate to the URL and wait until the network is idle
+        page.goto(url, timeout=60000, wait_until="domcontentloaded")  
 
         screenshot = page.screenshot()  # Take a screenshot of the page
         browser.close()  # Close the browser
