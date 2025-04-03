@@ -5,17 +5,20 @@ import tempfile
 
 def capture_screenshot_and_upload(url: str):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)  # Launching browser in headless mode
+        browser = p.chromium.launch(headless=True)  # Launch browser in headless mode
         page = browser.new_page()  # Create a new page
-        page.goto(url)  # Navigating to the provided URL
-        screenshot = page.screenshot()  # Taking a screenshot of the page
-        browser.close()  # Closing the browser
 
-    # Saving the screenshot to a temporary file
+        # Increase the timeout to 60 seconds (60000 milliseconds)
+        page.goto(url, timeout=60000)  
+
+        screenshot = page.screenshot()  # Take a screenshot of the page
+        browser.close()  # Close the browser
+
+    # Save the screenshot to a temporary file
     with tempfile.NamedTemporaryFile(delete=False) as tmpfile:
-        tmpfile.write(screenshot)  # Writing the screenshot to the temporary file
+        tmpfile.write(screenshot)  # Write the screenshot to the temporary file
         tmpfile.close()
 
-        # Uploading the screenshot to Cloudinary and returning the URL
+        # Upload the screenshot to Cloudinary and return the URL
         response = upload(tmpfile.name, folder="houses/screenshot")
-        return response['secure_url']  # The URL to the uploaded image
+        return response['secure_url']
