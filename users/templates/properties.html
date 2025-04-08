@@ -20,6 +20,13 @@
     width: fit-content;
     margin-inline: auto;
   }
+  h2{
+    color: #050505;
+  }
+  hr{
+    color: black;
+    font-size: 10px;
+  }
 
   .add-property-btn {
     padding-inline: 10px;
@@ -226,122 +233,132 @@
 
 
     <div class="row-properties">
-
       {% for i in model5_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agenthouse' object_id=i.id " class="card" data-category="{{ i.category }}" data-agenthouse-id="{{ i.id }}">
+          <div id="model_name='agenthouse' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                    {% with i.images.first as img %}
-                    {% if img %}
-                      <img src="{{ img.image.url }}" alt="House Image" width="200">
-                    {% else %}
-                      <p>No images available</p>
-                    {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div> <hr>
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":10"}}</span>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
                 <h5>View More</h5>
-              </a>  
+              </a>
               <div class="cr-loc">
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
-
       <div id="share-btn-modal-{{i.id}}" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
-
       {% endfor %}
 
       {% for i in model6_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentland' object_id=i.id " class="card" data-category="{{ i.category }}" data-agentland-id="{{ i.id }}">
+          <div id="model_name='agentland' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2>{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div><hr>
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":30"}}</span>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
                 <h5>View More</h5>
               </a>
@@ -349,230 +366,262 @@
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
-
       <div id="share-btn-modal-{{i.id}}" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
-
       {% endfor %}
 
       {% for i in model7_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentcommercial' object_id=i.id " class="card" data-category="{{ i.category }}" data-agentcom-id="{{ i.id }}">
+          <div id="model_name='agentcommercial' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2>{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
                   <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div><hr>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
-
+                <h5>View More</h5>
+              </a>
               <div class="cr-loc">
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
-
       <div id="share-btn-modal-{{i.id}}" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          <div class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+          <div class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
-
       {% endfor %}
 
       {% for i in model8_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentoffplan' object_id=i.id " class="card" data-category="{{ i.category }}" data-agentoffplan-id="{{ i.id }}">
+          <div id="model_name='agentoffplan' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
                   <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div><hr>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+                <h5>View More</h5>
+              </a>
 
               <div class="cr-loc">
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address|truncatechars:15}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
-
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+          <div class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
 
@@ -590,54 +639,60 @@
       {% for i in model2_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}" data-land-id="{{ i.id }}">
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-              </p> <hr>
-              <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view"><h5>View Details</h5> </a>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2 >{{i.Caption | slice:":30"}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":20"}}</span>
+                </p>
+              </div><hr>
+              <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+              </a>
               <div class="cr-loc">
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address | slice:":20"}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -648,24 +703,29 @@
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
           <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailland/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailland/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
           <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
           <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
 
@@ -675,57 +735,68 @@
       {% for i in model1_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}" data-house-id="{{ i.id }}">
+          <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}"
+            data-house-id="{{ i.id }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" >
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+
+                <img src="{{ img.image.url }}" alt="House Image">
+                {% else %}
+                <p>No image found</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div> <hr>
-              
-              <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" class="view"><h5>View Details</h5> </a>
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":10"}}</span>
+                </p>
+              </div>
+              <hr>
+              <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" class="view">
+                <h5>View Details</h5>
+
+              </a>
+
+
               <div class="cr-loc">
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                <span>{{i.address | slice:":20"}}</span>
+                <span>{{i.address|truncatechars:20}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -736,57 +807,68 @@
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
           <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
           <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
           <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
 
 
+
       {% endfor %}
+
+
 
       {% for i in model3_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}" data-com-id="{{ i.id }}" >
+          <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
                   <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-                </p> 
-                </div> <hr>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
                 <h5>View Details</h5>
               </a>
@@ -794,58 +876,67 @@
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                  <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                      style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                    class="msg-btn">
-                    <i class="fa-brands fa-whatsapp"></i>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
                   </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>
-                  </a>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
+
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
-
 
       {% endfor %}
 
@@ -854,30 +945,33 @@
 
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="{{i.uuid}} " class="card" data-category="{{ i.category }}" data-offplan-id="{{ i.id }}">
+          <div id="{{i.uuid}} " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+            <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
               <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; z-index: 10;">
+                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
-                <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                  <i class="ph ph-share-fat"></i>
-                </button>
-                <div class="property-card-img">
-                  {% with i.images.first as img %}
-                  {% if img %}
-                  <img src="{{ img.image.url }}" alt="House Image" width="200">
-                  {% else %}
-                  <p>No images available</p>
-                  {% endif %}
-                  {% endwith %}
-                </div>
-              <h2>{{i.Caption}}</h2>
+              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+                <i class="ph ph-share-fat"></i>
+              </button>
+
+              <div class="property-card-img">
+                {% with i.images.first as img %}
+                {% if img %}
+                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% else %}
+                <p>No images available</p>
+                {% endif %}
+                {% endwith %}
+              </div>
+              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
-              <p>
-                <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
-              </p> 
-              </div><hr>
+                <p>
+                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                </p>
+              </div>
+              <hr>
               <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
                 <h5>View Details</h5>
               </a>
@@ -885,26 +979,29 @@
                 <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
                 <span>{{i.address}}</span>
               </div>
-            <!-- </div> -->
-            <div class="card-body">
-              
-              <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                <div class="price-box">
-                <p style="font-size: 14px; font-weight: bold; ">Price: <span style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+              <!-- </div> -->
+              <div class="card-body">
+
+                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                  <div class="price-box">
+                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+
+                  </div>
+                  <div class="connect-act">
+                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
+                      class="msg-btn">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                      <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+
+                  </div>
 
                 </div>
-                <div class="connect-act">
-                  <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')" class="msg-btn" >
-                    <i class="fa-brands fa-whatsapp"></i>
-                  </div>
-                  <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                    <i class="fa-solid fa-phone"></i>  Call Now 
-                  </a>
-                    
-                </div>
-                
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -914,25 +1011,33 @@
         <!-- Modal content -->
         <div class="modal-content">
           <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-whatsapp"></i><p>Whats App</p>
+          <div class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
           </div>
           <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i> <p>Facebook</p>
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
           </div>
           <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
-           <i class="fa-brands fa-square-x-twitter"></i><p>Twitter</p>
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i><p>Telegram</p>
+          <div class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i><p>Linked in</p>
+          <div class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
           </div>
-          
-         
-        
-          
+
+
+
+
         </div>
       </div>
 

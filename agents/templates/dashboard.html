@@ -3,14 +3,23 @@
 
 
 {% block content %}
+
+<style>
+  .property-row{
+    display: flex;
+    gap: 6rem;
+    justify-content: center;
+}
+</style>
+
     <div class="container">
     <div class="content">
       <div class="head">
         <h1>Hi {{username}}</h1>
       </div>
       <div class="count-sec">
-        <div class="row">
-            <div class="col-lg-3">
+        <div class="property-row">
+           
               <a href="house-list"> 
                 <div class="property-box">
                   <img src="{% static 'img/home-01.png' %}" alt="">
@@ -18,8 +27,8 @@
                 </div>
               </a>
           
-            </div>
-            <div class="col-lg-3">
+          
+         
               <a href="land-list"> 
                 <div class="property-box">
                   <img src="{% static 'img/land5.jpg' %}" alt="">
@@ -27,8 +36,8 @@
                 </div>
               </a>
           
-            </div>
-            <div class="col-lg-3">
+       
+         
               <a href="com-list"> 
                 <div class="property-box">
                   <img src="{% static 'img/com.jpg' %}" alt="">
@@ -36,8 +45,8 @@
                 </div>
               </a>
           
-            </div>
-            <div class="col-lg-3">
+
+         
               <a href="off-list"> 
                 <div class="property-box">
                   <img src="{% static 'img/off.jpg' %}" alt="">

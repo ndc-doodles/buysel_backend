@@ -278,6 +278,7 @@ label[for=nav-toggle] {
   flex-direction: column;
   z-index: 2;
   transition: width 0.2s, height 0.2s;
+  align-self: anchor-center;
 }
 
 #nav-footer-heading {
@@ -428,6 +429,7 @@ a{text-decoration: none;}
   margin-top: 5rem;
   box-shadow: rgba(34, 190, 55, 0.116) -4px 9px 25px -6px;
   padding-bottom: 2rem;
+  width: 15rem;
   
 }
 .nav-content hr{
@@ -619,10 +621,7 @@ label{
     display: none; 
   }
 
-  .login-box {
-    width: 80%; 
-   /* Login box becomes wider on smaller screens */
-  }
+ 
  
 }
 
@@ -630,7 +629,7 @@ label{
   .login-img img {
     width: 20rem; /* Smaller image on very small screens */
   }
-  
+
  
  
 }
@@ -639,11 +638,68 @@ label{
   .login-page{
     gap: 2rem !important;
 }
-.login-box{
-    width: 35% !important;
-}
-.login-img {
-    width: 48% !important;
+.login-box {
+  width: 70%;  
+
 }
 
+.login-img {
+    display: none;
+}
+
+}
+
+@media(max-width:1025px){
+  .login-page{
+    gap: 2rem !important;
+}
+.login-img img {
+  width: 15rem; 
+}
+.login-box {
+  width: 30%;  
+
+}
+.content {
+  padding-left: 12rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+}
+#nav-bar{
+  width: 19%;
+}
+.property-box img {
+  width: 8rem;
+}
+
+.count-sec{
+  margin-top: -2rem;
+  justify-items: center;
+}
+.property-row {
+  display: flex;
+  gap: 1rem !important;
+  justify-content: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.property-box{
+  width: 10rem !important;
+}
+}
+
+@media(max-width:1700px){
+  .property-row {
+    display: flex;
+    gap: 1rem !important;
+    justify-content: center;
+    padding-left: 10rem;
+    padding-right: 2rem;
+  }
+  .property-box{
+    width: 8rem !important;
+  }
+  .property-box img {
+    width: 5rem;
+  }
 }

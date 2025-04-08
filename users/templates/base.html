@@ -41,7 +41,9 @@
           })(window, document, "clarity", "script", "q1azkcd9yy");
       </script>
     
-    
+    <style>
+  
+    </style>
       </head>
 
     
@@ -101,12 +103,18 @@
 
 
       <ul class="nav-options">
-        <li><a href="{% url 'index' %}#about">About Us</a></li>
-        <li><a href="{% url 'index' %}#service">Services</a></li>
+        <li>
+          <a href="{% url 'index' %}">Home</a>
+      </li>
+        <li>
+          <a href="{% url 'index' %}#about">About Us</a>
+      </li>
+       
+        <li class="nav-item {% if request.path == 'index' %} active-tab {% endif %}"><a href="{% url 'index' %}#service">Services</a></li>
         <li><a href="{% url 'agents' %}">Agents</a></li>
         <li><a href="{% url 'index' %}#properties">Properties</a></li>
         <li><a href="{% url 'index' %}#features">Features</a></li>
-        <li><a href="{% url 'blog' %}">Our blogs</a></li>
+        <li class="nav-item {% if request.path == 'blog' %} active-tab {% endif %}"><a href="{% url 'blog' %}">Our blogs</a></li>
         <li><a href="{% url 'faq' %}">FAQ</a></li>
         <li><a href="{% url 'login' %}" style="color: #8bc83f;"><i class="ph ph-user"></i>Login   </a></li>
       </ul>

@@ -1,122 +1,122 @@
 {% load static %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Buysel.in - Commission-free property and scrap transactions. Buy, sell, rent, or lease properties with transparency and ease. Dispose of scrap and e-waste responsibly. Join the revolution in property and scrap dealing today!">
-    <meta name="keywords" content="commission-free property transactions, property buying and selling, rent and lease properties, scrap disposal, e-waste transactions, scrap and property platform, middleman-free property deals, transparent property deals, responsible scrap disposal, direct property connections, efficient property transactions, eco-friendly scrap management, property solutions India">
-    <meta name="author" content="buysel.in">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#8bc83f">
-    <title>Buysel.in - Commission-Free Property and Scrap Transactions</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %} " />
-    {% comment %} <script src="{% static ' js/main.js '%}"></script> {% endcomment %}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Geist&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-    <style>
-      .logo{
-        margin-left: 3.938rem;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div class="sub-navbar h-[1.6rem]">
-      <div class="welcometxt">Welcome to Buysel</div>
-      <ul class="sub-nav-options">
-        <a
-          href="https://www.facebook.com/profile.php?id=61568003210483"
-          target="_blank"
-        >
-          <img
-            src="{% static 'img/facebook 2.png' %}"
-            alt="Facebook"
-            class="social-icon-nav"
-          />
-        </a>
-        <a
-          href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz"
-          target="_blank"
-        >
-          <img
-            src="{% static 'img/instagram2.png' %}"
-            alt="Instagram"
-            class="social-icon-nav"
-          />
-        </a>
-        <a href="https://wa.me/9061827363" target="_blank">
-          <img
-            src="{% static 'img/whatsapp2.png' %}"
-            alt="WhatsApp"
-            class="social-icon-nav"
-          />
-        </a>
-      </ul>
-    </div>
-    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Buysel.in - Commission-free property and scrap transactions. Buy, sell, rent, or lease properties with transparency and ease. Dispose of scrap and e-waste responsibly. Join the revolution in property and scrap dealing today!">
+  <meta name="keywords"
+    content="commission-free property transactions, property buying and selling, rent and lease properties, scrap disposal, e-waste transactions, scrap and property platform, middleman-free property deals, transparent property deals, responsible scrap disposal, direct property connections, efficient property transactions, eco-friendly scrap management, property solutions India">
+  <meta name="author" content="buysel.in">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8bc83f">
+  <title>Buysel.in - Commission-Free Property and Scrap Transactions</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %} " />
+  <script src="{% static ' js/main.js '%}"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Geist&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <style>
+    .logo {
+      margin-left: 3.938rem;
+    }
+    .active-tab{
+  text-decoration: underline; 
+  text-underline-offset: 10px; /* Adjust the value to your desired gap */
+  border-radius: 5px;
+  color: #8bc83f;  
+  text-decoration-thickness: 3px; /
+ 
+}
+  </style>
+</head>
 
-    <nav class="navbar">
-      <a href="{% url 'index' %}" class="logo-link">
-        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo" />
+<body>
+  <div class="sub-navbar h-[1.6rem]">
+    <div class="welcometxt">Welcome to Buysel</div>
+    <ul class="sub-nav-options">
+      <a href="https://www.facebook.com/profile.php?id=61568003210483" target="_blank">
+        <img src="{% static 'img/facebook 2.png' %}" alt="Facebook" class="social-icon-nav" />
       </a>
-       <!-- Hamburger icon for mobile -->
-<!-- <button class="hand-burger" id="navbar-toggle">
+      <a href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz" target="_blank">
+        <img src="{% static 'img/instagram2.png' %}" alt="Instagram" class="social-icon-nav" />
+      </a>
+      <a href="https://wa.me/9061827363" target="_blank">
+        <img src="{% static 'img/whatsapp2.png' %}" alt="WhatsApp" class="social-icon-nav" />
+      </a>
+    </ul>
+  </div>
+
+
+  <nav class="navbar">
+    <a href="{% url 'index' %}" class="logo-link">
+      <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo" />
+    </a>
+    <!-- Hamburger icon for mobile -->
+    <!-- <button class="hand-burger" id="navbar-toggle">
     <span class="bar"></span>
     <span class="bar"></span>
     <span class="bar"></span>
   </button> -->
-  <div class="hand-burgger" onclick="handleToggle()" id="navbar-toggle">
-    <div id="bar1" class="bar"></div>
-    <div id="bar2" class="bar"></div>
-    <div id="bar3" class="bar"></div>
+    <div class="hand-burgger" onclick="handleToggle()" id="navbar-toggle">
+      <div id="bar1" class="bar"></div>
+      <div id="bar2" class="bar"></div>
+      <div id="bar3" class="bar"></div>
 
-  </div>
+    </div>
 
 
-      <ul class="nav-options">
-        <li><a href="{% url 'index' %}#about">About Us</a></li>
-        <li><a href="{% url 'index' %}#service">Services</a></li>
-        <li><a href="{% url 'agents' %}">Agents</a></li>
-        <li><a href="{% url 'index' %}#properties">Properties</a></li>
-        <li><a href="{% url 'index' %}#features">Features</a></li>
-        <li><a href="{% url 'blog' %}">Our blogs</a></li>
-        <li><a href="{% url 'faq' %}">FAQ</a></li>
-         <li><a href="{% url 'login' %}" style="color: #8bc83f;"><i class="ph ph-user"></i>Login   </a></li>
-      </ul>
-      <button class="contact-btn">
-        <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
-      </button>
+    <ul class="nav-options">
+      <li>
+        <a href="{% url 'index' %}">Home</a>
+    </li>
+      <li><a href="{% url 'index' %}#about">About Us</a></li>
+      <li><a href="{% url 'index' %}#service">Services</a></li>
+      <li><a href="{% url 'agents' %}">Agents</a></li>
+      <li><a href="{% url 'index' %}#properties">Properties</a></li>
+      <li><a href="{% url 'index' %}#features">Features</a></li>
+      <li class="active-tab"><a href="{% url 'blog' %}">Our Blogs</a></li>
+      <li><a href="{% url 'faq' %}">FAQ</a></li>
+      <li><a href="{% url 'login' %}" style="color: #8bc83f;"><i class="ph ph-user"></i>Login </a></li>
+    </ul>
+    <button class="contact-btn">
+      <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
+    </button>
 
-      <div id="mobile-navbar" class="mobile-navbar display-hidden">
+    <div id="mobile-navbar" class="mobile-navbar display-hidden">
 
-        <div class="nav-tabs " style="z-index:2">
-          <ul class="">
-            <li onclick="handleToggle()"><a href="{% url 'index' %}#about">About Us</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'index' %}#service">Services</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'agents' %}">Agents</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'index' %}#properties">Properties</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'index' %}#features">Features</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'blog' %}">Our blogs</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'faq' %}">FAQ</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'login' %}" style="color: #8bc83f;"><i class="ph ph-user"></i>Login   </a></li>
-          </ul>
-          <button class="contact-btn">
-            <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
-          </button>
-        </div>
-        
-  
+      <div class="nav-tabs " style="z-index:2">
+        <ul class="">
+          <li onclick="handleToggle()">
+            <a href="{% url 'index' %}">Home</a>
+          </li>
+          <li onclick="handleToggle()"><a href="{% url 'index' %}#about">About Us</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'index' %}#service">Services</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'agents' %}">Agents</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'index' %}#properties">Properties</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'index' %}#features">Features</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'blog' %}">Our blogs</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'faq' %}">FAQ</a></li>
+          <li onclick="handleToggle()"><a href="{% url 'login' %}" style="color: #8bc83f;"><i
+                class="ph ph-user"></i>Login </a></li>
+        </ul>
+        <button class="contact-btn">
+          <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
+        </button>
       </div>
 
-    </nav>
+
+    </div>
+
+  </nav>
 
 
-<script>
+  <script>
 
 
 
@@ -124,43 +124,43 @@
 
 
 
-  let isNavOpened = false
+    let isNavOpened = false
 
-  function handleToggle() {
+    function handleToggle() {
       console.log('haaaaaahaaa');
-  
+
       var navOptions = document.getElementById('mobile-navbar');
       const bar1 = document.getElementById('bar1')
       const bar2 = document.getElementById('bar2')
       const bar3 = document.getElementById('bar3')
-  
-  
+
+
       if (isNavOpened) {
-          navOptions.style.marginTop = '-100vh'
-          isNavOpened = false
-          bar1.style.transform = "rotate(0deg)";
-          bar2.style.transform = "rotate(0deg)";
-          bar3.style.display = "block";
-          bar1.style.marginBottom = "4px";
-  
-  
-  
-  
-  
+        navOptions.style.marginTop = '-100vh'
+        isNavOpened = false
+        bar1.style.transform = "rotate(0deg)";
+        bar2.style.transform = "rotate(0deg)";
+        bar3.style.display = "block";
+        bar1.style.marginBottom = "4px";
+
+
+
+
+
       } else {
-  
-          navOptions.style.marginTop = '0'
-          isNavOpened = true
-          bar1.style.transform = "rotate(45deg)";
-          bar2.style.transform = "rotate(-45deg)";
-          bar3.style.display = "none"; 
-          bar1.style.marginBottom = "-4px";
-  
-  
-  
+
+        navOptions.style.marginTop = '0'
+        isNavOpened = true
+        bar1.style.transform = "rotate(45deg)";
+        bar2.style.transform = "rotate(-45deg)";
+        bar3.style.display = "none";
+        bar1.style.marginBottom = "-4px";
+
+
+
       }
-  
-  }
+
+    }
 
 
 
@@ -171,335 +171,314 @@
 
 
 
-  {% comment %} document.addEventListener("DOMContentLoaded", function () {
-    const toggler = document.createElement("button");
-    toggler.classList.add("toggler", "md:hidden"); 
-    toggler.innerHTML = "&#9776;"; 
-    document.querySelector(".navbar").appendChild(toggler);
+    {% comment %} document.addEventListener("DOMContentLoaded", function () {
+      const toggler = document.createElement("button");
+      toggler.classList.add("toggler", "md:hidden");
+      toggler.innerHTML = "&#9776;";
+      document.querySelector(".navbar").appendChild(toggler);
 
-    const navOptions = document.querySelector(".nav-options");
+      const navOptions = document.querySelector(".nav-options");
 
-  
-    toggler.addEventListener("click", function (e) {
-      navOptions.classList.toggle("active");
-      e.stopPropagation(); 
-    });
 
-    
-    navOptions.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", function () {
-        navOptions.classList.remove("active"); 
+      toggler.addEventListener("click", function (e) {
+        navOptions.classList.toggle("active");
+        e.stopPropagation();
       });
-    });
-
-    
-    document.addEventListener("click", function (e) {
-      if (!e.target.closest(".navbar")) {
-        
-        navOptions.classList.remove("active");
-      }
-    });
-
-   
-    navOptions.addEventListener("click", function (e) {
-      e.stopPropagation(); 
-    });
-  }); {% endcomment %}
-</script>
 
 
-    
-    
-    
+      navOptions.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function () {
+          navOptions.classList.remove("active");
+        });
+      });
 
 
-  
-    
-    
-  
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".navbar")) {
 
-    <div class="w-full h-auto text-center flex items-center justify-center mt-44">
-
-        <p class="text-5xl font-extrabold text-gray-800 mb-4">
-            Uncover the Latest Trends & Ideas
-        </p>
-    </div>
-    
-    <div class="w-full text-center flex items-center justify-center">
-      
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Stay updated with expert articles, tips, and trends to help you navigate the world of real estate, lifestyle, and beyond.
-        </p>
-    </div>
+          navOptions.classList.remove("active");
+        }
+      });
 
 
-<!-- Card Block -->
-<div class="blog-align">
+      navOptions.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }); {% endcomment %}
+  </script>
 
-<div class="bg-white w-full md:w-3/4 h-auto mx-auto mt-20 p-4 rounded-lg shadow-lg">
-  <div class="flex flex-col md:flex-row items-center ">
-      <div class="w-full md:w-1/3 h-full">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="w-full h-auto text-center flex items-center justify-center mt-44">
+
+    <p class="text-5xl font-extrabold text-gray-800 mb-4">
+      Uncover the Latest Trends & Ideas
+    </p>
+  </div>
+
+  <div class="w-full text-center flex items-center justify-center">
+
+    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+      Stay updated with expert articles, tips, and trends to help you navigate the world of real estate, lifestyle, and
+      beyond.
+    </p>
+  </div>
+
+
+  <!-- Card Block -->
+  <div class="blog-align ">
+
+    <div class=" w-full md:w-3/4 h-fit        mt-20 p-4 rounded-lg shadow-lg">
+      <div class="flex flex-col md:flex-row items-center h-auto static-blog mx-auto" onclick="popupBlogModal('static',false)">
+        <div class="w-fit h-full ">
           <img src="{% static 'img/blog1.jpg' %}" alt="Image" class="w-full h-full object-cover rounded-lg" />
-      </div>
+        </div>
 
-      <div class="w-full md:w-2/3 pl-0 md:pl-6 flex justify-between items-center mt-4 md:mt-0">
+        <div class="w-full pl-0 md:pl-6 flex justify-between items-center mt-4 md:mt-0">
           <div>
-            
-              <h2 class="text-2xl md:text-3xl font-bold">
-                  Verified listings for safe property deals / best land selling websites
-              </h2>
-              <p class="text-xs text-gray-500 mt-2" id="card-date-1">February 4, 2025</p>
-              <p class="mt-2 text-sm md:text-base"><span id="card-date-0"></span></p>
-              <p class="mt-4 text-lg md:text-xl">
-                  Best land selling websites Verified listings are essential
-              </p>
+
+            <h2 class="text-2xl md:text-3xl font-bold">
+              Verified listings for safe property deals / best land selling websites
+            </h2>
+            <p class="text-xs text-gray-500 mt-2" id="card-date-1">February 4, 2025</p>
+            <p class="mt-2 text-sm md:text-base"><span id="card-date-0"></span></p>
+            <p class="mt-4 text-lg md:text-xl">
+              Best land selling websites Verified listings are essential
+            </p>
           </div>
 
-          <span class="text-2xl cursor-pointer mt-4 md:mt-0" onclick="togglePopup(0)">
-              <i class="fas fa-plus-circle"></i>
-          </span>
+          
+        </div>
+        <!-- <span class="text-2xl cursor-pointer mt-4 md:mt-0" >
+          <i class="fas fa-plus-circle"></i>
+        </span> -->
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- Popup Structure for Card Block with ID popup-0 -->
-<div id="popup-0" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden z-50">
-  <div class="bg-white w-full h-full px-6 md:px-96 pt-10 md:pt-60 overflow-y-auto flex flex-col justify-center">
-      
-      <!-- Content Block with Image -->
-      <div class="w-full mb-6">
-          <img src="{% static 'img/blog1.jpg' %}" alt="Image" class="w-full md:w-2/3 h-auto object-contain rounded-lg mx-auto mt-10 md:mt-[60rem] max-sm:mt-[71rem]" />
-      </div>
+    <!-- Popup Structure for Card Block with ID popup-0 -->
+    <div id="popup-static" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden z-50">
+      <div class="bg-white w-full h-full  pt-10 md:pt-60 overflow-y-auto flex flex-col justify-center static-blog-para">
 
-      <div class="text-center mb-4">
+        <!-- Content Block with Image -->
+        <div class="w-full mb-6">
+          <img src="{% static 'img/blog1.jpg' %}" alt="Image"
+            class="w-full md:w-2/3 h-auto object-contain rounded-lg mx-auto  md:mt-[60rem] max-sm:mt-[71rem]" />
+        </div>
+
+        <div class="text-center mb-4">
           <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date-0">February 4, 2025</span></p>
-      </div>
+        </div>
 
-      <div class="flex flex-col items-center px-4 md:px-0">
+        <div class="flex flex-col items-center px-4 md:px-0">
           <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
             Verified listings for safe property deals / best land selling websites
           </h2>
           <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
-            best land selling websites  Verified listings are essential for ensuring safe and trustworthy property deals in today’s real estate market. Platforms like Buysel.in prioritize user security by offering thoroughly vetted property listings, eliminating the risks associated with fraudulent or misleading information. Verified listings provide accurate details about the property, including legal documentation, location, and ownership, giving buyers confidence and peace of mind. Sellers also benefit by attracting serious and genuine buyers, ensuring efficient and successful transactions. This level of transparency fosters trust between parties and simplifies the process for buying, selling, or renting properties. With verified listings, property deals become safe, reliable, and hassle-free.
+            best land selling websites Verified listings are essential for ensuring safe and trustworthy property deals
+            in today’s real estate market. Platforms like Buysel.in prioritize user security by offering thoroughly
+            vetted property listings, eliminating the risks associated with fraudulent or misleading information.
+            Verified listings provide accurate details about the property, including legal documentation, location, and
+            ownership, giving buyers confidence and peace of mind. Sellers also benefit by attracting serious and
+            genuine buyers, ensuring efficient and successful transactions. This level of transparency fosters trust
+            between parties and simplifies the process for buying, selling, or renting properties. With verified
+            listings, property deals become safe, reliable, and hassle-free.
 
 
-            Verified listings are the cornerstone of safe and reliable property transactions. Platforms like Buysel.in ensure each listing is thoroughly vetted, offering buyers accurate information on ownership, legal compliance, and property details. This reduces the risk of fraud and builds trust between buyers and sellers. Sellers benefit from attracting genuine buyers, streamlining the sales process. By providing transparency and security, verified listings simplify property transactions for all parties involved. With Buysel.in’s commitment to maintaining high standards, users can confidently buy, sell, or rent properties, knowing their transactions are secure and hassle-free.
-        
-           Buysel.in is one of the best land-selling websites, offering a secure, commission-free platform for property transactions. It connects buyers and sellers directly, ensuring transparent dealings and eliminating broker fees. With its intuitive interface and verified listings, Buysel.in provides a reliable solution for selling land quickly and efficiently, making it a trusted choice for property owners.
-        
-        
-           Verified listings are essential for ensuring secure and reliable property transactions. Platforms like Buysel.in prioritize safety by thoroughly vetting each listing, providing buyers with accurate information about ownership, legal status, and property details. This transparency reduces the risk of fraud and fosters trust between buyers and sellers. For sellers, verified listings attract serious, genuine buyers, streamlining the transaction process and ensuring smooth, hassle-free deals. With Buysel.in’s commitment to verified listings, users can confidently buy, sell, or rent properties, knowing their transactions are safe, transparent, and trustworthy, setting a new standard for secure property dealings in the real estate market.
-        
+            Verified listings are the cornerstone of safe and reliable property transactions. Platforms like Buysel.in
+            ensure each listing is thoroughly vetted, offering buyers accurate information on ownership, legal
+            compliance, and property details. This reduces the risk of fraud and builds trust between buyers and
+            sellers. Sellers benefit from attracting genuine buyers, streamlining the sales process. By providing
+            transparency and security, verified listings simplify property transactions for all parties involved. With
+            Buysel.in’s commitment to maintaining high standards, users can confidently buy, sell, or rent properties,
+            knowing their transactions are secure and hassle-free.
+
+            Buysel.in is one of the best land-selling websites, offering a secure, commission-free platform for property
+            transactions. It connects buyers and sellers directly, ensuring transparent dealings and eliminating broker
+            fees. With its intuitive interface and verified listings, Buysel.in provides a reliable solution for selling
+            land quickly and efficiently, making it a trusted choice for property owners.
+
+
+            Verified listings are essential for ensuring secure and reliable property transactions. Platforms like
+            Buysel.in prioritize safety by thoroughly vetting each listing, providing buyers with accurate information
+            about ownership, legal status, and property details. This transparency reduces the risk of fraud and fosters
+            trust between buyers and sellers. For sellers, verified listings attract serious, genuine buyers,
+            streamlining the transaction process and ensuring smooth, hassle-free deals. With Buysel.in’s commitment to
+            verified listings, users can confidently buy, sell, or rent properties, knowing their transactions are safe,
+            transparent, and trustworthy, setting a new standard for secure property dealings in the real estate market.
+
           </p>
-      </div>
+        </div>
 
 
-      <div class="text-center mb-4">
-        <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date-0">February 3, 2025</span></p>
-    </div>
+        <div class="text-center mb-4">
+          <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date-0">February 3, 2025</span></p>
+        </div>
 
-    <div class="flex flex-col items-center px-4 md:px-0 blog-text">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
-          Transparent and secure transactions / best land selling websites
+        <div class="flex flex-col items-center px-4 md:px-0 blog-text">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
+            Transparent and secure transactions / best land selling websites
 
-        </h2>
-        <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
-          best land selling websites, Transparent and secure transactions are at the core of modern real estate dealings, ensuring trust and reliability for buyers and sellers. Platforms like Buysel.in prioritize user safety by offering verified listings and direct communication, eliminating the need for intermediaries. This approach reduces the risk of fraud and promotes clarity in every transaction. Buyers can access detailed property information, while sellers can confidently engage with genuine leads. With a focus on secure processes, Buysel.in safeguards personal and financial data, delivering peace of mind to users. Whether buying, selling, or renting, transparent and secure transactions redefine real estate with trust and efficiency.
+          </h2>
+          <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
+            best land selling websites, Transparent and secure transactions are at the core of modern real estate
+            dealings, ensuring trust and reliability for buyers and sellers. Platforms like Buysel.in prioritize user
+            safety by offering verified listings and direct communication, eliminating the need for intermediaries. This
+            approach reduces the risk of fraud and promotes clarity in every transaction. Buyers can access detailed
+            property information, while sellers can confidently engage with genuine leads. With a focus on secure
+            processes, Buysel.in safeguards personal and financial data, delivering peace of mind to users. Whether
+            buying, selling, or renting, transparent and secure transactions redefine real estate with trust and
+            efficiency.
 
 
-          Transparent and secure transactions are revolutionizing the real estate industry by building trust and confidence in every deal. Platforms like Buysel.in prioritize user safety with verified profiles and listings, ensuring only genuine buyers and sellers engage in transactions. By eliminating intermediaries, Buysel.in fosters clarity, reducing misunderstandings and hidden fees. Secure processes protect users’ personal and financial information, while detailed property descriptions provide full visibility. Whether you’re buying, selling, or renting, Buysel.in ensures a seamless experience where trust and security take center stage, redefining how real estate transactions are conducted in today’s digital age.
-          
-            Buysel.in stands out as one of the best land-selling websites, offering a commission-free and user-friendly platform for property transactions. It connects buyers and sellers directly, ensuring verified listings and eliminating intermediaries. With detailed property information and a secure process, Buysel.in simplifies the selling experience, making it a trusted choice for landowners and buyers alike.
-          
-          
-            Transparent and secure transactions are transforming real estate by fostering trust and reliability between buyers and sellers. Platforms like Buysel.in ensure this by offering verified profiles and listings, creating a safe and fraud-free environment. By eliminating intermediaries, the platform promotes direct communication, reducing misunderstandings and hidden costs. With secure processes protecting financial and personal information, users can confidently engage in transactions. Detailed property descriptions further enhance transparency, providing a clear view of what’s being offered. Whether buying, selling, or renting, Buysel.in ensures every step of the transaction is seamless, trustworthy, and secure, setting a new standard in real estate dealings.
-          
-          
-        </p>
+            Transparent and secure transactions are revolutionizing the real estate industry by building trust and
+            confidence in every deal. Platforms like Buysel.in prioritize user safety with verified profiles and
+            listings, ensuring only genuine buyers and sellers engage in transactions. By eliminating intermediaries,
+            Buysel.in fosters clarity, reducing misunderstandings and hidden fees. Secure processes protect users’
+            personal and financial information, while detailed property descriptions provide full visibility. Whether
+            you’re buying, selling, or renting, Buysel.in ensures a seamless experience where trust and security take
+            center stage, redefining how real estate transactions are conducted in today’s digital age.
+
+            Buysel.in stands out as one of the best land-selling websites, offering a commission-free and user-friendly
+            platform for property transactions. It connects buyers and sellers directly, ensuring verified listings and
+            eliminating intermediaries. With detailed property information and a secure process, Buysel.in simplifies
+            the selling experience, making it a trusted choice for landowners and buyers alike.
+
+
+            Transparent and secure transactions are transforming real estate by fostering trust and reliability between
+            buyers and sellers. Platforms like Buysel.in ensure this by offering verified profiles and listings,
+            creating a safe and fraud-free environment. By eliminating intermediaries, the platform promotes direct
+            communication, reducing misunderstandings and hidden costs. With secure processes protecting financial and
+            personal information, users can confidently engage in transactions. Detailed property descriptions further
+            enhance transparency, providing a clear view of what’s being offered. Whether buying, selling, or renting,
+            Buysel.in ensures every step of the transaction is seamless, trustworthy, and secure, setting a new standard
+            in real estate dealings.
+
+
+          </p>
           <!-- Close Button -->
-      <span class="mt-4 text-black text-2xl cursor-pointer" onclick="togglePopup(0)">
-        <button>close</button>
-      </span>
+          <span class="mt-4 text-black text-2xl cursor-pointer" onclick="popupBlogModal('static',true)">
+            <button>close</button>
+          </span>
+        </div>
+
+
+
+      </div>
     </div>
 
 
-    
-  </div>
-</div>
 
 
 
 
-    
-    
 
-<div class="card-blog">
+    <div class="card-blog">
 
-    <!-- First Card -->
-     {% for i in page_obj %}
-     
-<div class="blog-card" style="filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.2));">
-  <img src="{{i.image.url}}" alt="Image 1" class="w-full h-48 object-cover rounded-lg">
-  <div class="p-4 flex flex-col flex-grow">
-      <p class="text-xs text-gray-500 mt-2" id="card-date-1">{{i.date}}</p>
-      <h2 class="text-2xl font-bold mt-2">{{i.blog_head}}</h2>
-      <p class="text-[1.2rem] text-gray-700 mt-2">{{i.card_paragraph}}</p>
-  </div>
-  <span class="text-xl cursor-pointer text-blue-500 mt-2" onclick="togglePopup(1)">
-      <i class="fas fa-plus-circle text-black"></i> 
-  </span>
-</div>
+      <!-- First Card -->
+      {% for i in page_obj %}
 
-<!-- Popup Structure -->
-
-    
-<div id="popup-1" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden z-50">
-  
-  
-  <div class="bg-white w-full h-full px-6 md:px-96 pt-10 md:pt-60 overflow-y-auto flex flex-col justify-center">
+      <div class="blog-card" style="filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.2));" onclick="popupBlogModal('{{i.image.url}}',false)">
+        <img src="{{i.image.url}}" alt="Image 1" class="w-full h-48 object-cover rounded-lg">
+        <div class="p-4 flex flex-col flex-grow blog-card-detail">
+          <p class="text-xs text-gray-500 mt-2" id="card-date-1">{{i.date}}</p>
+          <h2 class="text-2xl font-bold mt-2">{{i.blog_head | slice:":50"}}</h2>
+          <p class="text-[1.2rem] text-gray-700 mt-2">{{i.card_paragraph | slice:":50"}}</p>
+          
+          <!-- <span class="text-xl cursor-pointer mt-16"  style="text-align: center;">
+            <i class="fas fa-plus-circle text-black"></i>
+          </span> -->
+        </div>
+        <div class="read-more">
+          <a href=""><h6> Read More</h6></a>
+        </div>
         
-
-      <div class="w-full mb-6">
-        
-          <!-- Reduced image size for small screens -->
-          <img src="{{i.image.url}}" alt="Image" class="w-full md:w-2/3 h-auto object-contain rounded-lg mx-auto  md:mt-[12rem] max-sm:mt-[71rem]" />
-         
-      </div>
-     
-      <div class="text-center mb-4">
-          <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date">{{i.date}}</span></p>
       </div>
 
-      <div class="flex flex-col items-center px-4 md:px-0 blog-text">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
-           {{i.modal_head}}
+      <!-- Popup Structure -->
 
 
-          </h2><br>
-          <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
-            {{i.modal_paragraph}}          </p>
-            <span class="mt-5 text-black text-2xl cursor-pointer" onclick="togglePopup(1)">
+      <div id="popup-{{i.image.url}}"
+        class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden z-50 blog-modal">
+
+
+        <div class="bg-white w-full h-full   pt-10  overflow-y-auto flex flex-col justify-center ">
+
+
+          <div class="w-full mb-6 ">
+
+            <!-- Reduced image size for small screens -->
+            <img src="{{i.image.url}}" alt="Image"
+              class="w-full md:w-2/3 h-auto object-contain rounded-lg mx-auto  md:mt-[12rem] max-sm:mt-[71rem]" />
+
+          </div>
+
+          <div class="text-center mb-4">
+            <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date">{{i.date}}</span></p>
+          </div>
+
+          <div class="flex flex-col items-center px-4 md:px-0 blog-text">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
+              {{i.modal_head}}
+
+
+            </h2><br>
+            <p class="text-gray-700  text-justify text-sm md:text-base">
+              {{i.modal_paragraph}} </p>
+            <span class="mt-5 text-black text-2xl cursor-pointer" onclick="popupBlogModal('{{i.image.url}}',true)">
               <!-- <i class="fas fa-times-circle"></i> -->
-               <button>close</button>
+              <button>close</button>
             </span>
+          </div>
+
+
+
+
+
+
+        </div>
       </div>
+      {% endfor %}
 
-      
-     
-      
-
-     
-  </div>
-  {% endfor %}
-</div>
-<!-- Pagination -->
+      <!-- Pagination -->
 
 
 
-    
-   {% comment %} <!-- Second Card -->
-<div class="blog-card bg-white p-4 rounded-lg shadow-lg w-full sm:w-1/2 md:w-1/3 h-[auto] flex flex-col justify-between" style="filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.2));">
-  <img src="{% static 'img/blog3.jpg' %}" alt="Image 2" class="w-full h-48 object-cover rounded-lg">
-  <div class="p-4 flex flex-col flex-grow">
-      <p class="text-xs text-gray-500 mt-2" id="card-date-2">February 4, 2025</p>
-      <h2 class="text-2xl font-bold mt-2">Commission- free Transactions save money/ property for sale by owner       </h2>
-      <p class="text-[1.2rem] text-gray-700 mt-2">  property for sale by owner   Commission-free transactions are a game-changer</p>
-  </div>
-  <span class="text-xl cursor-pointer text-blue-500 mt-2" onclick="togglePopup(2)">
-      <i class="fas fa-plus-circle text-black"></i> 
-  </span>
-</div>
-
-<!-- Popup Structure for Second Card -->
-<div id="popup-2" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden z-50">
-  <div class="bg-white w-full h-full px-6 md:px-96 pt-10 md:pt-60 overflow-y-auto flex flex-col justify-center">
-      
-      <!-- First Content Block -->
-      <div class="w-full mb-6">
-          <img src="{% static 'img/blog3.jpg' %}" alt="Image" class="w-full md:w-2/3 h-auto object-contain rounded-lg mx-auto mt-10 md:mt-[60rem] max-sm:mt-[71rem]" />
-      </div>
-
-      <div class="text-center mb-4">
-          <p class="text-gray-500 text-lg md:text-[1.2rem]"> <span id="popup-date-2">February 4, 2025</span></p>
-      </div>
-
-      <div class="flex flex-col items-center px-4 md:px-0">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
-            Commission- free Transactions save money/ property for sale by owner 
-
-          </h2>
-          <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
-            property for sale by owner   Commission-free transactions are a game-changer in real estate, allowing buyers and sellers to save significant amounts of money. Traditional property deals often involve hefty broker fees, which reduce profits for sellers and increase costs for buyers. Platforms like Buysel.in eliminate these intermediary charges by connecting buyers and sellers directly. This ensures that sellers retain more of their earnings while buyers benefit from more affordable property prices. Additionally, commission-free transactions promote transparency and trust, as users deal directly with each other. By reducing financial burdens, Buysel.in makes property transactions efficient, cost-effective, and accessible to everyone, redefining real estate dealings.
 
 
-            Commission-free transactions are transforming the real estate market by eliminating costly brokerage fees. Platforms like Buysel.in connect buyers and sellers directly, allowing sellers to retain more profits and buyers to access properties at fair prices. This cost-effective approach fosters transparency and trust, ensuring smoother negotiations and efficient deals. By removing intermediaries, users save significant amounts while enjoying a secure and user-friendly transaction experience. Whether you’re buying, selling, or renting, Buysel.in’s commission-free model ensures that every transaction is affordable, transparent, and beneficial, making it the preferred choice for cost-conscious property owners and buyers alike.
-         
-           Buysel.in is the ideal choice for selling your house, offering a streamlined, commission-free platform that connects sellers directly with verified buyers. With detailed property listings and high-quality images, sellers can attract serious buyers while avoiding expensive broker fees. Buysel.in ensures secure, transparent, and profitable transactions, making it the go-to solution for homeowners.
-         
-           Buysel.in offers a game-changing platform for property transactions by prioritizing commission-free transactions, saving users significant money. Property owners can list their residential or commercial spaces without brokerage fees, ensuring maximum profit. The platform features verified listings for secure and transparent dealings, while advanced search filters help users find properties by location, price, and type. Buysel.in supports a variety of needs, including buying, selling, renting, and leasing. By facilitating direct communication between buyers and sellers, it eliminates middlemen and accelerates the process. For a cost-effective, secure, and hassle-free property experience, Buysel.in is the go-to solution.
-         
-         
-          </p>
-      </div>
+    </div>
 
-      <!-- Second Content Block (without image) -->
-      <div class="text-center mb-4 mt-10">
-          <p class="text-xs text-gray-500 mt-2">February 3, 2025</p>
-      </div>
-
-      <div class="flex flex-col items-center px-4 md:px-0">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">
-            A guide to buying residential property with buysel.in / property for sale by owner
-
-
-          </h2>
-          <p class="text-gray-700 mt-4 text-justify text-sm md:text-base">
-            property for sale by owner Buying residential property is a significant milestone, and Buysel.in simplifies the process with its user-friendly, commission-free platform. Designed to eliminate intermediaries, it connects buyers directly with verified sellers, ensuring transparency and trust. With detailed property listings, high-quality images, and advanced search filters, finding the perfect home becomes seamless. The platform provides essential tools to evaluate options, compare prices, and make informed decisions. Whether you’re a first-time buyer or an experienced investor, Buysel.in’s intuitive interface and secure processes streamline every step of the journey. From exploring properties to finalizing the deal, Buysel.in offers a hassle-free experience tailored to your needs.
-
-
-            Buysel.in’s user-friendly interface ensures a seamless experience for property buyers and sellers. The platform’s intuitive design allows users to easily navigate listings, post ads, and connect with verified buyers or sellers. With clear search filters and organized categories, finding the perfect property or attracting the right buyer becomes effortless. Step-by-step guidance for creating listings ensures even first-time users can manage their transactions smoothly. Accessible on both desktop and mobile devices, Buysel.in provides a streamlined, hassle-free experience that saves time and enhances user confidence, making property transactions efficient and stress-free.
-            
-              Buysel.in is the ideal solution for property owners looking to sell directly without intermediaries. It empowers sellers to list properties independently with detailed descriptions, high-quality images, and verified credentials, ensuring secure and transparent transactions. By connecting directly with buyers, Buysel.in helps owners save on hefty broker fees and achieve a profitable sale.
-            
-            
-                 Buysel.in’s user-friendly interface ensures a seamless experience for anyone involved in property transactions. Its intuitive design allows users to navigate effortlessly, whether searching for properties or creating listings. Features like clear search filters, organized categories, and detailed guides make the process straightforward even for first-time users. The platform is fully optimized for both desktop and mobile devices, enabling convenient access anytime, anywhere. By simplifying property management and eliminating complexities, Buysel.in saves time and ensures efficiency. Whether buying, selling, or renting, the platform’s user-focused approach empowers users to achieve their real estate goals with ease and confidence.
-            
-          </p>
-      </div>
-
-      <!-- Close Button -->
-      <span class="mt-4 text-black text-2xl cursor-pointer" onclick="togglePopup(2)">
-          <i class="fas fa-times-circle"></i>
+    <div class="pagination mt-4" style="justify-items: center;">
+      <span class="text-sm text-gray-600">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
       </span>
-  </div> {% endcomment %}
-</div>
+      <div class="flex space-x-2 mt-2">
+        {% if page_obj.has_previous %}
+        <a href="?page=1" class="text-blue-500">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="text-blue-500">Previous</a>
+        {% endif %}
 
-<div class="pagination mt-4" style="justify-items: center;">
-  <span class="text-sm text-gray-600">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-  </span>
-  <div class="flex space-x-2 mt-2">
-      {% if page_obj.has_previous %}
-          <a href="?page=1" class="text-blue-500">First</a>
-          <a href="?page={{ page_obj.previous_page_number }}" class="text-blue-500">Previous</a>
-      {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="text-blue-500">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="text-blue-500">Last</a>
+        {% endif %}
+      </div>
+    </div>
 
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}" class="text-blue-500">Next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}" class="text-blue-500">Last</a>
-      {% endif %}
+
   </div>
-</div>
 
 
-</div>
 
-    
-
-</div>
-    
-    
-    
+  </div>
 
 
 
@@ -511,73 +490,111 @@
 
 
 
-    <footer style="background-color: white; padding: 30px 0;" class="h-auto">
-        <div class="footer-content">
-          <!-- Left Side: Contact Information -->
-          <div class="contact-details"> <!-- Updated class name here -->
-            <img src="{% static 'img/logo.png' %}" alt="Buysel Logo" class="footer-logo max-sm:justify-self-center">
-            <h3>Contact Information</h3>
-            <p>Email:buyselinfo@gmail.com</p>
-            <p>Phone:9061827363</p>
-            <p>Address: Kochi,
-                Kerala,India</p>
-      
-            <!-- Follow Us Section -->
-            <h4>Follow Us</h4>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61568003210483" target="_blank">
-                    <img src="{% static 'img/facebook.svg' %}" alt="Facebook" class="social-icon">
-                </a>
-                <a href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz" target="_blank">
-                    <img src="{% static 'img/insta.svg' %}" alt="Instagram" class="social-icon">
-                </a>
-                <a href="https://wa.me/9061827363" target="_blank">
-                    <img src="{% static 'img/whatsapp.svg' %}" alt="WhatsApp" class="social-icon">
-                </a>
-                <!-- <a href="https://www.twitter.com" target="_blank">
+
+
+  <footer style="background-color: white; padding: 30px 0;" class="h-auto">
+    <div class="footer-content">
+      <!-- Left Side: Contact Information -->
+      <div class="contact-details"> <!-- Updated class name here -->
+        <img src="{% static 'img/logo.png' %}" alt="Buysel Logo" class="footer-logo max-sm:justify-self-center">
+        <h3>Contact Information</h3>
+        <p>Email:buyselinfo@gmail.com</p>
+        <p>Phone:9061827363</p>
+        <p>Address: Kochi,
+          Kerala,India</p>
+
+        <!-- Follow Us Section -->
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=61568003210483" target="_blank">
+            <img src="{% static 'img/facebook.svg' %}" alt="Facebook" class="social-icon">
+          </a>
+          <a href="https://www.instagram.com/buysel_?igsh=ZWF5aDdldzhpMmEz" target="_blank">
+            <img src="{% static 'img/insta.svg' %}" alt="Instagram" class="social-icon">
+          </a>
+          <a href="https://wa.me/9061827363" target="_blank">
+            <img src="{% static 'img/whatsapp.svg' %}" alt="WhatsApp" class="social-icon">
+          </a>
+          <!-- <a href="https://www.twitter.com" target="_blank">
                     <img src="asset/img/twitter.svg" alt="Twitter" class="social-icon">
                 </a> -->
-            </div>
-            
-          </div>
-      
-          <!-- Right Side: Footer Links -->
-          <div class="footer-links">
-            <!-- <h4>wwwwwww</h4> -->
-            <div class="link-row1">
-              <a href="#" class="home">Home</a>
-              <a href="index.html#service" class="services">Services</a>
-              <a href="index.html#benefits" class="benefits">Benefits</a>
-              <a href="faq.html" class="faq">FAQ</a>
-            </div>
-            <div class="link-row2">
-              <a href="index.html#about" class="about-us">About Us</a>
-              <a href="index.html#features" class="features">Features</a>
-              <a href="index.html#how-it-works" class="how-it-works">How it works</a>
-              <a href="index.html#contact" class="contact-us">Contact Us</a>
-            </div>
-          </div>
-          
-          
-          </div>
-        
-      
-        <!-- Bottom: Copyright -->
-        <div class="footer-bottom">
-          <p>&copy; 2024 Buysel.in. All Rights Reserved</p>
         </div>
-    </footer>
-  
+
+      </div>
+
+      <!-- Right Side: Footer Links -->
+      <div class="footer-links">
+        <!-- <h4>wwwwwww</h4> -->
+        <div class="link-row1">
+          <a href="#" class="home">Home</a>
+          <a href="index.html#service" class="services">Services</a>
+          <a href="index.html#benefits" class="benefits">Benefits</a>
+          <a href="faq.html" class="faq">FAQ</a>
+        </div>
+        <div class="link-row2">
+          <a href="index.html#about" class="about-us">About Us</a>
+          <a href="index.html#features" class="features">Features</a>
+          <a href="index.html#how-it-works" class="how-it-works">How it works</a>
+          <a href="index.html#contact" class="contact-us">Contact Us</a>
+        </div>
+        
+      </div>
+      <p class="f-bg-content">Contact <br />us</p>
+    </div>
+
+
+    <!-- Bottom: Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 Buysel.in. All Rights Reserved</p>
+    </div>
+  </footer>
+
+
+
+  <script>
+    function popupBlogModal(id,isClosing){
+
+
+let popup 
+    if(id=='static'){
+      popup = document.getElementById(`popup-static`);
+    }else{
+      popup = document.getElementById(`popup-${id}`);
+
+    }
+
+    if(isClosing){
+      popup.style.display = 'none'
+
+    }else{
+
+      popup.style.display = 'block'
+    }
+
+    console.log(popup);
+    
+
+
+}
+
+  </script>
 
 
 
 
-
-
+  <!-- 
     <script>
       // Function to toggle the visibility of the popup
-      function togglePopup() {
-          const popup = document.getElementById('popup');
+      function togglePopup(id) {
+        console.log(id,'iddd');
+        
+        let popup 
+        if(id=='static'){
+         popup = document.getElementById(`popup-${id}`);
+        }else{
+          popup = document.getElementById(`popup-static`);
+
+        }
           // Toggle the hidden class to show or hide the popup
           popup.classList.toggle('hidden');
       }
@@ -595,11 +612,13 @@
     </script>
 
     <script>
-      function togglePopup(id) {
-          const popup = document.getElementById(`popup-${id}`);
-          popup.classList.toggle('hidden');  // Toggle visibility
-          document.getElementById(`popup-date-${id}`).textContent = getCurrentDate(); // Set the date inside popup
-      }
+      // function togglePopup(id) {
+      //   console.log(id,'this is the id');
+        
+      //     const popup = document.getElementById(`popup-${id}`);
+      //     popup.classList.toggle('hidden');  // Toggle visibility
+      //     document.getElementById(`popup-date-${id}`).textContent = getCurrentDate(); // Set the date inside popup
+      // }
     
       function getCurrentDate() {
           const today = new Date();
@@ -616,11 +635,11 @@
 
 
     <script>
-      function togglePopup(id) {
-          const popup = document.getElementById(`popup-${id}`);
-          popup.classList.toggle('hidden');  // Toggle visibility
-          document.getElementById(`popup-date-${id}`).textContent = getCurrentDate(); // Set the date inside popup
-      }
+      // function togglePopup(id) {
+      //     const popup = document.getElementById(`popup-${id}`);
+      //     popup.classList.toggle('hidden');  // Toggle visibility
+      //     document.getElementById(`popup-date-${id}`).textContent = getCurrentDate(); // Set the date inside popup
+      // }
     
       function getCurrentDate() {
           const today = new Date();
@@ -631,49 +650,49 @@
       // Set initial date for the first and second cards
       document.getElementById('card-date-1').textContent = getCurrentDate();
       document.getElementById('card-date-2').textContent = getCurrentDate();
-    </script>
+    </script> -->
 
 
 
-    
-<script>
-  function filterProperties(category) {
-    // Get all property cards
-    var cards = document.querySelectorAll('.card');
-    
-    // Loop through each card
-    cards.forEach(function(card) {
+
+  <script>
+    function filterProperties(category) {
+      // Get all property cards
+      var cards = document.querySelectorAll('.card');
+
+      // Loop through each card
+      cards.forEach(function (card) {
         // Get the category data from the card and convert it to lowercase
         var cardCategory = card.getAttribute('data-category').toLowerCase();
-        
+
         // Check if the category of the card matches the selected filter or if "All" is selected
         if (category === 'all' || category.toLowerCase() === cardCategory) {
-            card.style.display = 'block'; // Show card
+          card.style.display = 'block'; // Show card
         } else {
-            card.style.display = 'none'; // Hide card
+          card.style.display = 'none'; // Hide card
         }
-    });
-    
-    // Remove the 'active' class from all filter buttons
-    var buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(function(button) {
+      });
+
+      // Remove the 'active' class from all filter buttons
+      var buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(function (button) {
         button.classList.remove('active');
+      });
+
+      // Add the 'active' class to the clicked button
+      var activeButton = document.querySelector('[data-category="' + category + '"]');
+      activeButton.classList.add('active');
+    }
+
+    // Initialize the filter to show all properties on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      filterProperties('all'); // Default to showing all properties
     });
-    
-    // Add the 'active' class to the clicked button
-    var activeButton = document.querySelector('[data-category="' + category + '"]');
-    activeButton.classList.add('active');
-}
-
-// Initialize the filter to show all properties on page load
-document.addEventListener('DOMContentLoaded', function() {
-    filterProperties('all'); // Default to showing all properties
-});
-
-    
 
 
-</script>
+
+
+  </script>
 
 
 
@@ -682,6 +701,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  </body>
-  
+</body>
+
 </html>

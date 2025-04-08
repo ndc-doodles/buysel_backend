@@ -273,7 +273,7 @@ def agent_land_create(request):
     categories = MainCategory.objects.all()
     username = request.session.get("name")  
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    contact = user_profile.phone_contact if user_profile else None  
+    contact = user_profile.phone_number if user_profile else None  
 
     if request.method == 'POST':
         land = AgentLand(
@@ -387,7 +387,7 @@ def agent_offplan_create(request):
     
     # Fetch user profile to get phone contact (assuming login is linked to user profile)
     user_profile = UserProfile.objects.filter(login__username=username).first()
-    contact = user_profile.phone_contact if user_profile else None
+    contact = user_profile.phone_number if user_profile else None
 
     if request.method == 'POST':
         # Safely retrieve fields with .get() to avoid MultiValueDictKeyError
@@ -557,7 +557,7 @@ def agent_com_create(request):
     categories = MainCategory.objects.all()  # Fetch all categories from the MainCategory model
     username = request.session["name"] 
     user_profile = UserProfile.objects.filter(login__username=username).first()  # Assuming login is linked to user profile
-    contact = user_profile.phone_contact if user_profile else None 
+    contact = user_profile.phone_number if user_profile else None 
     if request.method == 'POST':
         # Create a new Agentcom object and populate fields from the POST data
         com = AgentCommercial(

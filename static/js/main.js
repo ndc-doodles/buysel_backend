@@ -4,6 +4,8 @@
 //     document.documentElement.scrollTop = 0;
 // };
 
+console.log('sdfsfdsf');
+
 
 
 document.addEventListener("DOMContentLoaded", eventFunction);
@@ -334,3 +336,8 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+
+
+
+

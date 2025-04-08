@@ -48,11 +48,12 @@
         <input id="nav-footer-toggle" type="checkbox"/>
         <div id="nav-footer">
           <div id="nav-footer-heading">
-           
+            
             <div class="nav-button text-center"><form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
+             
               <button type="submit" style="background-color: transparent; color: white; padding: 10px 74px; border: none; border-radius: 5px; cursor: pointer;text-align: center;">
-                  Logout
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
               </button>
           </form>
           </div>

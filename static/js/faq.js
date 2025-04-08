@@ -245,3 +245,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+
+let isNavOpened = false
+
+function handleToggle() {
+    console.log('haaaaaahaaa');
+
+    var navOptions = document.getElementById('mobile-navbar');
+    const bar1 = document.getElementById('bar1')
+    const bar2 = document.getElementById('bar2')
+    const bar3 = document.getElementById('bar3')
+
+
+    if (isNavOpened) {
+        navOptions.style.marginTop = '-100vh'
+        isNavOpened = false
+        bar1.style.transform = "rotate(0deg)";
+        bar2.style.transform = "rotate(0deg)";
+        bar3.style.display = "block";
+        bar1.style.marginBottom = "4px";
+
+
+
+
+
+    } else {
+
+        navOptions.style.marginTop = '0'
+        isNavOpened = true
+        bar1.style.transform = "rotate(45deg)";
+        bar2.style.transform = "rotate(-45deg)";
+        bar3.style.display = "none"; 
+        bar1.style.marginBottom = "-4px";
+
+
+
+    }
+
+}

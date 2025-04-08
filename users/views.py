@@ -57,8 +57,8 @@ def properties(request):
 
 def index(request):
     try:
-        model1_objects = House.objects.prefetch_related(Prefetch('images', queryset=HouseImage.objects.all()))[:2]
-        model2_objects = list(Land.objects.filter(id__isnull=False)[:2])
+        model1_objects = House.objects.prefetch_related(Prefetch('images', queryset=HouseImage.objects.all()))
+        model2_objects = list(Land.objects.filter(id__isnull=False))
         model3_objects = list(Commercial.objects.all()[:2])
         model4_objects = list(OffPlan.objects.all()[:2])
         model5_objects = AgentHouse.objects.prefetch_related(Prefetch('images', queryset=AgentHouseImage.objects.all()))[:2]
@@ -100,6 +100,7 @@ def index(request):
         'model7_objects': model7_objects,
         'model8_objects': model8_objects,
         'msgs': msgs,
+       
     })
 
 
@@ -118,7 +119,7 @@ def blog(request):
     blogs = Blog.objects.all()
     
     # Set up pagination
-    paginator = Paginator(blogs, 5)  # Show 5 blogs per page
+    paginator = Paginator(blogs, 10)  # Show 5 blogs per page
     page_number = request.GET.get('page')  # Get the current page number from the URL
     page_obj = paginator.get_page(page_number)  # Get the page object for that page
 
