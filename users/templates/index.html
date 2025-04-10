@@ -13,14 +13,15 @@
     color: black;
     font-size: 10px;
   }
-  .active-tab{
-  text-decoration: underline; 
-  text-underline-offset: 10px; /* Adjust the value to your desired gap */
-  border-radius: 5px;
-  color: #2A2F27;  
-  text-decoration-thickness: 3px; /
- 
-}
+
+  .active-tab {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    /* Adjust the value to your desired gap */
+    border-radius: 5px;
+    color: #2A2F27;
+    text-decoration-thickness: 3px;/
+  }
 </style>
 <div class="main">
   <div class="text-section">
@@ -200,56 +201,56 @@
 </div>
 
 <script>
- const menuBtn = document.getElementById("menuToggle");
-    const icon = menuBtn.querySelector("i");
-    const btnTwo = document.getElementById("msgBtn");
-    const btnThree = document.getElementById("bellBtn");
-    const modalBackground = document.getElementById("modal-background")
+  const menuBtn = document.getElementById("menuToggle");
+  const icon = menuBtn.querySelector("i");
+  const btnTwo = document.getElementById("msgBtn");
+  const btnThree = document.getElementById("bellBtn");
+  const modalBackground = document.getElementById("modal-background")
 
-    menuBtn.addEventListener("click", () => {
-      btnTwo.classList.toggle("active");
-      btnThree.classList.toggle("active");
-      modalBackground.classList.toggle("active-background")
-      menuBtn.classList.toggle("rotate");
+  menuBtn.addEventListener("click", () => {
+    btnTwo.classList.toggle("active");
+    btnThree.classList.toggle("active");
+    modalBackground.classList.toggle("active-background")
+    menuBtn.classList.toggle("rotate");
+  });
+
+  // Open Modal 1
+  btnTwo.addEventListener("click", () => {
+    document.getElementById("modal1").classList.add("show");
+    document.getElementById("overlay1").classList.add("show");
+    document.getElementById("modal2").classList.remove("show");
+
+    document.body.classList.add("modal-open");
+  });
+
+  // Open Modal 2
+  btnThree.addEventListener("click", () => {
+    document.getElementById("modal2").classList.add("show");
+    document.getElementById("overlay2").classList.add("show");
+    document.getElementById("modal1").classList.remove("show");
+
+    document.body.classList.add("modal-open");
+  });
+
+  // Close any modal
+  document.querySelectorAll(".modal-close").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-close");
+      document.getElementById(id).classList.remove("show");
+      document.getElementById("overlay" + id.slice(-1)).classList.remove("show");
+      document.body.classList.remove("modal-open");
     });
+  });
 
-    // Open Modal 1
-    btnTwo.addEventListener("click", () => {
-      document.getElementById("modal1").classList.add("show");
-      document.getElementById("overlay1").classList.add("show");
-      document.getElementById("modal2").classList.remove("show");
-
-      document.body.classList.add("modal-open");
+  // Clicking outside the modal closes it too
+  document.querySelectorAll(".modal-overlay").forEach(overlay => {
+    overlay.addEventListener("click", () => {
+      overlay.classList.remove("show");
+      const modalId = overlay.id === "overlay1" ? "modal1" : "modal2";
+      document.getElementById(modalId).classList.remove("show");
+      document.body.classList.remove("modal-open");
     });
-
-    // Open Modal 2
-    btnThree.addEventListener("click", () => {
-      document.getElementById("modal2").classList.add("show");
-      document.getElementById("overlay2").classList.add("show");
-      document.getElementById("modal1").classList.remove("show");
-
-      document.body.classList.add("modal-open");
-    });
-
-    // Close any modal
-    document.querySelectorAll(".modal-close").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const id = e.target.getAttribute("data-close");
-        document.getElementById(id).classList.remove("show");
-        document.getElementById("overlay" + id.slice(-1)).classList.remove("show");
-        document.body.classList.remove("modal-open");
-      });
-    });
-
-    // Clicking outside the modal closes it too
-    document.querySelectorAll(".modal-overlay").forEach(overlay => {
-      overlay.addEventListener("click", () => {
-        overlay.classList.remove("show");
-        const modalId = overlay.id === "overlay1" ? "modal1" : "modal2";
-        document.getElementById(modalId).classList.remove("show");
-        document.body.classList.remove("modal-open");
-      });
-    });
+  });
 </script>
 
 <!-- <script>
@@ -461,7 +462,6 @@
         align-content: center;
 
         text-align: center;
-
       }
 
 
@@ -569,12 +569,17 @@
         .modal {
           align-content: center;
         }
-
+        .connect-act{
+          margin-right: 10px;
+        }
       }
 
       @media(max-width:600px) {
         .modal {
           align-content: center;
+        }
+        .connect-act{
+          margin-right: 10px;
         }
 
       }
@@ -651,22 +656,23 @@
         <div class="card-container">
           <div id="model_name='agenthouse' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+
+            <div class="sale-banner"
+              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
+              {{i.category}}</div>
+            <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+              <i class="ph ph-share-fat"></i>
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %}
+              {% if img %}
+              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% else %}
+              <p>No images available</p>
+              {% endif %}
+              {% endwith %}
+            </div>
             <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
-              </div>
               <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
@@ -696,7 +702,7 @@
                       <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
+                      <i class="fa-solid fa-phone-flip"></i>
                     </a>
 
                   </div>
@@ -748,7 +754,7 @@
         <div class="card-container">
           <div id="model_name='agentland' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
+            
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -764,43 +770,44 @@
                 {% endif %}
                 {% endwith %}
               </div>
-              <h2>{{i.Caption | slice:":20"}}</h2>
-              <div class="paragraph">
-                <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":30"}}</span>
-                </p>
-              </div>
-              <hr>
               <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
-                <h5>View More</h5>
-              </a>
-              <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                <span>{{i.address}}</span>
-              </div>
-              <!-- </div> -->
-              <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
-                    </a>
-
-                  </div>
-
+                <h2>{{i.Caption | slice:":20"}}</h2>
+                <div class="paragraph">
+                  <p>
+                    <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
+                    <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":30"}}</span>
+                  </p>
                 </div>
-              </div>
-            </a>
+                <hr>
+                <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
+                  <h5>View More</h5>
+                </a>
+                <div class="cr-loc">
+                  <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                  <span>{{i.address}}</span>
+                </div>
+                <!-- </div> -->
+                <div class="card-body">
+
+                  <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
+                    <div class="price-box">
+                      <p style="font-size: 14px; font-weight: bold; ">Price: <span
+                          style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
+                    </div>
+                    <div class="connect-act">
+                      <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn">
+                        <i class="fa-brands fa-whatsapp"></i>
+                      </div>
+                      <a href="tel:+91 {{ i.contact }}" class="call-btn">
+                        <i class="fa-solid fa-phone-flip"></i>
+                      </a>
+
+                    </div>
+
+                  </div>
+                </div>
+              </a>
           </div>
         </div>
       </div>
@@ -845,7 +852,7 @@
         <div class="card-container">
           <div id="model_name='agentcommercial' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
+            
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -861,6 +868,7 @@
                 {% endif %}
                 {% endwith %}
               </div>
+            <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
               <h2>{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
@@ -890,7 +898,7 @@
                       <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
+                      <i class="fa-solid fa-phone-flip"></i>
                     </a>
 
                   </div>
@@ -944,7 +952,7 @@
         <div class="card-container">
           <div id="model_name='agentoffplan' object_id=i.id " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+            
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -960,6 +968,7 @@
                 {% endif %}
                 {% endwith %}
               </div>
+            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">  
               <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
@@ -990,7 +999,7 @@
                       <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
+                      <i class="fa-solid fa-phone-flip"></i>
                     </a>
 
                   </div>
@@ -1054,7 +1063,7 @@
         <div class="card-container">
           <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
+            
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -1070,6 +1079,7 @@
                 {% endif %}
                 {% endwith %}
               </div>
+            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
               <h2>{{i.Caption | slice:":30"}}</h2>
               <div class="paragraph">
                 <p>
@@ -1099,7 +1109,7 @@
                       <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
+                      <i class="fa-solid fa-phone-flip"></i>
                     </a>
 
                   </div>
@@ -1152,7 +1162,7 @@
           <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}"
             data-house-id="{{ i.id }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='house' object_id=i.id %}">
+            
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -1171,11 +1181,12 @@
                 {% endif %}
                 {% endwith %}
               </div>
-              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
+            <a href="{% url 'detail_view' model_name='house' object_id=i.id %}">
+              <h2 style="color: #050505;">{{i.Caption | slice:":25"}}</h2>
               <div class="paragraph">
                 <p>
                   <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":10"}}</span>
+                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":13"}}</span>
                 </p>
               </div>
               <hr>
@@ -1203,7 +1214,7 @@
                       <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                     <i class="fa-solid fa-phone-flip"></i>
+                      <i class="fa-solid fa-phone-flip"></i>
                     </a>
 
                   </div>
@@ -1258,7 +1269,7 @@
         <div class="card-container">
           <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
+           
               <div class="sale-banner"
                 style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
                 {{i.category}}</div>
@@ -1275,6 +1286,7 @@
                 {% endif %}
                 {% endwith %}
               </div>
+            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
               <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
@@ -1378,6 +1390,7 @@
                 {% endif %}
                 {% endwith %}
               </div>
+            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
               <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
@@ -1815,7 +1828,7 @@
   </div>
 </div>
 
-<section class="contact-section" id="contact">
+<section class="contact-section" id="con">
   <div class="contact-info">
     <h2>GET IN TOUCH WITH US</h2>
     <p>Have questions or need assistance? We're here to help!</p>
@@ -1833,7 +1846,7 @@
       <span>Kochi, Kerala,India</span>
     </div>
   </div>
-
+<!-- <div class="contact-form-section"> -->
   <div class="contact-form">
     <!-- The form action should be to the Web3Forms submission endpoint -->
     <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
@@ -1855,6 +1868,8 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+<!-- </div> -->
+  
 
 
 

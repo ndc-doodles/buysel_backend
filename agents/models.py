@@ -69,6 +69,7 @@ class AgentHouse(models.Model):
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
     image = CloudinaryField('image', folder="agenthouses") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
@@ -105,6 +106,7 @@ class AgentLand(models.Model):
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
     image = CloudinaryField('image', folder="agentlands") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
@@ -138,6 +140,8 @@ class AgentCommercial(models.Model):
     amenities = models.TextField(max_length=500)
     image = CloudinaryField('image', folder="agentcommercial") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
 
@@ -170,7 +174,8 @@ class AgentOffPlan(models.Model):
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
     image = CloudinaryField('image', folder="agentoffplan") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
-    
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.Caption} - {self.agent_name}"
 
@@ -217,14 +222,3 @@ class Inbox(models.Model):
     def __str__(self):
         return f"Enquiry from {self.messages_text}"
     
-class AgentProperty(models.Model):
-    TYPE_CHOICES = (
-        ('house', 'House'),
-        ('land', 'Land'),
-        ('commercial', 'Commercial'),
-        ('offplan', 'OffPlan'),
-    )
-    id = models.AutoField(primary_key=True)
-    type = models.CharField(choices=TYPE_CHOICES, max_length=20)
-    caption = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=10, decimal_places=2)

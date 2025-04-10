@@ -55,23 +55,87 @@ def properties(request):
     })
 
 
+# def index(request):
+#     try:
+#         model1_objects = House.objects.prefetch_related(Prefetch('images', queryset=HouseImage.objects.all()))
+#         model2_objects = list(Land.objects.filter(id__isnull=False))
+#         model3_objects = list(Commercial.objects.all()[:2])
+#         model4_objects = list(OffPlan.objects.all()[:2])
+#         model5_objects = AgentHouse.objects.prefetch_related(Prefetch('images', queryset=AgentHouseImage.objects.all()))[:2]
+#         model6_objects = AgentLand.objects.prefetch_related(Prefetch('images', queryset=AgentLandImage.objects.all()))[:2]
+#         model7_objects = AgentOffPlan.objects.prefetch_related(Prefetch('images', queryset=AgentOffPlanImage.objects.all()))[:2]
+#         model8_objects = AgentCommercial.objects.prefetch_related(Prefetch('images', queryset=AgentCommercialImage.objects.all()))[:2]
+
+#         msgs = list(Inbox.objects.all().order_by('-id')[:15])
+    
+#         # Debugging output
+#         for obj in model1_objects:
+#             print(f"Model1 Object ID: {obj.id} (Type: {type(obj.id)})")
+    
+#     except Exception as e:
+#         print(f"Error fetching objects: {e}")
+#         model1_objects = model2_objects = model3_objects = model4_objects = []
+#         model5_objects = model6_objects = model7_objects = model8_objects = []
+#         msgs = []
+
+#     if request.method == 'POST':
+#         name = request.POST.get("name")
+#         contact = request.POST.get("contact")
+#         pin_code = request.POST.get("pin_code")
+#         messages = request.POST.get("messages")
+
+#         if name and contact and messages:
+#             msg = Inbox(name=name, contact=contact, pin_code=pin_code, messages_text=messages)
+#             msg.save()
+
+    
+
+#     return render(request, 'index.html', {
+#         'model1_objects': model1_objects,
+#         'model2_objects': model2_objects,
+#         'model3_objects': model3_objects,
+#         'model4_objects': model4_objects, 
+#         'model5_objects': model5_objects,
+#         'model6_objects': model6_objects,
+#         'model7_objects': model7_objects,
+#         'model8_objects': model8_objects,
+#         'msgs': msgs,
+       
+#     })
+
+
 def index(request):
     try:
-        model1_objects = House.objects.prefetch_related(Prefetch('images', queryset=HouseImage.objects.all()))
-        model2_objects = list(Land.objects.filter(id__isnull=False))
-        model3_objects = list(Commercial.objects.all()[:2])
-        model4_objects = list(OffPlan.objects.all()[:2])
-        model5_objects = AgentHouse.objects.prefetch_related(Prefetch('images', queryset=AgentHouseImage.objects.all()))[:2]
-        model6_objects = list(AgentLand.objects.all()[:2])
-        model7_objects = list(AgentOffPlan.objects.all()[:2])
-        model8_objects = list(AgentCommercial.objects.all()[:2])
+        model1_objects = House.objects.prefetch_related(
+            Prefetch('images', queryset=HouseImage.objects.all())
+        ).order_by('-id')
+
+        model2_objects = list(Land.objects.filter(id__isnull=False).order_by('-id'))
+        model3_objects = list(Commercial.objects.all().order_by('-id')[:2])
+        model4_objects = list(OffPlan.objects.all().order_by('-id')[:2])
+
+        model5_objects = AgentHouse.objects.prefetch_related(
+            Prefetch('images', queryset=AgentHouseImage.objects.all())
+        ).order_by('-id')[:2]
+
+        model6_objects = AgentLand.objects.prefetch_related(
+            Prefetch('images', queryset=AgentLandImage.objects.all())
+        ).order_by('-id')[:2]
+
+        model7_objects = AgentOffPlan.objects.prefetch_related(
+            Prefetch('images', queryset=AgentOffPlanImage.objects.all())
+        ).order_by('-id')[:2]
+
+        model8_objects = AgentCommercial.objects.prefetch_related(
+            Prefetch('images', queryset=AgentCommercialImage.objects.all())
+        ).order_by('-id')[:2]
 
         msgs = list(Inbox.objects.all().order_by('-id')[:15])
-    
+
         # Debugging output
         for obj in model1_objects:
             print(f"Model1 Object ID: {obj.id} (Type: {type(obj.id)})")
-    
+
     except Exception as e:
         print(f"Error fetching objects: {e}")
         model1_objects = model2_objects = model3_objects = model4_objects = []
@@ -88,23 +152,17 @@ def index(request):
             msg = Inbox(name=name, contact=contact, pin_code=pin_code, messages_text=messages)
             msg.save()
 
-    
-
     return render(request, 'index.html', {
         'model1_objects': model1_objects,
         'model2_objects': model2_objects,
         'model3_objects': model3_objects,
-        'model4_objects': model4_objects, 
+        'model4_objects': model4_objects,
         'model5_objects': model5_objects,
         'model6_objects': model6_objects,
         'model7_objects': model7_objects,
         'model8_objects': model8_objects,
         'msgs': msgs,
-       
     })
-
-
-
 
 
 
@@ -115,13 +173,22 @@ def more(request):
 
 
 
-def blog(request):
-    blogs = Blog.objects.all()
+# def blog(request):
+#     blogs = Blog.objects.all()
     
-    # Set up pagination
-    paginator = Paginator(blogs, 10)  # Show 5 blogs per page
-    page_number = request.GET.get('page')  # Get the current page number from the URL
-    page_obj = paginator.get_page(page_number)  # Get the page object for that page
+   
+#     paginator = Paginator(blogs, 10) 
+#     page_number = request.GET.get('page') 
+#     page_obj = paginator.get_page(page_number)  
+
+#     return render(request, 'blog.html', {'page_obj': page_obj})
+
+def blog(request):
+    blogs = Blog.objects.all().order_by('-date')  # change 'created_at' to your actual date field name
+
+    paginator = Paginator(blogs, 10) 
+    page_number = request.GET.get('page') 
+    page_obj = paginator.get_page(page_number)  
 
     return render(request, 'blog.html', {'page_obj': page_obj})
 
@@ -412,26 +479,50 @@ def property_form(request):
     return render(request, 'property_form.html')
 
 
+# def propertice(request):
+#     model1_objects = House.objects.all()
+#     model2_objects = Land.objects.all()
+#     model3_objects = Commercial.objects.all()
+#     model4_objects = OffPlan.objects.all()
+#     model5_objects = AgentHouse.objects.all()
+#     model6_objects = AgentLand.objects.all()
+#     model7_objects = AgentOffPlan.objects.all()
+#     model8_objects = AgentCommercial.objects.all()
+#     return render(request,'properties.html',{
+#                 'model1_objects': model1_objects,
+#                 'model2_objects': model2_objects,
+#                 'model3_objects': model3_objects,
+#                 'model4_objects': model4_objects,
+#                 'model5_objects': model5_objects,
+#                 'model6_objects': model6_objects,
+#                 'model7_objects': model7_objects,
+#                 'model8_objects': model8_objects,
+#                 }
+#                 )
+
+
+
 def propertice(request):
-    model1_objects = House.objects.all()
-    model2_objects = Land.objects.all()
-    model3_objects = Commercial.objects.all()
-    model4_objects = OffPlan.objects.all()
-    model5_objects = AgentHouse.objects.all()
-    model6_objects = AgentLand.objects.all()
-    model7_objects = AgentOffPlan.objects.all()
-    model8_objects = AgentCommercial.objects.all()
-    return render(request,'properties.html',{
-                'model1_objects': model1_objects,
-                'model2_objects': model2_objects,
-                'model3_objects': model3_objects,
-                'model4_objects': model4_objects,
-                'model5_objects': model5_objects,
-                'model6_objects': model6_objects,
-                'model7_objects': model7_objects,
-                'model8_objects': model8_objects,
-                }
-                )
+    model1_objects = House.objects.all().order_by('-id')
+    model2_objects = Land.objects.all().order_by('-id')
+    model3_objects = Commercial.objects.all().order_by('-id')
+    model4_objects = OffPlan.objects.all().order_by('-id')
+    model5_objects = AgentHouse.objects.all().order_by('-id')
+    model6_objects = AgentLand.objects.all().order_by('-id')
+    model7_objects = AgentOffPlan.objects.all().order_by('-id')
+    model8_objects = AgentCommercial.objects.all().order_by('-id')
+
+    return render(request, 'properties.html', {
+        'model1_objects': model1_objects,
+        'model2_objects': model2_objects,
+        'model3_objects': model3_objects,
+        'model4_objects': model4_objects,
+        'model5_objects': model5_objects,
+        'model6_objects': model6_objects,
+        'model7_objects': model7_objects,
+        'model8_objects': model8_objects,
+    })
+
 
 
 # import requests

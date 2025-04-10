@@ -416,6 +416,13 @@ label[for=nav-footer-toggle] {
   border-radius: 2%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
+.login-box p{
+  text-align: center;
+  text-decoration: underline;
+  font-family: 'geist', sans-serif;
+  padding-top: 1rem;
+  color: black;
+}
 .property-box p{
   text-decoration: none !important;
 }
@@ -610,7 +617,7 @@ label{
 
 @media(max-width:400px){
   .login-box {
-    width: 66% !important;  
+    width: 78% !important;  
  
   }
 }
@@ -639,7 +646,7 @@ label{
     gap: 2rem !important;
 }
 .login-box {
-  width: 70%;  
+  width: 78% !important;   
 
 }
 

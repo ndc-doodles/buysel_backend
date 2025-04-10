@@ -83,22 +83,7 @@
     margin-bottom: 5rem !important;
 }
 @media(max-width: 600px){
-  .image-container{
-    margin-top: 8rem;
-  }
-  .image-container .image-2 {
-    max-width: 53%;
-    
-}
-  .image-container .image-1 {
-      max-width: 53%;
-      margin-left: -9rem;
-    }
-    }
-    @media(max-width: 400px){
-  .image-container{
-    margin-top: 8rem;
-  }
+
   .image-container .image-2 {
     max-width: 53%;
     
@@ -108,12 +93,18 @@
       margin-left: 2rem;
     }
     }
-  @media(max-width:900px){
-   
-  .image-container{
-    margin-top: 8rem;
-  }
-  }
+    @media(max-width: 400px){
+
+  .image-container .image-2 {
+    max-width: 53%;
+    
+}
+  .image-container .image-1 {
+      max-width: 53%;
+      margin-left: 2rem;
+    }
+    }
+  
 </style>
 
 
@@ -122,11 +113,9 @@
 <section>
   <div class="landing-agents">
     <div class="agent-text-section">
-      <div class="agent-land-text">
         <h1>Explore <br>Our Agents</h1>
       <p>Browse our list of agents to find the right professional for your real estate needs. Filter by experience, specialization, or location to make an informed choice. Whether buying, 
         selling, or investing, our agents are here to provide expert guidance for a successful journey</p>
-      </div>
       
     </div>
     <div class="agent-image-section">
@@ -192,8 +181,8 @@
 <div class="pagination">
   <span class="step-links">
       {% if profile.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ profile.previous_page_number }}">previous</a>
+          <a href="?page=1">&laquo;<button style="background-color: #8bc83f; width: 6rem; border-radius: 2px; color: white; height: 2rem;  box-shadow: 4px 6px 12px #0000002e; font-weight: 100;">First</button></a>
+          <a href="?page={{ profile.previous_page_number }}"><button style="background-color: #8bc83f; width: 6rem; border-radius: 2px; color: white; height: 2rem;  box-shadow: 4px 6px 12px #0000002e; font-weight: 100;">Previous</button></a>
       {% endif %}
 
       <span class="current">
@@ -201,8 +190,8 @@
       </span>
 
       {% if profile.has_next %}
-          <a href="?page={{ profile.next_page_number }}">next</a>
-          <a href="?page={{ profile.paginator.num_pages }}">last &raquo;</a>
+          <a href="?page={{ profile.next_page_number }}"><button style="background-color: #8bc83f; width: 6rem; border-radius: 2px; color: white; height: 2rem;  box-shadow: 4px 6px 12px #0000002e; font-weight: 100;">Next</button></a>
+          <a href="?page={{ profile.paginator.num_pages }}"><button style="background-color: #8bc83f; width: 6rem; border-radius: 2px; color: white; height: 2rem;  box-shadow: 4px 6px 12px #0000002e; font-weight: 100;">Last</button>&raquo;</a>
       {% endif %}
   </span>
 </div>

@@ -69,6 +69,8 @@ class House(models.Model):
     disabled = models.BooleanField(default=False, verbose_name="Is Disabled?")
     image = CloudinaryField('image', folder="houses") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.Caption} - {self.username}"
     
@@ -109,7 +111,7 @@ class Land(models.Model):
     disabled = models.BooleanField(default=False)
     image = CloudinaryField('image', folder="lands") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
-
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.Caption} - {self.username}"
     
@@ -151,6 +153,7 @@ class Commercial(models.Model):
     amenities = models.TextField(max_length=500)
     image = CloudinaryField('image', folder="commercial") 
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.Caption} - {self.username}"
     
@@ -189,7 +192,7 @@ class OffPlan(models.Model):
     disabled = models.BooleanField(default=False)
     image = CloudinaryField('image', folder="offplan")  # This will be the main image
     screenshot = CloudinaryField('image', folder="screenshot", null=True, blank= True) 
-
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.Caption} - {self.username}"
 
@@ -242,6 +245,7 @@ class Blog(models.Model):
     card_paragraph = models.TextField()
     modal_paragraph = models.TextField()
     image = models.ImageField(upload_to='blogs')
+   
 
 
     def __str__(self):

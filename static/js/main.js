@@ -4,7 +4,46 @@
 //     document.documentElement.scrollTop = 0;
 // };
 
-console.log('sdfsfdsf');
+document.addEventListener('DOMContentLoaded',()=>{
+    console.log('haiiiiiii',location.href);
+    if(location.href.includes('agent')){
+        handleNavbarActive('agent-nav')
+    }else if(location.href.includes('about')){
+        handleNavbarActive('about-nav')
+    }else if(location.href.includes('service')){
+        handleNavbarActive('service-nav')
+    }else if(location.href.includes('properties')){
+        handleNavbarActive('properties-nav')
+    }else if(location.href.includes('features')){
+        handleNavbarActive('features-nav')
+    }else{
+        handleNavbarActive('home-nav')
+    }
+    
+})
+
+function handleNavbarActive(tab) {
+    const tabElement = document.getElementById(tab);
+    const allTabs = document.getElementsByClassName('nav-option-li');
+
+    // Reset styles for all tabs
+    for (let i = 0; i < allTabs.length; i++) {
+        allTabs[i].style.textDecoration = 'none';
+        allTabs[i].style.textUnderlineOffset = '';
+        allTabs[i].style.borderRadius = '';
+        allTabs[i].style.color = '';
+        allTabs[i].style.textDecorationThickness = '';
+    }
+
+    // Apply styles to the selected tab
+    tabElement.style.textDecoration = 'underline';
+    tabElement.style.textUnderlineOffset = '10px';
+    tabElement.style.borderRadius = '5px';
+    tabElement.style.color = '#8bc83f';
+    tabElement.style.textDecorationThickness = '3px';
+}
+
+
 
 
 
@@ -336,7 +375,6 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
 
 
 

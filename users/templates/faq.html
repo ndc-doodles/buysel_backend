@@ -36,6 +36,7 @@
           color: #8bc83f;  
           text-decoration-thickness: 3px; 
         }
+       
       </style>
 
 </head>
@@ -105,10 +106,10 @@
         <li><a href="{% url 'index' %}#features">Features</a></li>
         <li ><a href="{% url 'blog' %}">Our blogs</a></li>
         <li class=" active-tab "><a href="{% url 'faq' %}">FAQ</a></li>
-        <li><a href="{% url 'login' %}"><i class="ph ph-user"></i>Login   </a></li>
+        <li><a href="{% url 'login' %}"  style="color: #8bc83f;"><i class="ph ph-user"></i>Login   </a></li>
       </ul>
       <button class="contact-btn">
-        <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
+        <a href="{% url 'index' %}#con" class="contact-link">Contact Us</a>
       </button>
 
       <div id="mobile-navbar" class="mobile-navbar display-hidden">
@@ -125,7 +126,7 @@
             <li onclick="handleToggle()"><a href="{% url 'index' %}#features">Features</a></li>
             <li onclick="handleToggle()"><a href="{% url 'blog' %}">Our blogs</a></li>
             <li onclick="handleToggle()"><a href="{% url 'faq' %}">FAQ</a></li>
-            <li onclick="handleToggle()"><a href="{% url 'login' %}"><i class="ph ph-user"></i>Login   </a></li>
+            <li onclick="handleToggle()"><a href="{% url 'login' %}" style="color: #8bc83f;"><i class="ph ph-user"></i>Login   </a></li>
           </ul>
           <button class="contact-btn">
             <a href="{% url 'index' %}#contact" class="contact-link">Contact Us</a>
@@ -199,7 +200,7 @@
                     </button>
                 </div>
                 <div class="w-full flex justify-center items-center word-item" data-faq="faq-6">
-                    <button id="supportButton" class="faq-button  rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
+                    <button id="supportButton" class="faq-button border-2 border-[#8bc83f]  rounded-lg px-2 py-1 text-xs font-bold max-w-xs w-full hover:text-white">
                         <h1 id="support">Customer support</h1>
                     </button>
                 </div>
