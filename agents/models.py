@@ -18,7 +18,7 @@ class UserProfile(models.Model):
     login = models.OneToOneField(Login, on_delete=models.CASCADE)  # Link to Login model
     phone_number = models.CharField(max_length=15)
     address = models.TextField()
-    profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
+    profile_image = CloudinaryField('image', folder="agenthouses") 
     pin_code = models.IntegerField()  # Specific for agent
     email = models.EmailField(max_length=50)
     is_agent = models.BooleanField(default=False)  # Flag to determine if the user is an agent
