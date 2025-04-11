@@ -104,6 +104,13 @@
       margin-left: 2rem;
     }
     }
+    .agent-register-section{
+    margin-top: 7rem !important;
+  }
+
+  .why-choose{
+    margin-top: 8rem !important;
+  }
   
 </style>
 
@@ -135,46 +142,33 @@
 
 
 
-
+{% if profiles %}
 <div class="agents_page">
   <h1 class="agents-heading">Our Top Agents</h1>
-    <div class=" agents">
-      
+  <div class="agents">
     <div class="row2">
-      {% if profiles %}
       {% for agent in profiles %}
-  <a href="{% url 'agents_view'  agent.id %}" class="view-agent-btn"> 
-      <div class="card">
-        <div class="agents-card-body">
-          <div class="agents-card-img">
-            {% if agent.image_url %}
-                    <img src="{{ agent.image_url }}" alt="Agent Profile">
-                  {% else %}
-                    <p>No image available</p>
-                  {% endif %}
+        <a href="{% url 'agents_view' agent.id %}" class="view-agent-btn"> 
+          <div class="card">
+            <div class="agents-card-body">
+              <div class="agents-card-img">
+                {% if agent.image_url %}
+                  <img src="{{ agent.image_url }}" alt="Agent Profile">
+                {% else %}
+                  <p>No image available</p>
+                {% endif %}
+              </div>
+              <div class="card-text">
+                <h5 style="color:#8bc83f;">{{ agent.login.username }}</h5>
+                <h6>{{ agent.address }}</h6>
+              </div>
+            </div>
           </div>
-          <div class="card-text">
-            <h5  style="color:#8bc83f;">{{ agent.login.username }}</h5>
-            <h6>{{agent.address}}</h6>
-            <!-- <p>view propertice</p> -->
-          </div>
-        </div>
-      </div>
-  </a> 
-      {% endfor %} 
-      {% else %}
-      <p>No agents found.</p>
-    {% endif %}
-
- 
-
-
-
-
-
-
-
+        </a>
+      {% endfor %}
     </div>
+  </div>
+</div>
 
 
        <!-- Pagination Links -->
@@ -195,8 +189,8 @@
       {% endif %}
   </span>
 </div>
-
-    <div class=" container  agent-register-section" id="agents">
+{% endif %}
+    <div class=" container  agent-register-section " id="agents">
       <div class="text-section2">
         <h1>BECOME AN AGENT: <br /><span>JOIN OUR PLATFORM</span></h1>
         <p>
