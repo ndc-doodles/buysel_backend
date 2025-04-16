@@ -187,11 +187,11 @@
 
 <!-- Modal 2 -->
 <div class="modal-overlay" id="overlay2"></div>
-<div class="modal-box" id="modal2">
+<div class="modal-box scrollable-div" id="modal2">
   <span class="modal-close" data-close="modal2">&times;</span>
-  <div class="hidden-content" id="messages">
+  <div class="hidden-content " id="messages">
     {% for i in msgs|slice:"-15:" %}
-    <div class="message-box-content">
+    <div class="message-box-content ">
       {{ i.messages_text }}
     </div>
     {% endfor %}
@@ -666,8 +666,8 @@
             </button>
             <div class="property-card-img">
               {% with i.images.first as img %}
-              {% if img %}
-              <img src="{{ img.image.url }}" alt="House Image" width="200">
+              {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200">
               {% else %}
               <p>No images available</p>
               {% endif %}
@@ -764,8 +764,8 @@
               </button>
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}
@@ -862,8 +862,8 @@
               </button>
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}
@@ -962,8 +962,8 @@
               </button>
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}
@@ -1073,8 +1073,8 @@
               </button>
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}
@@ -1174,9 +1174,9 @@
 
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
+                {% if i %}
 
-                <img src="{{ img.image.url }}" alt="House Image">
+                <img src="{{ i.image.url }}" alt="House Image">
                 {% else %}
                 <p>No image found</p>
                 {% endif %}
@@ -1280,8 +1280,8 @@
 
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}
@@ -1384,8 +1384,8 @@
 
               <div class="property-card-img">
                 {% with i.images.first as img %}
-                {% if img %}
-                <img src="{{ img.image.url }}" alt="House Image" width="200">
+                {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200">
                 {% else %}
                 <p>No images available</p>
                 {% endif %}

@@ -6,10 +6,6 @@ from playwright.sync_api import sync_playwright
 import time
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 
 # Create your models here.
 class MainCategory(models.Model):
@@ -99,7 +95,7 @@ class Land(models.Model):
     space_area = models.CharField(max_length=50)
     address = models.TextField(max_length=500)
     description = models.TextField(max_length=500)
-    furnished = models.BooleanField(default=False)
+    
     land_mark = models.TextField(max_length=100)
    
     sequrity_deposit = models.CharField(max_length=50, null=True, blank=True)

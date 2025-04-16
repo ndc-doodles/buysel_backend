@@ -1,0 +1,18 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+
+<h4 >Create Blog</h4>
+ <div class="form_box">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="text" name="blog_head" placeholder="Blog Head" required><br>
+  <input type="text" name="modal_head" placeholder="Modal Head" required><br>
+  <input type="date" name="date" required ><br>
+  <textarea name="card_paragraph" placeholder="Card Paragraph" required></textarea><br>
+  <textarea name="modal_paragraph" placeholder="Modal Paragraph" required></textarea><br>
+  <input type="file" name="image" required><br>
+  <button type="submit">Create</button>
+</form>
+</div>
+{% endblock %}

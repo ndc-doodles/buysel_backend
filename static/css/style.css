@@ -6840,10 +6840,10 @@ article h2 {
 
 .message-box-content {
     width: 14rem;
-
+    border: solid black 2px;
     background-color: #fff !important;
     padding: 5%;
-   
+   color: #000;
     margin-bottom: 0.3rem;
     border-radius: 1rem;
     overflow-y: hidden;
@@ -7471,3 +7471,9 @@ article h2 {
     }
 }
 
+
+
+.scrollable-div{
+    overflow-y: scroll;
+    height: 57%;
+}

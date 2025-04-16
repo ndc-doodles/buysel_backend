@@ -11,7 +11,7 @@ from django.core.paginator import Paginator
 from users.views import*
 from django.http import JsonResponse
 
-def login(request):
+def agentslogin(request):
     msg = ""
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -33,7 +33,7 @@ def login(request):
 
         else:
             msg = "Username or Password is invalid"
-            return render(request, 'login.html', {'msg': msg})  # Render login page with error message
+            return render(request, 'agentslogin.html', {'msg': msg})  # Render login page with error message
 
     else:
         # If the request is a GET request and the user is already logged in, redirect to dashboard
@@ -41,7 +41,7 @@ def login(request):
             return redirect('dashboard')  # Redirect to dashboard if user is logged in
         else:
             # If not logged in, render the login page with no caching headers
-            response = render(request, 'login.html')
+            response = render(request, 'agentslogin.html')
             response['Cache-Control'] = 'no-store, no-cache, must-revalidate, proxy-revalidate'
             response['Pragma'] = 'no-cache'
             response['Expires'] = '0'
@@ -51,7 +51,7 @@ def logout_view(request):
     if "name" in request.session:
         request.session.pop("name")
 
-        return redirect('login')  # Redirect the user to the login page
+        return redirect('agentslogin')  # Redirect the user to the login page
 
 
 # views.py
