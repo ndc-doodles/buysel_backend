@@ -120,15 +120,16 @@ def houses_create(request):
             disabled=bool(request.POST.get('disabled')),
             image=request.FILES.get('image'),
             screenshot=request.FILES.get('screenshot'),
-            house_images =request.FILES.get('house_images'),
         )
         house.save()
 
+        # ✅ Save additional images using HouseImage
         images = request.FILES.getlist('house_images')
         for img in images:
             HouseImage.objects.create(house=house, image=img)
 
-        return redirect('house_create')
+        messages.success(request, "House created successfully!")
+        return redirect('house_create')  # You can change this to 'house_list' or detail view
 
     return render(request, 'createhouses.html', {'categories': categories})
 
@@ -194,7 +195,6 @@ def housedelete(request, pk):
     return redirect(reverse('admin_panel') + '#house')
 
 
-
 def lands_create(request):
     categories = MainCategory.objects.all()
 
@@ -217,15 +217,16 @@ def lands_create(request):
             disabled=bool(request.POST.get('disabled')),
             image=request.FILES.get('image'),
             screenshot=request.FILES.get('screenshot'),
-            land_images =request.FILES.get('land_images'),
         )
         land.save()
 
+        # ✅ Save multiple LandImage instances
         images = request.FILES.getlist('land_images')
         for img in images:
             LandImage.objects.create(land=land, image=img)
 
-        return redirect('lands_create')  # or any success page or list view
+        messages.success(request, "Land created successfully!")
+        return redirect(reverse('admin_panel') + '#land') # Or wherever you want to go
 
     return render(request, 'createlands.html', {'categories': categories})
 
@@ -297,15 +298,15 @@ def commercial_create(request):
             amenities=request.POST.get('amenities'),
             image=request.FILES.get('image'),
             screenshot=request.FILES.get('screenshot'),
-            commercial_images =request.FILES.get('commercial_images'),
         )
         commercial.save()
 
-        # Save additional images
+        # ✅ Save additional commercial images
         for img in request.FILES.getlist('commercial_images'):
             CommercialImage.objects.create(commercial=commercial, image=img)
 
-        return redirect('admin_panel')
+        messages.success(request, "Commercial property created successfully!")
+        return redirect(reverse('admin_panel') + '#commercial')
 
     return render(request, 'createcoms.html', {'categories': categories})
 
@@ -350,7 +351,6 @@ def commercial_delete(request, pk):
     commercial = get_object_or_404(Commercial, pk=pk)
     commercial.delete()
     return redirect(reverse('admin_panel') + '#commercial')
-
 def offplan_create(request):
     categories = MainCategory.objects.all()
 
@@ -371,15 +371,15 @@ def offplan_create(request):
             disabled=bool(request.POST.get('disabled')),
             image=request.FILES.get('image'),
             screenshot=request.FILES.get('screenshot'),
-            offplan_images =request.FILES.get('offplan_images'),
         )
         offplan.save()
 
-        # Saving additional images
+        # ✅ Save additional images
         for img in request.FILES.getlist('offplan_images'):
             OffplanImage.objects.create(offplan=offplan, image=img)
 
-        return redirect('admin_panel')  # Change to your desired redirect view
+        messages.success(request, "OffPlan property created successfully!")
+        return redirect(reverse('admin_panel') + '#offplan')
 
     return render(request, 'createoffs.html', {'categories': categories})
 
