@@ -227,7 +227,7 @@ def lands_create(request):
 
         return redirect('lands_create')  # or any success page or list view
 
-    return render(request, 'createland.html', {'categories': categories})
+    return render(request, 'createlands.html', {'categories': categories})
 
 
 
@@ -455,7 +455,7 @@ def create_blog(request):
             modal_paragraph=modal_paragraph,
             image=image,
         )
-        return redirect("admin_panel")
+        return redirect(reverse('admin_panel') + '#blog')
     return render(request, "blogcreate.html")
 
 # views.py
