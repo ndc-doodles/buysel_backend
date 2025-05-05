@@ -37,6 +37,7 @@ body {
 
 .card-body {
     padding: 2% !important;
+    /* background-color: green; */
 
 }
 
@@ -1891,6 +1892,17 @@ textarea[name="detail3"] {
     border: 0.0625rem solid #6FBB1B;
 }
 
+.price-and-button{
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+
+.price-box{
+    width: 70%;
+}
+
+
 /* Media query for devices with min-width 1025px (screens larger than tablets) */
 @media screen and (min-width: 1025px) {
     #service {
@@ -2017,7 +2029,8 @@ textarea[name="detail3"] {
 }
 
 .price-box {
-    width: 15.5rem;
+    /* width: 15.5rem;
+    background-color: red; */
 }
 .price-box p{
     text-align: left !important;
@@ -2065,7 +2078,9 @@ textarea[name="detail3"] {
 
     overflow: hidden;
     width: 25rem !important;
-    height: 28rem !important;
+    /* height: 28rem !important; */
+    height: 100%;
+
 
 }
 
@@ -2232,7 +2247,7 @@ hr {
     }
 
     .card {
-        height: auto;
+        height: 100%;
         /* Allow dynamic height for smaller screens */
     }
 
@@ -3542,7 +3557,11 @@ hr {
 
 
 
-
+.truncate{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 footer {
     font-family: 'geist', sans-serif;
@@ -3866,7 +3885,7 @@ h4 {
 
     .footer-content {
         position: relative;
-        display: flex;
+        /* display: flex; */
         justify-content: space-between;
         max-width: 75rem;
         margin: 0 auto;

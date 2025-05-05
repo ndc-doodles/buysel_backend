@@ -184,9 +184,7 @@
 
     <footer style="background-color: white; padding: 20px 0; z-index: 1">
       <div class="footer-content">
-        <!-- Left Side: Contact Information -->
         <div class="contact-details">
-          <!-- Updated class name here -->
           <img
             src="{% static 'img/logo.png' %}"
             alt="Buysel Logo"
@@ -197,7 +195,6 @@
           <p>Phone:9061827363</p>
           <p>Address: Kochi, Kerala,India</p>
 
-          <!-- Follow Us Section -->
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a
@@ -227,15 +224,11 @@
                 class="social-icon"
               />
             </a>
-            <!-- <a href="https://www.twitter.com" target="_blank">
-                  <img src="asset/img/twitter.svg" alt="Twitter" class="social-icon">
-              </a> -->
+           
           </div>
         </div>
 
-        <!-- Right Side: Footer Links -->
         <div class="footer-links" style="position: relative; z-index: 1">
-          <!-- <h4>wwwwwww</h4> -->
           <div class="link-row1 pt-5">
             <a href="#" class="home">Home</a>
             <a href="#service" class="services">Services</a>
@@ -253,10 +246,11 @@
         <p class="f-bg-content">Contact <br />us</p>
       </div>
 
-      <!-- Bottom: Copyright -->
-      <div class="footer-bottom">
+      <!-- <div class="footer-bottom">
         <p>&copy; 2024 Buysel.in. All Rights Reserved</p>
-      </div>
+      </div> -->
+
+      
     </footer>
 
     <script></script>
@@ -316,12 +310,12 @@
         popup.style.display = "none"; // Hide the popup
       }
 
-      function sendMessageToWhatsApp(propertyName, location, phoneNumber) {
-        const message = `Hello, I am interested in the property from buysel.in "${propertyName}" located in "${location}". Please provide more details.`;
-        const encodedMessage = encodeURIComponent(message); // Ensures the message is URL-safe
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-        window.open(whatsappUrl, "_blank"); // Open WhatsApp with the message
-      }
+      // function sendMessageToWhatsApp(propertyName, location, phoneNumber) {
+      //   const message = `Hello, I am interested in the property from buysel.in "${propertyName}" located in "${location}". Please provide more details.`;
+      //   const encodedMessage = encodeURIComponent(message); // Ensures the message is URL-safe
+      //   const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+      //   window.open(whatsappUrl, "_blank"); // Open WhatsApp with the message
+      // }
     </script>
 
     <script>

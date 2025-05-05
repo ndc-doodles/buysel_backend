@@ -1,8 +1,4 @@
-{% extends "base.html" %}
-{% load cloudinary %}
-{% load static %}
-
-
+{% extends "base.html" %} {% load cloudinary %} {% load static %} 
 {% block content %}
 <style>
   h2 {
@@ -22,53 +18,127 @@
     color: #2A2F27;
     text-decoration-thickness: 3px;/
   }
-  
 </style>
 <div class="main">
   <div class="text-section">
     <h1>
       Start Your<br />
-      Commission-<span class="highlight-free">Free</span><br />Journey
-      Today!
+      Commission-<span class="highlight-free">Free</span><br />Journey Today!
     </h1>
     <p>
       Whether it's a property or scrap,
-      <span class="highlight">Buysel.in</span> connects<br />you directly
-      with the right people.
+      <span class="highlight">Buysel.in</span> connects<br />you directly with
+      the right people.
     </p>
 
     <a href="#properties" class="explore-btn">Explore</a>
   </div>
 
-  <div class="image-section" onclick="sendMessageToWhatsApp('property', 'place')">
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+  <div
+    class="image-section"
+    onclick="sendMessageToWhatsApp('property', 'place')"
+  >
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
       <img class="image-box" id="box1" src="{% static 'img/9p.jpg' %}" alt="" />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box" id="box2" src="{% static 'img/10p.jpg' %}" alt="" />
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box"
+        id="box2"
+        src="{% static 'img/10p.jpg' %}"
+        alt=""
+      />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box" id="box3" src="{% static 'img/11p.jpg' %}" alt="" />
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box"
+        id="box3"
+        src="{% static 'img/11p.jpg' %}"
+        alt=""
+      />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
       <img class="image-box" id="box4" src="{% static 'img/9p.jpg' %}" alt="" />
     </a>
   </div>
 </div>
 
 <div class="image-section-mobile-outer">
-  <div class="image-section-mobile" onclick="sendMessageToWhatsApp('property', 'place')">
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box-mobile" id="box-mobile1" src="{% static 'img/10p.jpg' %}" alt="" />
+  <div
+    class="image-section-mobile"
+    onclick="sendMessageToWhatsApp('property', 'place')"
+  >
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box-mobile"
+        id="box-mobile1"
+        src="{% static 'img/10p.jpg' %}"
+        alt=""
+      />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box-mobile" id="box-mobile2" src="{% static 'img/10p.jpg' %}" alt="" />
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box-mobile"
+        id="box-mobile2"
+        src="{% static 'img/10p.jpg' %}"
+        alt=""
+      />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box-mobile" id="box-mobile3" src="{% static 'img/11p.jpg' %}" alt="" />
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box-mobile"
+        id="box-mobile3"
+        src="{% static 'img/11p.jpg' %}"
+        alt=""
+      />
     </a>
-    <a href="https://wa.me/9061827363" style="height: 100%" target="_blank" aria-label="WhatsApp Chat 1">
-      <img class="image-box-mobile" id="box-mobile4" src="{% static 'img/9p.jpg' %}" alt="" />
+    <a
+      href="https://wa.me/9061827363"
+      style="height: 100%"
+      target="_blank"
+      aria-label="WhatsApp Chat 1"
+    >
+      <img
+        class="image-box-mobile"
+        id="box-mobile4"
+        src="{% static 'img/9p.jpg' %}"
+        alt=""
+      />
     </a>
   </div>
 </div>
@@ -109,7 +179,6 @@
         });
       });
     </script> -->
-
 
 <!-- 
 <div class="alert-box-fixed">
@@ -160,7 +229,6 @@
   <!-- FAB Menu Button -->
   <button class="menuToggleBtn" id="menuToggle">
     <i class="fa-solid fa-plus"></i>
-
   </button>
 
   <!-- Action Buttons -->
@@ -174,14 +242,40 @@
   <span class="modal-close" data-close="modal1">&times;</span>
   <form class="popup-form" method="POST" action="">
     {% csrf_token %}
-    <input type="text" placeholder="Whats My Name?" id="name" name="name" required><br><br>
-    <input type="text" placeholder="How Can  I contact you?" id="contact" name="contact" required><br><br>
-    <input type="text" placeholder="Whats My PIN Code?" id="pin_code" name="pin_code" required><br><br>
-    <textarea oninput="handleTextAreaMessage()" placeholder="Whats My Need?" id="textarea-message" name="messages"
-      required></textarea><br><br>
+    <input
+      type="text"
+      placeholder="Whats My Name?"
+      id="name"
+      name="name"
+      required
+    /><br /><br />
+    <input
+      type="text"
+      placeholder="How Can  I contact you?"
+      id="contact"
+      name="contact"
+      required
+    /><br /><br />
+    <input
+      type="text"
+      placeholder="Whats My PIN Code?"
+      id="pin_code"
+      name="pin_code"
+      required
+    /><br /><br />
+    <textarea
+      oninput="handleTextAreaMessage()"
+      placeholder="Whats My Need?"
+      id="textarea-message"
+      name="messages"
+      required
+    ></textarea
+    ><br /><br />
 
     <div id="suggestions"></div>
-    <button onclick="handleExpand('messages','popup-form')" type="submit">Submit</button>
+    <button onclick="handleExpand('messages','popup-form')" type="submit">
+      Submit
+    </button>
   </form>
 </div>
 
@@ -189,29 +283,25 @@
 <div class="modal-overlay" id="overlay2"></div>
 <div class="modal-box scrollable-div" id="modal2">
   <span class="modal-close" data-close="modal2">&times;</span>
-  <div class="hidden-content " id="messages">
+  <div class="hidden-content" id="messages">
     {% for i in msgs|slice:"-15:" %}
-    <div class="message-box-content ">
-      {{ i.messages_text }}
-    </div>
+    <div class="message-box-content">{{ i.messages_text }}</div>
     {% endfor %}
   </div>
 </div>
-<div class="modal-background" id="modal-background">
-
-</div>
+<div class="modal-background" id="modal-background"></div>
 
 <script>
   const menuBtn = document.getElementById("menuToggle");
   const icon = menuBtn.querySelector("i");
   const btnTwo = document.getElementById("msgBtn");
   const btnThree = document.getElementById("bellBtn");
-  const modalBackground = document.getElementById("modal-background")
+  const modalBackground = document.getElementById("modal-background");
 
   menuBtn.addEventListener("click", () => {
     btnTwo.classList.toggle("active");
     btnThree.classList.toggle("active");
-    modalBackground.classList.toggle("active-background")
+    modalBackground.classList.toggle("active-background");
     menuBtn.classList.toggle("rotate");
   });
 
@@ -234,17 +324,19 @@
   });
 
   // Close any modal
-  document.querySelectorAll(".modal-close").forEach(btn => {
+  document.querySelectorAll(".modal-close").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const id = e.target.getAttribute("data-close");
       document.getElementById(id).classList.remove("show");
-      document.getElementById("overlay" + id.slice(-1)).classList.remove("show");
+      document
+        .getElementById("overlay" + id.slice(-1))
+        .classList.remove("show");
       document.body.classList.remove("modal-open");
     });
   });
 
   // Clicking outside the modal closes it too
-  document.querySelectorAll(".modal-overlay").forEach(overlay => {
+  document.querySelectorAll(".modal-overlay").forEach((overlay) => {
     overlay.addEventListener("click", () => {
       overlay.classList.remove("show");
       const modalId = overlay.id === "overlay1" ? "modal1" : "modal2";
@@ -267,99 +359,70 @@
 
 </script> -->
 
-
-
-
-
-
-
 <script>
   function handleExpand(id, hidingId) {
-
-
     event.stopPropagation();
 
+    const expandSection = document.getElementById(id);
+    const hiddingSection = document.getElementById(hidingId);
+    const allSection = document.getElementById("message-box-id");
 
-    const expandSection = document.getElementById(id)
-    const hiddingSection = document.getElementById(hidingId)
-    const allSection = document.getElementById('message-box-id')
-
-    allSection.style.transform = 'scaleY(1)';
-    expandSection.style.transform = 'scaleY(1)';
-    hiddingSection.style.transform = 'scaleY(0)';
-
+    allSection.style.transform = "scaleY(1)";
+    expandSection.style.transform = "scaleY(1)";
+    // hiddingSection.style.transform = "scaleY(0)";
   }
-
 
   function handleClose() {
+    const hiddingSection = document.getElementById("message-box-id");
 
-    const hiddingSection = document.getElementById('message-box-id')
-
-    hiddingSection.style.transform = 'scaleY(0)';
-
+    // hiddingSection.style.transform = "scaleY(0)";
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
+    handleClose();
+  });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    handleClose()
-  })
-
-
-  document.addEventListener('click', () => {
-    handleClose()
-  })
-
-
+  document.addEventListener("click", () => {
+    handleClose();
+  });
 </script>
 
 <script>
-
   function handleTextAreaMessage() {
-
     event.stopPropagation();
 
+    const suggestedArray = [
+      "I am looking for land",
+      "I am looking for land to buy",
+      "I am looking for land near the beach",
+      "I am looking for land with a house",
+      "I am looking for land in the countryside",
+    ];
 
-    const suggestedArray = ['I am looking for land',
-      'I am looking for land to buy',
-      'I am looking for land near the beach',
-      'I am looking for land with a house',
-      'I am looking for land in the countryside']
-
-    const textArea = document.getElementById('textarea-message')
+    const textArea = document.getElementById("textarea-message");
     let suggestions;
 
     console.log(textArea.value);
 
     for (let i = 0; i < suggestedArray.length; i++) {
-
       if (suggestedArray[i].trim().includes(textArea.value.trim())) {
-        suggestions = suggestedArray[i]
+        suggestions = suggestedArray[i];
       } else {
         // suggestions = ''
       }
-
-
     }
 
     console.log(suggestions);
 
-    textArea.innerHTML = suggestions
-
-
-
+    textArea.innerHTML = suggestions;
   }
-
 
   function handleStopPropagation() {
     event.stopPropagation();
-
   }
-
-
 </script>
 
-
-<div class="container mt-26 pt-5" style="margin-top:10rem;">
+<div class="container mt-26 pt-5" style="margin-top: 10rem">
   <div class="text-section2">
     <h1 class="noticed">
       LIST NOW & GET <br />
@@ -370,11 +433,11 @@
       active buyers and sellers faster!
     </p>
 
-
     <style>
       .card {
         width: 22rem !important;
-        height: 33rem !important;
+        /* height: 33rem !important; */
+        height: 100%;
         background-color: white;
       }
 
@@ -450,7 +513,6 @@
         width: 2.5rem !important;
         text-align: center;
         align-content: center;
-                  
       }
 
       .msg-btn {
@@ -458,20 +520,18 @@
         background-color: none;
         font-size: 46px;
         border-radius: 5px;
-
-
-        align-content: center;
-
+        align-content: end;
+        cursor: pointer;
         text-align: center;
       }
 
-
       .connect-act {
         display: flex;
-        gap: 0.3rem;
-        align-items: center;
+        gap: 1rem;
+        /* align-items: center; */
+        justify-content: end;
+        margin-bottom: 10px;
       }
-
 
       .modal {
         display: none;
@@ -490,7 +550,6 @@
         /* Fallback color */
         background-color: rgba(0, 0, 0, 0.4);
         /* Black w/ opacity */
-
       }
 
       .modal-content {
@@ -518,8 +577,6 @@
         cursor: pointer;
       }
 
-
-
       .share-opt {
         display: flex;
         margin-bottom: 1rem;
@@ -531,11 +588,11 @@
       }
 
       .share-opt .ph-whatsapp-logo {
-        color: #075E54;
+        color: #075e54;
       }
 
       .share-opt .ph-facebook-logo {
-        color: #4267B2;
+        color: #4267b2;
       }
 
       .share-opt .ph-x-logo {
@@ -546,12 +603,11 @@
         color: #0088cc;
       }
 
-
       .share-opt .ph-linkedin-logo {
-        color: #0077B5;
+        color: #0077b5;
       }
 
-      @media(max-width: 1076px) {
+      @media (max-width: 1076px) {
         .faq-outer {
           flex-direction: column;
           align-items: center;
@@ -567,81 +623,109 @@
         }
       }
 
-      @media(max-width:400px) {
+      @media (max-width: 400px) {
         .modal {
           align-content: center;
         }
-        .connect-act{
+        .connect-act {
           margin-right: 10px;
         }
       }
 
-      @media(max-width:600px) {
+      @media (max-width: 600px) {
         .modal {
           align-content: center;
         }
-        .connect-act{
+        .connect-act {
           margin-right: 10px;
         }
-
       }
 
-      @media(max-width:900px) {
+      @media (max-width: 900px) {
         .modal {
           align-content: center;
         }
-
       }
     </style>
 
     <a class="add-property-btn-link" href="property">
       <div class="add-property-btn pulse">
         <span>Add your property</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#8bc83f"
-          class="add-property-icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="#8bc83f"
+          class="add-property-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+          />
         </svg>
       </div>
     </a>
   </div>
   <div class="image-container">
-    <img src="https://storage.googleapis.com/a1aa/image/ZleGScqhQ7yKeEMNfTUDy3XQmOkgSUQVzZkIFVZfkcVzUGEQB.jpg"
-      alt="A beautiful house at sunset" class="image-1" />
-    <img src="https://storage.googleapis.com/a1aa/image/fFr3NpP8fZqEAUuvcHsjaowep8eei8G9PHOwKZIkeko0SZQAF.jpg"
-      alt="A key in a door lock" class="image-2" />
+    <img
+      src="https://storage.googleapis.com/a1aa/image/ZleGScqhQ7yKeEMNfTUDy3XQmOkgSUQVzZkIFVZfkcVzUGEQB.jpg"
+      alt="A beautiful house at sunset"
+      class="image-1"
+    />
+    <img
+      src="https://storage.googleapis.com/a1aa/image/fFr3NpP8fZqEAUuvcHsjaowep8eei8G9PHOwKZIkeko0SZQAF.jpg"
+      alt="A key in a door lock"
+      class="image-2"
+    />
   </div>
 </div>
 
-
-
-
 <section>
-
-  <div class="properties pt-5 " id="properties">
-    <h1 class="property-name pt-5 ">PROPERTIES</h1>
+  <div class="properties pt-5" id="properties">
+    <h1 class="property-name pt-5">PROPERTIES</h1>
     <div class="property-filters flex flex-wrap justify-center gap-y-4 mb-4">
-      <button class="filter-btn active w-full sm:w-auto px-4 py-2" data-category="all"
-        onclick="filterProperties('all')">All</button>
-      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Sale"
-        onclick="filterProperties('Sale')">Sale</button>
-      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Rent"
-        onclick="filterProperties('Rent')">Rent</button>
+      <button
+        class="filter-btn active w-full sm:w-auto px-4 py-2"
+        data-category="all"
+        onclick="filterProperties('all')"
+      >
+        All
+      </button>
+      <button
+        class="filter-btn w-full sm:w-auto px-4 py-2"
+        data-category="Sale"
+        onclick="filterProperties('Sale')"
+      >
+        Sale
+      </button>
+      <button
+        class="filter-btn w-full sm:w-auto px-4 py-2"
+        data-category="Rent"
+        onclick="filterProperties('Rent')"
+      >
+        Rent
+      </button>
 
-      <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Lease"
-        onclick="filterProperties('Lease')">Lease</button>
+      <button
+        class="filter-btn w-full sm:w-auto px-4 py-2"
+        data-category="Lease"
+        onclick="filterProperties('Lease')"
+      >
+        Lease
+      </button>
       <!-- <button class="filter-btn w-full sm:w-auto px-4 py-2" data-category="Resell"
         onclick="filterProperties('Resell')">Resell</button> -->
-
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".filter-btn");
 
-        buttons.forEach(button => {
+        buttons.forEach((button) => {
           button.addEventListener("click", function () {
             // Remove 'clicked' class from all buttons
-            buttons.forEach(btn => btn.classList.remove("clicked"));
+            buttons.forEach((btn) => btn.classList.remove("clicked"));
 
             // Add 'clicked' class to the clicked button
             this.classList.add("clicked");
@@ -650,65 +734,160 @@
       });
     </script>
 
-
     <div class="row-properties">
-
       {% for i in model5_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agenthouse' object_id=i.id " class="card" data-category="{{ i.category }}">
-            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-
-            <div class="sale-banner"
-              style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-              {{i.category}}</div>
-            <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+          <div
+            id="model_name='agenthouse' object_id=i.id "
+            class="card"
+            data-category="{{ i.category }}"
+          >
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
               <i class="ph ph-share-fat"></i>
             </button>
             <div class="property-card-img">
-              {% with i.images.first as img %}
-              {% if i %}
-              <img src="{{ i.image.url }}" alt="House Image" width="200">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
               {% else %}
               <p>No images available</p>
-              {% endif %}
-              {% endwith %}
+              {% endif %} {% endwith %}
             </div>
             <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
               <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":10"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":10"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'agents_detail' 'agenthouse' i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'agents_detail' 'agenthouse' i.id %}"
+                class="view"
+              >
                 <h5>View More</h5>
               </a>
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -716,195 +895,200 @@
         </div>
       </div>
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagenthouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
-      {% endfor %}
-
-      {% for i in model6_objects %}
+      {% endfor %} {% for i in model6_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentland' object_id=i.id " class="card" data-category="{{ i.category }}">
+          <div
+            id="model_name='agentland' object_id=i.id "
+            class="card"
+            data-category="{{ i.category }}"
+          >
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
-              </div>
-              <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
-                <h2>{{i.Caption | slice:":20"}}</h2>
-                <div class="paragraph">
-                  <p>
-                    <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                    <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":30"}}</span>
-                  </p>
-                </div>
-                <hr>
-                <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
-                  <h5>View More</h5>
-                </a>
-                <div class="cr-loc">
-                  <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                  <span>{{i.address}}</span>
-                </div>
-                <!-- </div> -->
-                <div class="card-body">
 
-                  <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                    <div class="price-box">
-                      <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                          style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                    </div>
-                    <div class="connect-act">
-                      <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                        class="msg-btn">
-                        <i class="fa-brands fa-whatsapp"></i>
-                      </div>
-                      <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                        <i class="fa-solid fa-phone-flip"></i>
-                      </a>
-
-                    </div>
-
-                  </div>
-                </div>
-              </a>
-          </div>
-        </div>
-      </div>
-      <div id="share-btn-modal-{{i.id}}" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-whatsapp"></i>
-            <p>Whats App</p>
-          </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-facebook"></i>
-            <p>Facebook</p>
-          </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-square-x-twitter"></i>
-            <p>Twitter</p>
-          </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-telegram"></i>
-            <p>Telegram</p>
-          </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailagentland/{{ i.id|urlencode }}')">
-            <i class="fa-brands fa-linkedin"></i>
-            <p>Linked in</p>
-          </div>
-
-
-
-
-        </div>
-      </div>
-      {% endfor %}
-
-      {% for i in model7_objects %}
-      <div class="property-cards-agent">
-        <div class="card-container">
-          <div id="model_name='agentcommercial' object_id=i.id " class="card" data-category="{{ i.category }}">
-            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
-              </div>
-            <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
+              {% else %}
+              <p>No images available</p>
+              {% endif %} {% endwith %}
+            </div>
+            <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
               <h2>{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":30"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}" class="view">
+              <hr />
+              <a href="{% url 'agents_detail' 'agentland' i.id %}" class="view">
                 <h5>View More</h5>
               </a>
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -912,100 +1096,414 @@
         </div>
       </div>
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('fb','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagentland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('x','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailagentland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
-      {% endfor %}
-
-      {% for i in model8_objects %}
+      {% endfor %} {% for i in model7_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='agentoffplan' object_id=i.id " class="card" data-category="{{ i.category }}">
+          <div
+            id="model_name='agentcommercial' object_id=i.id "
+            class="card"
+            data-category="{{ i.category }}"
+          >
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
+
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
+              {% else %}
+              <p>No images available</p>
+              {% endif %} {% endwith %}
+            </div>
+            <a
+              href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}"
+              class="view"
+            >
+              <h2>{{i.Caption | slice:":20"}}</h2>
+              <div class="paragraph">
+                <p>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":50"}}</span
+                  >
+                </p>
               </div>
-            <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">  
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='agentcommercial' object_id=i.id %}"
+                class="view"
+              >
+                <h5>View More</h5>
+              </a>
+              <div class="cr-loc">
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
+                <span>{{i.address}}</span>
+              </div>
+              <!-- </div> -->
+              <div class="card-body">
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="share-btn-modal-{{i.id}}" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>Whats App</p>
+          </div>
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')"
+          >
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
+          </div>
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')"
+          >
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <p>Twitter</p>
+          </div>
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')"
+          >
+            <i class="fa-brands fa-telegram"></i>
+            <p>Telegram</p>
+          </div>
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentcommercial/{{ i.id|urlencode }}')"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+            <p>Linked in</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% for i in model8_objects %}
+      <div class="property-cards-agent">
+        <div class="card-container">
+          <div
+            id="model_name='agentoffplan' object_id=i.id "
+            class="card"
+            data-category="{{ i.category }}"
+          >
+            <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
+
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
+              {% else %}
+              <p>No images available</p>
+              {% endif %} {% endwith %}
+            </div>
+            <a
+              href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}"
+              class="view"
+            >
               <h2>{{i.Caption| slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":50"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='agentoffplan' object_id=i.id %}"
+                class="view"
+              >
                 <h5>View More</h5>
               </a>
 
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address|truncatechars:15}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -1014,108 +1512,203 @@
       </div>
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('fb','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailagentoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
 
-      {% endfor %}
-
-
-
-
-
-
-
-
-
-
-      {% for i in model2_objects %}
+      {% endfor %} {% for i in model2_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
           <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
-              </div>
-            <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
+
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
+              {% else %}
+              <p>No images available</p>
+              {% endif %} {% endwith %}
+            </div>
+            <a
+              href="{% url 'detail_view' model_name='land' object_id=i.id %}"
+              class="view"
+            >
               <h2>{{i.Caption | slice:":30"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":20"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":20"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='land' object_id=i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='land' object_id=i.id %}"
+                class="view"
+              >
                 <h5>View Details</h5>
               </a>
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
-                <span>{{i.address | slice:":20"}}</span>
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
+                <span class="truncate">{{i.address}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -1124,103 +1717,209 @@
       </div>
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailland/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailland/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailland/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailland/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailland/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailland/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
 
-      {% endfor %}
-
-
-      {% for i in model1_objects %}
+      {% endfor %} {% for i in model1_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
-          <div id="model_name='house' object_id=i.id" class="card" data-category="{{ i.category }}"
-            data-house-id="{{ i.id }}">
+          <div
+            id="model_name='house' object_id=i.id"
+            class="card"
+            data-category="{{ i.category }}"
+            data-house-id="{{ i.id }}"
+          >
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
 
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
 
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
 
-                <img src="{{ i.image.url }}" alt="House Image">
-                {% else %}
-                <p>No image found</p>
-                {% endif %}
-                {% endwith %}
-              </div>
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+
+              <img src="{{ i.image.url }}" alt="House Image" />
+              {% else %}
+              <p>No image found</p>
+              {% endif %} {% endwith %}
+            </div>
             <a href="{% url 'detail_view' model_name='house' object_id=i.id %}">
-              <h2 style="color: #050505;">{{i.Caption | slice:":25"}}</h2>
+              <h2 style="color: #050505">{{i.Caption | slice:":25"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":15"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":15"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='house' object_id=i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='house' object_id=i.id %}"
+                class="view"
+              >
                 <h5>View Details</h5>
-
               </a>
 
-
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address|truncatechars:20}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -1229,100 +1928,204 @@
       </div>
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt" onclick="handleImage('whatsapp','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailhouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailhouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailhouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt" onclick="handleImage('telegram','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailhouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt" onclick="handleImage('linkedin','https://buysel.in/detailhouse/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailhouse/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
 
-
-
-      {% endfor %}
-
-
-
-      {% for i in model3_objects %}
+      {% endfor %} {% for i in model3_objects %}
       <div class="property-cards-agent">
         <div class="card-container">
           <div id="{{i.uuid}}" class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-           
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
-                <i class="ph ph-share-fat"></i>
-              </button>
 
-              <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
-                {% else %}
-                <p>No images available</p>
-                {% endif %}
-                {% endwith %}
-              </div>
-            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
-              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
+            <div
+              class="sale-banner"
+              style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: red;
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-radius: 5px;
+              "
+            >
+              {{i.category}}
+            </div>
+            <button
+              onclick="controlShareButton('{{ i.id }}')"
+              class="share-btn"
+              id="share-btn-modal"
+            >
+              <i class="ph ph-share-fat"></i>
+            </button>
+
+            <div class="property-card-img">
+              {% with i.images.first as img %} {% if i %}
+              <img src="{{ i.image.url }}" alt="House Image" width="200" />
+              {% else %}
+              <p>No images available</p>
+              {% endif %} {% endwith %}
+            </div>
+            <a
+              href="{% url 'detail_view' model_name='commercial' object_id=i.id %}"
+              class="view"
+            >
+              <h2 style="color: #050505">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":50"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='commercial' object_id=i.id %}"
+                class="view"
+              >
                 <h5>View Details</h5>
               </a>
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i>
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -1330,104 +2133,210 @@
         </div>
       </div>
 
-
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailcommercial/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
 
-      {% endfor %}
-
-
-      {% for i in model4_objects %}
+      {% endfor %} {% for i in model4_objects %}
 
       <div class="property-cards-agent">
         <div class="card-container">
           <div id="{{i.uuid}} " class="card" data-category="{{ i.category }}">
             <!-- <div onclick="sendMessageToWhatsApp('{{i.Caption}}', '{{i.location}}', '{{i.contact}}')"> -->
-            <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
-              <div class="sale-banner"
-                style="position: absolute; top: 10px; left: 10px; background-color: red; color: white; font-size: 14px; padding: 5px 10px; font-weight: bold; border-radius: 5px; ">
-                {{i.category}}</div>
-              <button onclick="controlShareButton('{{ i.id }}')" class="share-btn" id="share-btn-modal">
+            <a
+              href="{% url 'detail_view' model_name='offplan' object_id=i.id %}"
+              class="view"
+            >
+              <div
+                class="sale-banner"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  background-color: red;
+                  color: white;
+                  font-size: 14px;
+                  padding: 5px 10px;
+                  font-weight: bold;
+                  border-radius: 5px;
+                "
+              >
+                {{i.category}}
+              </div>
+              <button
+                onclick="controlShareButton('{{ i.id }}')"
+                class="share-btn"
+                id="share-btn-modal"
+              >
                 <i class="ph ph-share-fat"></i>
               </button>
 
               <div class="property-card-img">
-                {% with i.images.first as img %}
-                {% if i %}
-                <img src="{{ i.image.url }}" alt="House Image" width="200">
+                {% with i.images.first as img %} {% if i %}
+                <img src="{{ i.image.url }}" alt="House Image" width="200" />
                 {% else %}
                 <p>No images available</p>
-                {% endif %}
-                {% endwith %}
+                {% endif %} {% endwith %}
               </div>
-            <a href="{% url 'detail_view' model_name='commercial' object_id=i.id %}" class="view">
-              <h2 style="color: #050505;">{{i.Caption | slice:":20"}}</h2>
+            </a>
+            <a
+              href="{% url 'detail_view' model_name='commercial' object_id=i.id %}"
+              class="view"
+            >
+              <h2 style="color: #050505">{{i.Caption | slice:":20"}}</h2>
               <div class="paragraph">
                 <p>
-                  <span style="font-weight: bold;">Total Land:</span> {{i.total_land}} |
-                  <span style="font-weight: bold; margin-left: 10px;">{{i.Caption | slice:":50"}}</span>
+                  <span style="font-weight: bold">Total Land:</span>
+                  {{i.total_land}} |
+                  <span style="font-weight: bold; margin-left: 10px"
+                    >{{i.Caption | slice:":50"}}</span
+                  >
                 </p>
               </div>
-              <hr>
-              <a href="{% url 'detail_view' model_name='offplan' object_id=i.id %}" class="view">
+              <hr />
+              <a
+                href="{% url 'detail_view' model_name='offplan' object_id=i.id %}"
+                class="view"
+              >
                 <h5>View Details</h5>
               </a>
               <div class="cr-loc">
-                <img src="{% static 'img/location.png' %}" alt="Location Icon" id="location-icon" />
+                <img
+                  src="{% static 'img/location.png' %}"
+                  alt="Location Icon"
+                  id="location-icon"
+                />
                 <span>{{i.address}}</span>
               </div>
               <!-- </div> -->
               <div class="card-body">
-
-                <div class="action" style="display: flex !important; gap: 1rem;padding-top: 8%;font-size: 15px;">
-                  <div class="price-box">
-                    <p style="font-size: 14px; font-weight: bold; ">Price: <span
-                        style="font-size: 1.25rem;color: black;">{{i.price}}</span></p>
-
-                  </div>
-                  <div class="connect-act">
-                    <div onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '{{ i.contact }}')"
-                      class="msg-btn">
-                      <i class="fa-brands fa-whatsapp"></i>
+                <div
+                  class="action"
+                  style="
+                    display: fle !important;
+                    gap: 1rem;
+                    padding-top: 8%;
+                    font-size: 15px;
+                  "
+                >
+                  <div class="price-and-button">
+                    <div class="price-box" style="width: 200px; padding: 10px">
+                      <div style="display: flex; gap: 6px">
+                        <p
+                          style="font-size: 14px; font-weight: bold; margin: 0"
+                        >
+                          Price:
+                        </p>
+                        <span
+                          style="
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                            color: black;
+                            word-break: break-word;
+                          "
+                        >
+                          {{i.price}}
+                        </span>
+                      </div>
                     </div>
-                    <a href="tel:+91 {{ i.contact }}" class="call-btn">
-                      <i class="fa-solid fa-phone-flip"></i> Call Now
-                    </a>
 
+                    <div class="connect-act" style="place-items: flex-end">
+                      <div
+                        onclick="sendMessageToWhatsApp('{{ i.Caption }}', '{{ i.location }}', '+91{{ i.contact }}')"
+                        class="msg-btn"
+                      >
+                        <!-- <i class="fa-brands fa-whatsapp"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="3rem"
+                          height="3rem"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"
+                          ></path>
+                          <path
+                            fill="#cfd8dc"
+                            d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"
+                          ></path>
+                          <path
+                            fill="#40c351"
+                            d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            fill-rule="evenodd"
+                            d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <a
+                        href="tel:+91 {{ i.contact }}"
+                        class="call-btn"
+                        style="margin-bottom: 5px"
+                      >
+                        <!-- <i class="fa-solid fa-phone-flip"></i> -->
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.3rem"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="white"
+                            d="M280 0c128.1 0 232 103.9 232 232c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184c-13.3 0-24-10.7-24-24s10.7-24 24-24m8 192a32 32 0 1 1 0 64a32 32 0 1 1 0-64m-32-72c0-13.3 10.7-24 24-24c75.1 0 136 60.9 136 136c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88c-13.3 0-24-10.7-24-24M117.5 1.4c19.4-5.3 39.7 4.6 47.4 23.2l40 96c6.8 16.3 2.1 35.2-11.6 46.3L144 207.3c33.3 70.4 90.3 127.4 160.7 160.7l40.3-49.3c11.2-13.7 30-18.4 46.3-11.6l96 40c18.6 7.7 28.5 28 23.2 47.4l-24 88C481.8 499.9 466 512 448 512C200.6 512 0 311.4 0 64c0-18 12.1-33.8 29.5-38.6z"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </a>
@@ -1436,37 +2345,46 @@
       </div>
 
       <div id="share-btn-modal-{{i.id}}" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-          <span onclick="handleModalClose('{{ i.id }}')" class="close">&times;</span>
-          <div class="share-opt"
-            onclick="handleImage('whatsapp','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+          <span onclick="handleModalClose('{{ i.id }}')" class="close"
+            >&times;</span
+          >
+          <div
+            class="share-opt"
+            onclick="handleImage('whatsapp','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-whatsapp"></i>
             <p>Whats App</p>
           </div>
-          <div class="share-opt" onclick="handleImage('fb','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('fb','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-facebook"></i>
             <p>Facebook</p>
           </div>
-          <div class="share-opt" onclick="handleImage('x','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('x','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-square-x-twitter"></i>
             <p>Twitter</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('telegram','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('telegram','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-telegram"></i>
             <p>Telegram</p>
           </div>
-          <div class="share-opt"
-            onclick="handleImage('linkedin','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')">
+          <div
+            class="share-opt"
+            onclick="handleImage('linkedin','https://buysel.in/detailoffplan/{{ i.id|urlencode }}')"
+          >
             <i class="fa-brands fa-linkedin"></i>
             <p>Linked in</p>
           </div>
-
-
-
-
         </div>
       </div>
 
@@ -1479,43 +2397,47 @@
   </div>
 </section>
 
-
-
-
-
-
-</div>
-<div class=" container  agent-register-section" id="agents">
+<div class="container agent-register-section" id="agents">
   <div class="text-section2">
     <h1>BECOME AN AGENT: <br /><span>JOIN OUR PLATFORM</span></h1>
     <p>
-      Sign up today to start listing properties and connecting with potential buyers and renters. Grow your business
-      with us!
+      Sign up today to start listing properties and connecting with potential
+      buyers and renters. Grow your business with us!
     </p>
 
     <a class="add-property-btn-link" href="agentform" target="_blank">
       <div class="add-property-btn pulse">
         <span>Register as an Agent</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#8bc83f"
-          class="add-property-icon">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="#8bc83f"
+          class="add-property-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+          />
         </svg>
       </div>
     </a>
   </div>
   <div class="image-container">
-    <img src="{% static 'img/agents2.jpg' %}" alt="A beautiful house at sunset" class="image-1" />
-    <img src="{% static 'img/agents.jpg' %}" alt="A key in a door lock" class="image-2" />
+    <img
+      src="{% static 'img/agents2.jpg' %}"
+      alt="A beautiful house at sunset"
+      class="image-1"
+    />
+    <img
+      src="{% static 'img/agents.jpg' %}"
+      alt="A key in a door lock"
+      class="image-2"
+    />
   </div>
-
 </div>
-
-
-
-
-
-
 
 <div class="about" id="about">
   <div class="about-img">
@@ -1524,25 +2446,31 @@
   <div class="about-text" id="about-text">
     <h2>ABOUT <span class="highlight">BUYSEL.IN</span></h2>
     <p id="paragraph-text" style="text-align: justify">
-      Buysel.in is your one-stop solution for commission-free property and
-      scrap transactions. Our mission is to empower users by eliminating
-      middlemen and creating a transparent, efficient platform for buying,
-      selling, renting, and leasing.
+      Buysel.in is your one-stop solution for commission-free property and scrap
+      transactions. Our mission is to empower users by eliminating middlemen and
+      creating a transparent, efficient platform for buying, selling, renting,
+      and leasing.
     </p>
 
     <div class="additional-content" id="additional-content">
       <p style="text-align: justify">
         Buysel.in offers an innovative approach to property transactions,
-        ensuring a seamless experience for both buyers and sellers. Our
-        platform also offers a dedicated section for scrap and e-waste
-        transactions, making it easy for individuals and businesses to
-        dispose of their unwanted items responsibly. We focus on
-        transparency, efficiency, and building a community where individuals
-        can connect directly for their needs. Join Buysel.in today and
-        experience the future of property and scrap transactions.
+        ensuring a seamless experience for both buyers and sellers. Our platform
+        also offers a dedicated section for scrap and e-waste transactions,
+        making it easy for individuals and businesses to dispose of their
+        unwanted items responsibly. We focus on transparency, efficiency, and
+        building a community where individuals can connect directly for their
+        needs. Join Buysel.in today and experience the future of property and
+        scrap transactions.
       </p>
     </div>
-    <a href="javascript:void(0)" id="learn-toggle" class="learn-more" onclick="toggleContent()">Learn More</a>
+    <a
+      href="javascript:void(0)"
+      id="learn-toggle"
+      class="learn-more"
+      onclick="toggleContent()"
+      >Learn More</a
+    >
   </div>
 </div>
 
@@ -1590,7 +2518,11 @@
 
   <div class="service-boxes">
     <div class="service-box">
-      <img class="service-icon" src="{% static 'img/apartment 1.svg' %}" alt="Home Icon" />
+      <img
+        class="service-icon"
+        src="{% static 'img/apartment 1.svg' %}"
+        alt="Home Icon"
+      />
       <!-- Local image -->
       <h3 class="box-heading">Property Transactions</h3>
       <p class="box-content">
@@ -1601,7 +2533,11 @@
       </p>
     </div>
     <div class="service-box">
-      <img class="service-icon" src="{% static 'img/web 1.svg' %}" alt="Building Icon" />
+      <img
+        class="service-icon"
+        src="{% static 'img/web 1.svg' %}"
+        alt="Building Icon"
+      />
       <!-- Local image -->
       <h3 class="box-heading">Scrap Material Trading</h3>
       <p class="box-content">
@@ -1610,7 +2546,11 @@
       </p>
     </div>
     <div class="service-box">
-      <img class="service-icon" src="{% static 'img/shield-trust 1.svg' %}" alt="Warehouse Icon" />
+      <img
+        class="service-icon"
+        src="{% static 'img/shield-trust 1.svg' %}"
+        alt="Warehouse Icon"
+      />
       <!-- Local image -->
       <h3 class="box-heading">Verified Listings</h3>
       <p class="box-content">
@@ -1619,7 +2559,11 @@
       </p>
     </div>
     <div class="service-box">
-      <img class="service-icon" src=".{% static 'img/heart-partner-handshake 1.svg' %} " alt="Handshake Icon" />
+      <img
+        class="service-icon"
+        src=".{% static 'img/heart-partner-handshake 1.svg' %} "
+        alt="Handshake Icon"
+      />
       <!-- Local image -->
       <h3 class="box-heading">Comprehensive Support</h3>
       <p class="box-content">
@@ -1629,14 +2573,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <section class="why-choose-section" id="features">
   <h2 class="why-choose-heading">
@@ -1655,9 +2591,7 @@
     <!-- Feature Box 2 -->
     <div class="feature-box">
       <div class="feature-number">02</div>
-      <h3 class="feature-title feature-title-2">
-        Easy Property Management
-      </h3>
+      <h3 class="feature-title feature-title-2">Easy Property Management</h3>
       <p class="feature-description feature-description-2">
         Buy, sell, rent, or lease houses <br />and plots with just a few<br />clicks.
       </p>
@@ -1665,12 +2599,9 @@
     <!-- Feature Box 3 -->
     <div class="feature-box">
       <div class="feature-number">03</div>
-      <h3 class="feature-title feature-title-3">
-        Scrap Selling Made Simple
-      </h3>
+      <h3 class="feature-title feature-title-3">Scrap Selling Made Simple</h3>
       <p class="feature-description feature-description-3">
-        Dispose of bulk or small amounts<br />of scrap, including
-        E-waste,<br />
+        Dispose of bulk or small amounts<br />of scrap, including E-waste,<br />
         effortlessly. Perfect for companies<br />and individuals.
       </p>
     </div>
@@ -1679,8 +2610,8 @@
       <div class="feature-number">04</div>
       <h3 class="feature-title feature-title-4">Verified Listings</h3>
       <p class="feature-description feature-description-4">
-        Browse trusted and verified<br />property and scrap listings for
-        a<br />secure experience.
+        Browse trusted and verified<br />property and scrap listings for a<br />secure
+        experience.
       </p>
     </div>
     <!-- Feature Box 5 -->
@@ -1703,8 +2634,6 @@
   </div>
 </section>
 
-
-
 <div class="faq-outer">
   <div class="faq-heading">
     <h2>FREQUENTLY ASKED<br />QUESTIONS</h2>
@@ -1712,29 +2641,35 @@
   <div class="faq-questions">
     <div class="faq-item">
       <div class="faq-question">
-        <span> What is Buysel.in?
-        </span>
-        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+        <span> What is Buysel.in? </span>
+        <img
+          src="{% static 'img/Vector.svg' %}"
+          alt="Expand"
+          class="toggle-icon"
+        />
       </div>
       <div class="faq-answer-content" style="display: none">
         <p>
-          Buysel.in connects buyers and sellers directly for property and scrap deals, ensuring a zero-commission,
-          hassle-free experience.
+          Buysel.in connects buyers and sellers directly for property and scrap
+          deals, ensuring a zero-commission, hassle-free experience.
         </p>
       </div>
     </div>
     <hr />
     <div class="faq-item">
       <div class="faq-question">
-        <span>How does Buysel.in work?
-        </span>
-        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+        <span>How does Buysel.in work? </span>
+        <img
+          src="{% static 'img/Vector.svg' %}"
+          alt="Expand"
+          class="toggle-icon"
+        />
       </div>
       <div class="faq-answer-content" style="display: none">
         <p>
-          Buysel.in enables users to list properties or scrap, connect with verified buyers or sellers, and enjoy a
-          transparent, cost-effective experience.
-
+          Buysel.in enables users to list properties or scrap, connect with
+          verified buyers or sellers, and enjoy a transparent, cost-effective
+          experience.
         </p>
       </div>
     </div>
@@ -1742,33 +2677,40 @@
     <div class="faq-item">
       <div class="faq-question">
         <span>What services does Buysel.in offer?</span>
-        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+        <img
+          src="{% static 'img/Vector.svg' %}"
+          alt="Expand"
+          class="toggle-icon"
+        />
       </div>
       <div class="faq-answer-content" style="display: none">
         <p>
-          Buysel.in connects buyers and sellers directly on a commission-free platform, ensuring secure, verified
-          listings. It offers a transparent and hassle-free experience across real estate and e-waste transactions.
-
+          Buysel.in connects buyers and sellers directly on a commission-free
+          platform, ensuring secure, verified listings. It offers a transparent
+          and hassle-free experience across real estate and e-waste
+          transactions.
         </p>
       </div>
     </div>
     <hr />
     <div class="faq-item">
       <div class="faq-question">
-        <span>Is Buysel.in free to use?
-        </span>
-        <img src="{% static 'img/Vector.svg' %}" alt="Expand" class="toggle-icon" />
+        <span>Is Buysel.in free to use? </span>
+        <img
+          src="{% static 'img/Vector.svg' %}"
+          alt="Expand"
+          class="toggle-icon"
+        />
       </div>
       <div class="faq-answer-content" style="display: none">
         <p>
-          Users can explore listings for free, while a small fee applies for posting properties or scrap materials for
-          sale, rent or lease, ensuring a high-quality, reliable marketplace for all.
-
+          Users can explore listings for free, while a small fee applies for
+          posting properties or scrap materials for sale, rent or lease,
+          ensuring a high-quality, reliable marketplace for all.
         </p>
       </div>
     </div>
     <hr />
-
   </div>
 </div>
 
@@ -1811,20 +2753,28 @@
 
 <div class="main-sec">
   <div class="col-1">
-    <img alt="Aerial view of a suburban neighborhood with houses and streets"
-      src="https://storage.googleapis.com/a1aa/image/2EVTCfU0RKRnPqifr2sL3VUGN7rnT9PBtInihzeaqG01duCoA.jpg" />
+    <img
+      alt="Aerial view of a suburban neighborhood with houses and streets"
+      src="https://storage.googleapis.com/a1aa/image/2EVTCfU0RKRnPqifr2sL3VUGN7rnT9PBtInihzeaqG01duCoA.jpg"
+    />
   </div>
   <div class="col-2">
-    <img alt="A house with a well-maintained lawn and a tree in front"
-      src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+    <img
+      alt="A house with a well-maintained lawn and a tree in front"
+      src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    />
     <div class="inner-sec">
       <div class="inner-1">
-        <img alt="A modern house by the lake with a beautiful sunset view"
-          src="https://storage.googleapis.com/a1aa/image/PdEoo2DyJLKBA9sqFUXfoB7tnwLalKi5CvVTSBpEPQbcnrAKA.jpg" />
+        <img
+          alt="A modern house by the lake with a beautiful sunset view"
+          src="https://storage.googleapis.com/a1aa/image/PdEoo2DyJLKBA9sqFUXfoB7tnwLalKi5CvVTSBpEPQbcnrAKA.jpg"
+        />
       </div>
       <div class="inner-1">
-        <img alt="A contemporary house with unique architecture and lighting"
-          src="https://storage.googleapis.com/a1aa/image/HhQ1CsX7DFYlLVK32Ue4UAJ4RlOx69Wj0eNGbOOX5Ks8OXBUA.jpg" />
+        <img
+          alt="A contemporary house with unique architecture and lighting"
+          src="https://storage.googleapis.com/a1aa/image/HhQ1CsX7DFYlLVK32Ue4UAJ4RlOx69Wj0eNGbOOX5Ks8OXBUA.jpg"
+        />
       </div>
     </div>
   </div>
@@ -1835,7 +2785,11 @@
     <h2>GET IN TOUCH WITH US</h2>
     <p>Have questions or need assistance? We're here to help!</p>
     <div class="info-item">
-      <img src="{% static 'img/phone-call 1.svg' %}" alt="Phone Icon" class="icon" />
+      <img
+        src="{% static 'img/phone-call 1.svg' %}"
+        alt="Phone Icon"
+        class="icon"
+      />
 
       <span>+91 9061827363</span>
     </div>
@@ -1844,16 +2798,28 @@
       <span>buyselinfo@gmail.com</span>
     </div>
     <div class="info-item">
-      <img src="{% static 'img/location.svg' %}" alt="Phone Icon" class="icon" />
+      <img
+        src="{% static 'img/location.svg' %}"
+        alt="Phone Icon"
+        class="icon"
+      />
       <span>Kochi, Kerala,India</span>
     </div>
   </div>
-<!-- <div class="contact-form-section"> -->
+  <!-- <div class="contact-form-section"> -->
   <div class="contact-form">
     <!-- The form action should be to the Web3Forms submission endpoint -->
-    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      id="contact-form"
+    >
       <!-- Replace with your Access Key -->
-      <input type="hidden" name="access_key" value="e2767bdc-ca36-46ef-a3a6-3d8a81d4f13a" />
+      <input
+        type="hidden"
+        name="access_key"
+        value="e2767bdc-ca36-46ef-a3a6-3d8a81d4f13a"
+      />
 
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required />
@@ -1870,115 +2836,92 @@
       <button type="submit">Submit</button>
     </form>
   </div>
-<!-- </div> -->
-  
-
-
-
-
-
-
-
-
-
-
-
-  <script>
-    // Ensure form submission goes through Web3Forms
-    document
-      .getElementById("contact-form")
-      .addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        const formData = new FormData(this);
-
-        fetch(this.action, {
-          method: this.method,
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              alert("Form submitted successfully!");
-              this.reset(); // Reset form after successful submission
-            } else {
-              alert(
-                "There was an issue with your submission. Please try again."
-              );
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred. Please try again.");
-          });
-      });
-  </script>
-
-  <script>
-    // Reset form on page load
-    window.onload = function () {
-      document.querySelector("form").reset(); // Reset the form when the page loads
-    };
-
-    // Reset the form after submission
-    function resetForm() {
-      setTimeout(function () {
-        document.querySelector("form").reset(); // Reset the form
-      }, 500); // Add a short delay to allow the submission to be processed
-    }
-  </script>
-
-  {% comment %}
-
-
-
-  <script>
-    const suggestionsList = [
-      "How can I help you today?",
-      "What is your query?",
-      "Please provide more details.",
-      "Are you facing any issues?",
-      "Can I assist you with something else?"
-    ];
-
-    const textarea = document.getElementById("message");
-    const suggestionsDiv = document.getElementById("suggestions");
-
-    textarea.addEventListener('input', function () {
-      const typedText = textarea.value.toLowerCase();
-      const filteredSuggestions = suggestionsList.filter(suggestion => suggestion.toLowerCase().includes(typedText));
-
-      if (filteredSuggestions.length > 0 && typedText.length > 0) {
-        suggestionsDiv.innerHTML = filteredSuggestions.map(suggestion => `<div>${suggestion}</div>`).join('');
-        suggestionsDiv.style.display = 'block';
-      } else {
-        suggestionsDiv.style.display = 'none';
-      }
-    });
-
-    suggestionsDiv.addEventListener('click', function (event) {
-      if (event.target.tagName === 'DIV') {
-        textarea.value = event.target.textContent;
-        suggestionsDiv.style.display = 'none';
-      }
-    });
-  </script> {% endcomment %}
-
-
-
-
-
-
-
-
-
+  <!-- </div> -->
 </section>
+{% endblock %}
 
+<script>
+  // Ensure form submission goes through Web3Forms
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const formData = new FormData(this);
+
+      fetch(this.action, {
+        method: this.method,
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Form submitted successfully!");
+            this.reset(); // Reset form after successful submission
+          } else {
+            alert("There was an issue with your submission. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred. Please try again.");
+        });
+    });
+</script>
+
+<script>
+  // Reset form on page load
+  window.onload = function () {
+    document.querySelector("form").reset(); // Reset the form when the page loads
+  };
+
+  // Reset the form after submission
+  function resetForm() {
+    setTimeout(function () {
+      document.querySelector("form").reset(); // Reset the form
+    }, 500); // Add a short delay to allow the submission to be processed
+  }
+</script>
+
+{% comment %}
+
+<script>
+  const suggestionsList = [
+    "How can I help you today?",
+    "What is your query?",
+    "Please provide more details.",
+    "Are you facing any issues?",
+    "Can I assist you with something else?",
+  ];
+
+  const textarea = document.getElementById("message");
+  const suggestionsDiv = document.getElementById("suggestions");
+
+  textarea.addEventListener("input", function () {
+    const typedText = textarea.value.toLowerCase();
+    const filteredSuggestions = suggestionsList.filter((suggestion) =>
+      suggestion.toLowerCase().includes(typedText)
+    );
+
+    if (filteredSuggestions.length > 0 && typedText.length > 0) {
+      suggestionsDiv.innerHTML = filteredSuggestions
+        .map((suggestion) => `<div>${suggestion}</div>`)
+        .join("");
+      suggestionsDiv.style.display = "block";
+    } else {
+      suggestionsDiv.style.display = "none";
+    }
+  });
+
+  suggestionsDiv.addEventListener("click", function (event) {
+    if (event.target.tagName === "DIV") {
+      textarea.value = event.target.textContent;
+      suggestionsDiv.style.display = "none";
+    }
+  });
+</script>
+{% endcomment %}
 
 <script>
   // Get the modal
-
-
 </script>
-
-{% endblock %}

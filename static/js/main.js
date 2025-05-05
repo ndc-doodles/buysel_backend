@@ -4,6 +4,21 @@
 //     document.documentElement.scrollTop = 0;
 // };
 
+
+
+
+function sendMessageToWhatsApp(propertyName, location, phoneNumber) {
+    // console.log('sirrrathyhhhhhhh');
+    
+        const message = `Hello, I am interested in the property from buysel.in "${propertyName}" located in "${location}". Please provide more details.`;
+        const encodedMessage = encodeURIComponent(message); // Ensures the message is URL-safe
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+
+
+
 document.addEventListener('DOMContentLoaded',()=>{
     console.log('haiiiiiii',location.href);
     if(location.href.includes('agent')){
@@ -375,7 +390,5 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
-
 
 

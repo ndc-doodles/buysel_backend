@@ -676,7 +676,8 @@ h4 {
     top: 50%;
     left: 50%;
     width: 350px;
-    height: 450px;
+    /* height: 450px; */
+    height: 100%;
     transform: translate(-50%, -50%);
     border-radius: 16px;
     overflow: hidden;
