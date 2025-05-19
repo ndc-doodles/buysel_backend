@@ -20,7 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1-s_7q@r=a$qwuct#=m42d@%5j(d&$c+24=e&w#@nx5t&i2oh9'
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','default-secret-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -97,16 +99,20 @@ WSGI_APPLICATION = 'bysel.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-from decouple import config
+import os
+from dotenv import load_dotenv
+
+# Point to your .env file location (if .env is in the root folder)
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -141,7 +147,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-SECRET_KEY = 'django-insecure-^d$ql1#@@d668f3n!j_s7(ikc-qr*$94jk##p#!aphw$d&2tq%'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -181,28 +186,11 @@ SESSION_COOKIE_AGE = 60 * 30  # 30 minutes session timeout (in seconds)
 
 
 
-from dotenv import load_dotenv
-
-load_dotenv()  # Load environment variables
-
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-# Cloudinary Configuration
-cloudinary.config( 
-  cloud_name = "dnklcdsjq", 
-  api_key = "619665329545319", 
-  api_secret = "MKWJwARG2buK0YwGjAsYbi4SCkQ", 
-)
 
 
 
