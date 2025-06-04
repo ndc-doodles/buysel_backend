@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'buysel.in']
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sitemaps',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',

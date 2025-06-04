@@ -3,7 +3,16 @@ from django.urls import path
 from . import views
 # from .views import save_screenshot
 
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import StaticViewSitemap
+
+
+sitemaps = {
+    'static': StaticViewSitemap(),
+}
+
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path("",views.index, name="index"),
     path("base",views.base),
     path("blog",views.blog,name="blog"),
